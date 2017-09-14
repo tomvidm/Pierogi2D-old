@@ -1,1 +1,1 @@
-# some line
+add_executable(main main.cpp)

@@ -1,2 +1,4 @@
-minimum_required_version(VERSION 3.0)
+cmake_minimum_required(VERSION 3.0)
 project(Preppers)
+
+add_subdirectory(src)
