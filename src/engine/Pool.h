@@ -1,3 +1,7 @@
+/*
+    
+*/
+
 namespace engine
 {
     typedef unsigned int uint;
@@ -15,8 +19,13 @@ namespace engine
     public:
         Pool();
 
+        inline uint getPoolSize() const { return poolSize_; }
+        inline uint getNumObjects() const { return numObjects_; }
     private:
         uint poolSize_ = POOL_SIZE;
+        uint numObjects_ = 0;
+        uint firstFreeObject_ = 0;
+
         ObjectState objectPoolStates_[POOL_SIZE] = { ObjectState::FREE };//*POOL_SIZE;
         ObjectType objectPool_[POOL_SIZE];
     };
