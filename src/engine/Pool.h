@@ -1,5 +1,8 @@
 /*
-    
+    This template class represent a fixed-size container. All objects are preallocated
+    and "activated" when wanted. New objects are "activated" with incrementing index
+    firstFreeObject_, and deactivated object ids are pushed to a linked list, so to ensure
+    few holes in the pool for cache hits.
 */
 
 #include <list>
@@ -47,7 +50,7 @@ namespace engine
     {
         if (!freeList_.empty())
         {
-            uint index = freeList_.front()
+            uint index = freeList_.front();
             objectPoolStates_[index] = ObjectState::ACTIVE;
             freeList_.pop_front();
             numObjects_ += 1;
@@ -57,7 +60,7 @@ namespace engine
         else if (numObjects_ < poolSize_)
         {
             objectPoolStates_[firstFreeObject_] = ObjectState::ACTIVE;
-            numObjects += 1;
+            numObjects_ += 1;
             return firstFreeObject_++;
         }
         else
@@ -66,12 +69,14 @@ namespace engine
         }
     }
 
+    // TODO: Try to modify how the linked list is pushed onto, to always ensure
+    // that new objects are set to the first available "hole".
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::deactivateObject(uint id)
     {
         if (objectPoolStates_[id] == ObjectState::ACTIVE)
         {
-            objectPoolStates_[id] == ObjectState::INACTIVE;
+            objectPoolStates_[id] = ObjectState::INACTIVE;
             freeList_.push_back(id);
             numObjects_ -= 1;
         }
