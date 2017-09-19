@@ -1,6 +1,9 @@
 /*
-	Base State is an awesome thing because I say so.
-	SJUR ARNE SJOFLOT
+	Abstract class for game states.
+	The execute method should be common for all derived classes.
+	When called through polymorphism, execute should
+	be the common interface, and more specialized methods
+	should be added to derived classes.
 */
 
 namespace engine
@@ -8,10 +11,6 @@ namespace engine
 	class BaseState
 	{
 	public:
-		virtual void someCommonInterfaceMethod();
-		virtual void doTasks();
-		virtual void sjurArneSjoflot(int goma);
-	private:
-		int someVar;
+		virtual void execute() = 0;
 	};
 }
