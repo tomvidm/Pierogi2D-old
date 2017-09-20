@@ -23,6 +23,12 @@ namespace engine
         INACTIVE
     };
 
+    const uint TOTALLY_UNUSED   = 0;
+    const uint HAS_BEEN_USED    = 1 << 0;
+    const uint ACTIVE           = 1 << 1;
+    const uint DRAWABLE         = 1 << 2;
+
+
     template <class ObjectType, uint POOL_SIZE>
     class Pool
     {
@@ -40,7 +46,7 @@ namespace engine
         uint numObjects_ = 0;
         uint firstFreeObject_ = 0;
 
-        ObjectState objectPoolStates_[POOL_SIZE] = { ObjectState::FREE };
+        uint objectPoolStates_[POOL_SIZE];
         ObjectType objectPool_[POOL_SIZE];
         std::list<uint> freeList_;
     };
@@ -57,7 +63,7 @@ namespace engine
         if (!freeList_.empty())
         {
             uint index = freeList_.front();
-            objectPoolStates_[index] = ObjectState::ACTIVE;
+            objectPoolStates_[index] |= ACTIVE;
             freeList_.pop_front();
             numObjects_ += 1;
             return index;
@@ -65,7 +71,7 @@ namespace engine
         }
         else if (numObjects_ < poolSize_)
         {
-            objectPoolStates_[firstFreeObject_] = ObjectState::ACTIVE;
+            objectPoolStates_[firstFreeObject_] = ACTIVE | HAS_BEEN_USED;
             numObjects_ += 1;
             return firstFreeObject_++;
         }
@@ -80,9 +86,9 @@ namespace engine
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::deactivateObject(uint id)
     {
-        if (objectPoolStates_[id] == ObjectState::ACTIVE)
+        if (objectPoolStates_[id] & ACTIVE) // If a number is >0, then true
         {
-            objectPoolStates_[id] = ObjectState::INACTIVE;
+            objectPoolStates_[id] &= ~ACTIVE; // Switch of ACTIVE bit
             freeList_.push_back(id);
             numObjects_ -= 1;
         }
@@ -93,7 +99,7 @@ namespace engine
     {
         for (uint i = 0; i < poolSize_; i++)
         {
-            objectPoolStates_[i] = ObjectState::FREE;
+            objectPoolStates_[i] = TOTALLY_UNUSED;
             freeList_.clear();
         }
     }
