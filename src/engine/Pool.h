@@ -3,6 +3,10 @@
     and "activated" when wanted. New objects are "activated" with incrementing index
     firstFreeObject_, and deactivated object ids are pushed to a linked list, so to ensure
     few holes in the pool for cache hits.
+
+    ObjectState::ACTIVE - Object is in use.
+    ObjectState::FREE - Object slot has not been used yet. Internal variable always points to first free slot.
+    ObjectState::INACTIVE - previously used slot. Index is kept in a linked list.
 */
 
 #include <list>
@@ -31,8 +35,6 @@ namespace engine
         uint activateObject();
         void deactivateObject(uint id);
         void freeAll();
-
-        void printInfo() const;
     private:
         uint poolSize_ = POOL_SIZE;
         uint numObjects_ = 0;
@@ -94,26 +96,5 @@ namespace engine
             objectPoolStates_[i] = ObjectState::FREE;
             freeList_.clear();
         }
-    }
-
-    template <class ObjectType, uint POOL_SIZE>
-    void Pool<ObjectType, POOL_SIZE>::printInfo() const
-    {
-        for (int i = 0; i < poolSize_; i++)
-        {
-            switch (objectPoolStates_[i])
-            {
-            case ObjectState::ACTIVE:
-                std::cout << "[A]";
-                break;
-            case ObjectState::FREE:
-                std::cout << "[F]";
-                break;
-            case ObjectState::INACTIVE:
-                std::cout << "[x]";
-                break;
-            }
-        }
-        std::cout << std::endl;
     }
 }
