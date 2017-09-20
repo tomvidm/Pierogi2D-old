@@ -1,9 +1,12 @@
+#pragma once
+
+#include <stack>
+
 #include "Pool.h"
 #include "Tree.h"
 #include "SceneNode.h"
 
-#define MAX_OBJECTS 64
-#define MAX_SPRITES 64
+#define MAX_NODES 64
 
 namespace engine
 {
@@ -25,7 +28,8 @@ namespace engine
     class ObjectManager
     {
     public:
-        void update(uint index, UpdateMode updateMode = UpdateMode::IGNORE_SUBTREE);
+        void updateAllNodes();
+        void updateNode(uint id)
     private:
         utils::Tree<uint> sceneNodeTree_;
         SceneNodePool sceneNodePool_;

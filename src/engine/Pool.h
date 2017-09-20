@@ -38,6 +38,8 @@ namespace engine
         void addState(uint id, uint state);
         void subState(uint id, uint state);
         void toggleState(uint id, uint state);
+
+        inline ObjectType& get(uint id) { return objectPool_[id]; }
         
     private:
         uint poolSize_ = POOL_SIZE;

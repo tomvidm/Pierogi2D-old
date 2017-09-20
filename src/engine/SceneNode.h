@@ -1,11 +1,12 @@
+#include <set>
 
 namespace engine
 {
-
-
     class SceneNode
     {
+    public:
+        inline bool isRoot() const { return isRoot_; }
     private:
-        int i;
+        bool isRoot_ = true;
     }
 }
