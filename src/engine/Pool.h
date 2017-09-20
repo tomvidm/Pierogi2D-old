@@ -19,7 +19,6 @@ namespace engine
     const uint TOTALLY_UNUSED   = 0;
     const uint HAS_BEEN_USED    = 1 << 0;
     const uint ACTIVE           = 1 << 1;
-    const uint DRAWABLE         = 1 << 2;
 
 
     template <class ObjectType, uint POOL_SIZE>
@@ -34,6 +33,12 @@ namespace engine
         uint activateObject();
         void deactivateObject(uint id);
         void freeAll();
+
+        void setState(uint id, uint state);
+        void addState(uint id, uint state);
+        void subState(uint id, uint state);
+        void toggleState(uint id, uint state);
+        
     private:
         uint poolSize_ = POOL_SIZE;
         uint numObjects_ = 0;
@@ -91,6 +96,33 @@ namespace engine
             numObjects_ -= 1;
         }
     }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::setState(uint id, uint state)
+    {
+        objectPoolStates_[id] = state;
+    }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::addState(uint id, uint state)
+    {
+        objectPoolStates_[id] |= state;
+    }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::subState(uint id, uint state)
+    {
+        objectPoolStates_[id] &= ~state;
+    }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::toggleState(uint id, uint state)
+    {
+        objectPoolStates_[id] ~= state;
+    }
+
+
+
 
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::freeAll()
