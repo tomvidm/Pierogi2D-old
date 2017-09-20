@@ -16,13 +16,6 @@ namespace engine
 {
     typedef unsigned int uint;
 
-    enum class ObjectState
-    {
-        ACTIVE,
-        FREE,
-        INACTIVE
-    };
-
     const uint TOTALLY_UNUSED   = 0;
     const uint HAS_BEEN_USED    = 1 << 0;
     const uint ACTIVE           = 1 << 1;
