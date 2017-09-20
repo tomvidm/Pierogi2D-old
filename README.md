@@ -11,3 +11,4 @@ THe Visual Studio solution file should be in the follwoing folder: SOMEFUCKINGDI
 # Branches
 * gamestate-interface - declaration and implementation of a simple gamestate interface for practice
 * add-sfml-to-project - add sfml to project and fix cmakelists so that project files are generated with minimal effort
+* data-driven-prototyping - prototyping a data driven approach to handling objects
