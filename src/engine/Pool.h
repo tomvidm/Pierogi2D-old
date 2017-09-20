@@ -6,6 +6,7 @@
 */
 
 #include <list>
+#include <iostream>
 
 namespace engine
 {
@@ -29,12 +30,15 @@ namespace engine
 
         uint activateObject();
         void deactivateObject(uint id);
+        void freeAll();
+
+        void printInfo() const;
     private:
         uint poolSize_ = POOL_SIZE;
         uint numObjects_ = 0;
         uint firstFreeObject_ = 0;
 
-        ObjectState objectPoolStates_[POOL_SIZE] = { ObjectState::FREE };//*POOL_SIZE;
+        ObjectState objectPoolStates_[POOL_SIZE] = { ObjectState::FREE };
         ObjectType objectPool_[POOL_SIZE];
         std::list<uint> freeList_;
     };
@@ -42,7 +46,7 @@ namespace engine
     template <class ObjectType, uint POOL_SIZE>
     Pool<ObjectType, POOL_SIZE>::Pool()
     {
-        ;
+        freeAll();
     }
 
     template <class ObjectType, uint POOL_SIZE>
@@ -80,5 +84,36 @@ namespace engine
             freeList_.push_back(id);
             numObjects_ -= 1;
         }
+    }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::freeAll()
+    {
+        for (uint i = 0; i < poolSize_; i++)
+        {
+            objectPoolStates_[i] = ObjectState::FREE;
+            freeList_.clear();
+        }
+    }
+
+    template <class ObjectType, uint POOL_SIZE>
+    void Pool<ObjectType, POOL_SIZE>::printInfo() const
+    {
+        for (int i = 0; i < poolSize_; i++)
+        {
+            switch (objectPoolStates_[i])
+            {
+            case ObjectState::ACTIVE:
+                std::cout << "A";
+                break;
+            case ObjectState::FREE:
+                std::cout << "F";
+                break;
+            case ObjectState::INACTIVE:
+                std::cout << "x";
+                break;
+            }
+        }
+        std::cout << std::endl;
     }
 }
