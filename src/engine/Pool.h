@@ -74,7 +74,7 @@ namespace engine
     }
 
     // TODO: Try to modify how the linked list is pushed onto, to always ensure
-    // that new objects are set to the first available "hole".
+    // that new objects are set to the first available "hole". (OR: In order. Heap?)
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::deactivateObject(uint id)
     {
@@ -104,13 +104,13 @@ namespace engine
             switch (objectPoolStates_[i])
             {
             case ObjectState::ACTIVE:
-                std::cout << "A";
+                std::cout << "[A]";
                 break;
             case ObjectState::FREE:
-                std::cout << "F";
+                std::cout << "[F]";
                 break;
             case ObjectState::INACTIVE:
-                std::cout << "x";
+                std::cout << "[x]";
                 break;
             }
         }
