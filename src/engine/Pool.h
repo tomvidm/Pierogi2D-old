@@ -50,6 +50,11 @@ namespace engine
         freeAll();
     }
 
+    /*
+        When called, an object is "activated" and the index is returned. Adding
+        an object is as simple as changing a few flags here. setting up the object and
+        assigning sprites etc are left to something else.
+    */
     template <class ObjectType, uint POOL_SIZE>
     uint Pool<ObjectType, POOL_SIZE>::activateObject()
     {
