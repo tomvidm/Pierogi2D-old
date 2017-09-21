@@ -23,16 +23,16 @@ namespace engine
     class SceneNodeManager
     {
     public:
-        uint activateSceneNode();
+        uint activateSceneNode(); 
         uint activateSceneNodeAfter(uint min_id);
 
-        void assignChild(uint parent, uint child) = 0;
+        void assignChild(uint parent, uint child);
         
-        uint getParent(uint child) = 0;
-        std::vector<uint> getChildren(uint parent) = 0;
+        uint getParent(uint child);
+        std::vector<uint> getChildren(uint parent);
 
         void updateAllNodes();
-        void updateNode(uint id)
+        void updateNode(uint id);
     private:
         utils::Tree<uint> sceneNodeTree_;
         SceneNodePool sceneNodePool_;

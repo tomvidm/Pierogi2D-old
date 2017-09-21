@@ -3,7 +3,7 @@
 
 namespace engine
 {
-    void TestPool::SetUp()
+    void TestSceneNodeManager::SetUp()
     {
         ;
     }

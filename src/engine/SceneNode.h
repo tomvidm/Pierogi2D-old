@@ -8,5 +8,5 @@ namespace engine
         inline bool isRoot() const { return isRoot_; }
     private:
         bool isRoot_ = true;
-    }
+    };
 }
