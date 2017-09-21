@@ -94,11 +94,16 @@ namespace engine
     template <class ObjectType, uint POOL_SIZE>
     uint Pool<ObjectType, POOL_SIZE>::getFirstAvailableIndex(uint id = 0) const
     {
-        if (freeList_.back() < id)
+        
+        if (freeList_.empty())
         {
             return firstFreeObject_;
         }
-        else if (!freeList_.empty())
+        else if (freeList_.back() < id)
+        {
+            return firstFreeObject_;
+        }
+        else
         {
             for (auto id_iter : freeList_)
             {
@@ -107,9 +112,6 @@ namespace engine
                     return id_iter;
                 }
             }
-        }
-        else
-        {
             return firstFreeObject_;
         }
     }

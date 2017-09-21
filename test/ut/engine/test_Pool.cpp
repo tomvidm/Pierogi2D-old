@@ -1,5 +1,5 @@
 #include "test_Pool.h"
-
+#include <iostream>
 namespace engine
 {
     void TestPool::SetUp()
@@ -42,5 +42,10 @@ namespace engine
         pool.activateObject();
 
         EXPECT_EQ(pool.getFirstAvailableIndex(), 4);
+
+        pool.activateObject();
+        pool.activateObject();
+
+        EXPECT_EQ(pool.getFirstAvailableIndex(), 8);
     }
 }
