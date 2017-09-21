@@ -31,6 +31,7 @@ namespace engine
         inline uint getNumObjects() const { return numObjects_; }
 
         uint activateObject();
+        uint getFirstAvailableIndex(uint id = 0) const;
         void deactivateObject(uint id);
         void freeAll();
 
@@ -84,6 +85,28 @@ namespace engine
         else
         {
             return -1; // No more space
+        }
+    }
+
+    /*
+        given an index, first the first index which is free and also bigger than the parameter id.
+    */
+    template <class ObjectType, uint POOL_SIZE>
+    uint Pool<ObjectType, POOL_SIZE>::getFirstAvailableIndex(uint id = 0) const
+    {
+        if (!freeList_.empty())
+        {
+            for (auto id_iter : freeList_)
+            {
+                if ((*id_iter) > id)
+                {
+                    return *id_iter;
+                }
+            }
+        }
+        else
+        {
+            return firstFreeObject_;
         }
     }
 
