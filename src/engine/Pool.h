@@ -20,18 +20,21 @@ namespace engine
     const uint HAS_BEEN_USED    = 1 << 0;
     const uint ACTIVE           = 1 << 1;
 
-
     template <class ObjectType, uint POOL_SIZE>
     class Pool
     {
     public:
+        typedef std::list<uint>::iterator ListIterator;
         Pool();
 
         inline uint getPoolSize() const { return poolSize_; }
         inline uint getNumObjects() const { return numObjects_; }
+        inline uint getFirstFreeIndex() const { return firstFreeObject_; }
 
         uint activateObject();
+        
         uint getFirstAvailableIndex(uint id = 0) const;
+
         void deactivateObject(uint id);
         void freeAll();
 

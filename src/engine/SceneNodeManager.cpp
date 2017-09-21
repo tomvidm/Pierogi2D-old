@@ -2,34 +2,26 @@
 
 namespace engine
 {
-    void SceneNodeManager::updateAllNodes()
+    uint SceneNodeManager::activateSceneNode()
     {
-        // Make a stack
-        // Iterate over all objects:
-        // * ignore inactive objects
-        // * push "root" nodes to stack
-        // * process each node
-        // ** nodes with children calls updateNode(i)
-        return;
+        return sceneNodePool_.activateObject();
     }
 
-    bool SceneNodeManager::verifyOrdering() const
+    uint SceneNodeManager::activateSceneNodeAfter(uint min_id)
     {
-        for (uint i = 0; i < sceneNodePool_.getPoolSize(); i++)
-        {
-            childNodes = sceneNodeTree_.childrenOf(i);
-            if (!childNodes.empty())
-            {
-                for (uint c = 0; c < childNodes.size(); c++)
-                {
-                    if (i > c)
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
+        return sceneNodePool_.activateObject();
+    }
 
-        return true;
+    void SceneNodeManager::updateAllNodes()
+    {
+        for (uint i = 0; i < sceneNodePool_.getFirstFreeIndex(); i++)
+        {
+            updateNode(i);
+        }
+    }
+
+    void SceneNodeManager::updateNode()
+    {
+        return;
     }
 }

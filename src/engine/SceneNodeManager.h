@@ -23,6 +23,9 @@ namespace engine
     class SceneNodeManager
     {
     public:
+        uint activateSceneNode();
+        uint activateSceneNodeAfter(uint min_id);
+
         void updateAllNodes();
         void updateNode(uint id)
 
