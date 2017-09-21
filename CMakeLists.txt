@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
+endif()
+
 project(Preppers)
 
-# Copypasta from: https://crascit.com/2015/07/25/cmake-gtest/
+# Copypasta from: https://crasci    t.com/2015/07/25/cmake-gtest/
 # ====================================================================
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -32,5 +37,8 @@ endif()
 # etc. as appropriate
 # ====================================================================
 # Copypasta end
+
+# Detect and add SFML
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 add_subdirectory(src)
