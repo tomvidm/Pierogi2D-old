@@ -12,7 +12,7 @@ namespace engine
 {
     typedef unsigned int uint;
     
-    typedef Pool<SceneNode, MAX_OBJECTS> SceneNodePool;
+    typedef Pool<SceneNode, MAX_NODES> SceneNodePool;
 
     /*
         For data coherence, updating each node by iterating through the array
@@ -25,6 +25,8 @@ namespace engine
     public:
         void updateAllNodes();
         void updateNode(uint id)
+
+        bool verifyOrdering() const;
     private:
         utils::Tree<uint> sceneNodeTree_;
         SceneNodePool sceneNodePool_;
