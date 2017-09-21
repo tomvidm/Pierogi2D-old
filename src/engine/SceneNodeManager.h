@@ -26,6 +26,11 @@ namespace engine
         uint activateSceneNode();
         uint activateSceneNodeAfter(uint min_id);
 
+        void assignChild(uint parent, uint child) = 0;
+        
+        uint getParent(uint child) = 0;
+        std::vector<uint> getChildren(uint parent) = 0;
+
         void updateAllNodes();
         void updateNode(uint id)
     private:
