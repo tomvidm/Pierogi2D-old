@@ -38,6 +38,7 @@ namespace engine
         void addState(uint id, uint state);
         void subState(uint id, uint state);
         void toggleState(uint id, uint state);
+        uint getState(uint id) const;
 
         inline ObjectType& get(uint id) { return objectPool_[id]; }
         
@@ -120,10 +121,14 @@ namespace engine
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::toggleState(uint id, uint state)
     {
-        objectPoolStates_[id] ~= state;
+        objectPoolStates_[id] ^= state;
     }
 
-
+    template <class ObjectType, uint POOL_SIZE>
+    uint Pool<ObjectType, POOL_SIZE>::getState(uint id) const
+    {
+        return objectPoolStates_[id];
+    }
 
 
     template <class ObjectType, uint POOL_SIZE>
