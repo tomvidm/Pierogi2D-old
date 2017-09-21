@@ -30,6 +30,7 @@ namespace utils {
 
         inline MappedType parentOf(MappedType who) { return tree[who].parent; }
         inline std::vector<MappedType> childrenOf(MappedType who) { return tree[who].children; }
+
     private:
         std::map<MappedType, Relation<MappedType>> tree;
     };

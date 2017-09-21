@@ -28,8 +28,6 @@ namespace engine
 
         void updateAllNodes();
         void updateNode(uint id)
-
-        bool verifyOrdering() const;
     private:
         utils::Tree<uint> sceneNodeTree_;
         SceneNodePool sceneNodePool_;
