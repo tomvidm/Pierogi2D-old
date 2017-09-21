@@ -102,9 +102,9 @@ namespace engine
         {
             for (auto id_iter : freeList_)
             {
-                if ((*id_iter) > id)
+                if (id_iter > id)
                 {
-                    return *id_iter;
+                    return id_iter;
                 }
             }
         }

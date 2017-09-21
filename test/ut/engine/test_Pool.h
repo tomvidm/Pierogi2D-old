@@ -10,6 +10,6 @@ namespace engine
     protected:
         virtual void SetUp();
 
-        Pool<int, 8> pool;
+        Pool<int, 16> pool;
     };
 }
