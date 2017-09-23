@@ -1,6 +1,6 @@
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions
-set(SFML_ROOT "SFML-2.4.2")
+set(SFML_ROOT "../SFML-2.4.2")
 find_package(SFML 2 REQUIRED network audio graphics window system)
 
 include_directories("${PROJECT_BINARY_DIR}")
