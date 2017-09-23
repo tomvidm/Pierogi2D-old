@@ -25,6 +25,10 @@ namespace engine
     typedef std::queue<Command> CommandQueue;
     typedef std::queue<Event> EventQueue;
 
+    /*
+        Very shitty application class so far.
+    */
+
     class Application
     {
     public:
@@ -34,8 +38,9 @@ namespace engine
         void loop();
         void drawSprites();
 
-
+        sf::Texture texture; // DELET DIS!!!
         std::vector<graphics::AnimatedSprite> spriteVector;
+
         sf::Clock mainClock;
         sf::RenderWindow window; 
         int maxFramePeriod; 

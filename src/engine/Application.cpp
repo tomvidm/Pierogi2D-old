@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "AnimatedSprite.h"
+#include "SpriteAnimation.h"
+
 namespace engine {
     void Application::enterLoop() {
         window.create(sf::VideoMode(800, 600), "myproject");
@@ -34,9 +37,15 @@ namespace engine {
         }
     }
 
+    // Test function. Load texture, assign it to a spriteAnimation.
+    // Add frames and hope it works. And of course, push it to the spriteVector.
     void Application::test()
     {
+        texture.loadFromFile("../../resources/images/testsprite.png");
         graphics::AnimatedSprite sprite;
+        sprite.setTexture(texture);
+        graphics::SpriteAnimation anim;
+        // Define animation here!!!
         spriteVector.push_back(sprite);
     }
 }
