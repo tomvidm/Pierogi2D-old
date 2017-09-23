@@ -47,9 +47,9 @@ namespace engine {
     // Add frames and hope it works. And of course, push it to the spriteVector.
     void Application::testAnimation()
     {
-        texture.loadFromFile("../../resources/images/testsprite.png");
+        textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
         graphics::AnimatedSprite sprite;
-        sprite.setTexture(texture);
+        sprite.setTexture(textureHandler.get("testsprite"));
         graphics::SpriteAnimation anim;
         graphics::Frame frame;
         frame.duration = 50*1667;

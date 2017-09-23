@@ -8,14 +8,14 @@ namespace engine
 	class ResourceHandler
 	{
 	public:
-		virtual void loadFromFile(std::string filename, std::string id);
-		virtual ResourceType& get(std::string id);
+		virtual void loadFromFile(std::string filename, std::string id) = 0;
+		ResourceType& get(std::string id);
 	protected:
 		std::map<std::string, ResourceType> resourceMap;
 	};
 
 	template <class ResourceType>
-	ResourceType& get(std::string id)
+	ResourceType& ResourceHandler<ResourceType>::get(std::string id)
 	{
 		return resourceMap.at(id);
 	}

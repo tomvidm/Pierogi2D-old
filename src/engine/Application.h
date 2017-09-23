@@ -8,6 +8,7 @@
 #include "SFML/Window.hpp"
 
 #include "AnimatedSprite.h"
+#include "TextureHandler.h"
 
 namespace engine
 {
@@ -16,7 +17,6 @@ namespace engine
     typedef int State;
     typedef int SceneGraph;
     typedef int Event;
-    typedef int ResourceHandler;
 
 
     // Non-dummy typedefs
@@ -38,7 +38,7 @@ namespace engine
         void loop();
         void drawSprites();
 
-        sf::Texture texture; // DELET DIS!!!
+        TextureHandler textureHandler;
         std::vector<graphics::AnimatedSprite> spriteVector;
 
         sf::Clock mainClock;
