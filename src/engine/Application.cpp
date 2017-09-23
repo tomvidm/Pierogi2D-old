@@ -7,6 +7,7 @@ namespace engine {
     void Application::enterLoop() {
         window.create(sf::VideoMode(800, 600), "myproject");
         maxFramePeriod = 16667;
+        testAnimation();
         while (window.isOpen())
         {
             loop();
@@ -17,7 +18,10 @@ namespace engine {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            window.close();
+            if (event.type == sf::Event::Closed) 
+            {
+                window.close();
+            }
         }
 
         if (mainClock.getElapsedTime().asMicroseconds() > maxFramePeriod)
@@ -39,12 +43,17 @@ namespace engine {
 
     // Test function. Load texture, assign it to a spriteAnimation.
     // Add frames and hope it works. And of course, push it to the spriteVector.
-    void Application::test()
+    void Application::testAnimation()
     {
         texture.loadFromFile("../../resources/images/testsprite.png");
         graphics::AnimatedSprite sprite;
         sprite.setTexture(texture);
         graphics::SpriteAnimation anim;
+        graphics::Frame frame;
+        frame.duration = 16667;
+        frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(200, 375));
+        anim.addFrame(frame);
+        sprite.setAnimation(anim);
         // Define animation here!!!
         spriteVector.push_back(sprite);
     }

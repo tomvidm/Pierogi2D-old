@@ -2,7 +2,7 @@
 
 namespace engine {
 namespace graphics {
-    sf::Rect<int> SpriteAnimation::getFrameRect() 
+    sf::Rect<int> SpriteAnimation::getFrameRect()
     {
         if (frameTimer.getElapsedTime().asMicroseconds() > frames[currentFrame].duration)
         {

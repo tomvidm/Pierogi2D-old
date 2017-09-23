@@ -33,7 +33,7 @@ namespace engine
     {
     public:
         void enterLoop();
-        void test();
+        void testAnimation();
     private:
         void loop();
         void drawSprites();

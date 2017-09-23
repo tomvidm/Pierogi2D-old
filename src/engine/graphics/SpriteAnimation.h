@@ -17,7 +17,7 @@ namespace graphics {
     {
         int duration;
         sf::Rect<int> texRect;
-
+        Frame() {;}
         Frame(int dur, sf::Rect<int> rect) 
         {
             duration = dur;
@@ -35,13 +35,12 @@ namespace graphics {
     class SpriteAnimation
     {
     public:
-        sf::Clock frameTimer;
-        sf::Rect<int> getCurrentFrameRect() const;
-
         sf::Rect<int> getFrameRect();
+
         void reset();
         inline void addFrame(Frame& frame) { frames.push_back(frame); }
     private:
+        sf::Clock frameTimer;
         uint currentFrame = 0;
         std::vector<Frame> frames;
     };
