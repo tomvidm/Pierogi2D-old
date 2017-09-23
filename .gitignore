@@ -1,3 +1,5 @@
 /build
 /bin
 /Win32
+/SFML*
+/include
