@@ -23,10 +23,8 @@ namespace engine
     public:
         void start();
     private:
-        void resourceThread();
-        void eventThread();
-        void mainThread();
-        
+        void loop();
+
         StatePtrStack statePtrStack_;       // States go here
         CommandQueue commandQueue_;         // External commands go here
         EventQueue eventQueue_;             // Global events go here

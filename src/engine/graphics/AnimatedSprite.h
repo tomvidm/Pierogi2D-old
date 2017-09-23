@@ -7,7 +7,6 @@ namespace graphics {
     class AnimatedSprite : public sf::Sprite
     {
         public:
-
             void update();
         private:
             SpriteAnimation spriteAnimation;

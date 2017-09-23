@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[])
 {
-    sf::Window App(sf::VideoMode(800, 600), "myproject");
+    sf::RenderWindow App(sf::VideoMode(800, 600), "myproject");
 
     while (App.isOpen()) 
     {
@@ -14,6 +14,8 @@ int main(int argc, char* argv[])
                 App.close();
             }
         }
+        App.clear();
+        App.display();
     }
-    App.display();
+    
 }
