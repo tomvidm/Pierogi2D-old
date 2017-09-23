@@ -9,6 +9,7 @@
 
 #include "AnimatedSprite.h"
 #include "TextureHandler.h"
+#include "Pool.h"
 
 namespace engine
 {
@@ -39,7 +40,7 @@ namespace engine
         void drawSprites();
 
         TextureHandler textureHandler;
-        std::vector<graphics::AnimatedSprite> spriteVector;
+        Pool<graphics::AnimatedSprite, 1024> spriteVector;
 
         sf::Clock mainClock;
         sf::RenderWindow window; 

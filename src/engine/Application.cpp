@@ -35,11 +35,10 @@ namespace engine {
 
     void Application::drawSprites()
     {
-        std::vector<graphics::AnimatedSprite>::iterator s;
-        for (s = spriteVector.begin(); s != spriteVector.end(); s++)
+        for (uint i = 0; i < spriteVector.getFirstFreeIndex(); i++)
         {
-            s->update();
-            window.draw(*s);
+            spriteVector.get(i).update();
+            window.draw(spriteVector.get(i));
         }
     }
 
@@ -72,6 +71,6 @@ namespace engine {
 
         sprite.setAnimation(anim);
         // Define animation here!!!
-        spriteVector.push_back(sprite);
+        spriteVector.pushObject(sprite);
     }
 }
