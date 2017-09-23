@@ -1,3 +1,6 @@
-add_subdirectory(graphics)
+set(ENGINE_SOURCES
+	Application.cpp
+	${GRAPHICS_SOURCES}
+)
 
-include_directories(graphics)
+add_subdirectory(graphics)

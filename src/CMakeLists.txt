@@ -11,9 +11,7 @@ include_directories(
 
 set(SOURCES 
     main.cpp
-    engine/Application.cpp
-    engine/graphics/SpriteAnimation.cpp
-    engine/graphics/AnimatedSprite.cpp
+    ${ENGINE_SOURCES}
     )
 
 add_executable(main ${SOURCES})
