@@ -37,14 +37,24 @@ namespace engine {
     {
         for (uint i = 0; i < spriteVector.getFirstFreeIndex(); i++)
         {
-            spriteVector.get(i).update();
-            window.draw(spriteVector.get(i));
+            if (spriteVector.getState(i) & ACTIVE == ACTIVE)
+            {
+                spriteVector.get(i).update();
+                window.draw(spriteVector.get(i));
+            }
         }
     }
 
     // Test function. Load texture, assign it to a spriteAnimation.
     // Add frames and hope it works. And of course, push it to the spriteVector.
     void Application::testAnimation()
+    {
+        //graphics::AnimatedSprite sprite = makeTestSprite();
+        spriteVector.pushObject(makeTestSprite());
+        
+    }
+
+    graphics::AnimatedSprite Application::makeTestSprite()
     {
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
         graphics::AnimatedSprite sprite;
@@ -68,9 +78,7 @@ namespace engine {
         anim.addFrame(frame);
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
         anim.addFrame(frame);
-
         sprite.setAnimation(anim);
-        // Define animation here!!!
-        spriteVector.pushObject(sprite);
+        return sprite;
     }
 }

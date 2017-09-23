@@ -35,16 +35,13 @@ namespace graphics {
     class SpriteAnimation
     {
     public:
-        SpriteAnimation() {
-            currentFrame = 0;
-        }
         sf::Rect<int> getFrameRect();
         void update();
 
         inline void addFrame(Frame frame) { frames.push_back(frame); }
     private:
         sf::Clock frameTimer;
-        int currentFrame;
+        int currentFrame = 0;
         std::vector<Frame> frames;
     };
 

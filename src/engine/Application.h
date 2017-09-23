@@ -45,5 +45,7 @@ namespace engine
         sf::Clock mainClock;
         sf::RenderWindow window; 
         int maxFramePeriod; 
+
+        graphics::AnimatedSprite makeTestSprite();
     };
 }
