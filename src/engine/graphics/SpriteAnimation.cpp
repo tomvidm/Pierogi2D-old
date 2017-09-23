@@ -9,7 +9,6 @@ namespace graphics {
             frameTimer.restart();
 
             currentFrame = (currentFrame + 1) % frames.size();
-            currentFrame++;
         }
 
         return frames[currentFrame].texRect;

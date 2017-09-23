@@ -37,6 +37,7 @@ namespace engine {
     {
           for (auto s : spriteVector)
         {
+            s.update();
             window.draw(s);
         }
     }
@@ -50,9 +51,24 @@ namespace engine {
         sprite.setTexture(texture);
         graphics::SpriteAnimation anim;
         graphics::Frame frame;
-        frame.duration = 16667;
-        frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(200, 375));
+        frame.duration = 10*16667;
+        frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
         anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*2, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*3, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*4, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*5, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*6, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
+        anim.addFrame(frame);
+
         sprite.setAnimation(anim);
         // Define animation here!!!
         spriteVector.push_back(sprite);
