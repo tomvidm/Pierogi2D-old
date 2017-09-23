@@ -35,10 +35,11 @@ namespace engine {
 
     void Application::drawSprites()
     {
-          for (auto s : spriteVector)
+        std::vector<graphics::AnimatedSprite>::iterator s;
+        for (s = spriteVector.begin(); s != spriteVector.end(); s++)
         {
-            s.update();
-            window.draw(s);
+            s->update();
+            window.draw(*s);
         }
     }
 
@@ -51,7 +52,7 @@ namespace engine {
         sprite.setTexture(texture);
         graphics::SpriteAnimation anim;
         graphics::Frame frame;
-        frame.duration = 10*16667;
+        frame.duration = 50*1667;
         frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
         anim.addFrame(frame);
         frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));

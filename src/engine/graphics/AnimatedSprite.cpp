@@ -4,10 +4,11 @@ namespace engine {
 namespace graphics {
     void AnimatedSprite::update() 
     {
+    	spriteAnimation.update();
         setTextureRect(spriteAnimation.getFrameRect());
     }
 
-    void AnimatedSprite::setAnimation(SpriteAnimation& anim)
+    void AnimatedSprite::setAnimation(SpriteAnimation anim)
     {
         spriteAnimation = anim;
     }

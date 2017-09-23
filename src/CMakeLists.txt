@@ -3,6 +3,8 @@
 set(SFML_ROOT "../SFML-2.4.2")
 find_package(SFML 2 REQUIRED main network audio graphics window system)
 
+add_subdirectory(engine)
+
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories(
     engine
@@ -11,7 +13,9 @@ include_directories(
 
 set(SOURCES 
     main.cpp
-    ${ENGINE_SOURCES}
+    engine/Application.cpp
+    engine/graphics/AnimatedSprite.cpp
+    engine/graphics/SpriteAnimation.cpp
     )
 
 add_executable(main ${SOURCES})

@@ -10,7 +10,7 @@ namespace graphics {
     {
         public:
             void update();
-            void setAnimation(SpriteAnimation& anim);
+            void setAnimation(SpriteAnimation anim);
         private:
             SpriteAnimation spriteAnimation;
     };
