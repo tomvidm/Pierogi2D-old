@@ -130,6 +130,7 @@ namespace engine
             freeList_.push_back(id);
             numObjects_ -= 1;
         }
+        freeList_.sort();
     }
 
     template <class ObjectType, uint POOL_SIZE>
