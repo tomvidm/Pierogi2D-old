@@ -1,10 +1,13 @@
 #include <queue>
 #include <stack>
 #include <memory>
+#include <vector>
 
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
+
+#include "AnimatedSprite.h"
 
 namespace engine
 {
@@ -26,9 +29,13 @@ namespace engine
     {
     public:
         void enterLoop();
+        void test();
     private:
         void loop();
+        void drawSprites();
 
+
+        std::vector<graphics::AnimatedSprite> spriteVector;
         sf::Clock mainClock;
         sf::RenderWindow window; 
         int maxFramePeriod; 
