@@ -5,6 +5,12 @@ namespace engine {
     typedef unsigned int uint;
 namespace graphics {
 
+    /*
+        A sprite holds a texture. What part of the texture that is shown is
+        determined by the Rect<int> in it. The Frame holds information about duration
+        of the frame and which part of the texture is shown.
+    */
+
     struct Frame
     {
         int duration;
@@ -16,6 +22,13 @@ namespace graphics {
             texRect = rect;
         }
     };
+
+    /*
+        The spriteAnimation is responsible for updating the rect. It contains a vector
+        of Frames. AnimatedSprite can get the frame by calling getFrameRect.
+        TODO: Move time handling out of SpriteAnimation. The user (AnimatedSprite) should
+        determine the timing, not the animation itself.
+    */
 
     class SpriteAnimation
     {

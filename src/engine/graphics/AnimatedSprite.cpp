@@ -6,5 +6,10 @@ namespace graphics {
     {
         setTextureRect(spriteAnimation.getFrameRect());
     }
+
+    void AnimatedSprite::setAnimation(SpriteAnimation& anim)
+    {
+        spriteAnimation = anim;
+    }
 }
 }
