@@ -4,8 +4,14 @@ set(SFML_ROOT "../SFML-2.4.2")
 find_package(SFML 2 REQUIRED network audio graphics window system)
 
 include_directories("${PROJECT_BINARY_DIR}")
+include_directories(engine)
 
-add_executable(main main.cpp)
+set(SOURCES 
+    main.cpp
+    engine/Application.cpp
+    )
+
+add_executable(main ${SOURCES})
 
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})

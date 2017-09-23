@@ -2,6 +2,10 @@
 #include <stack>
 #include <memory>
 
+#include "SFML/System.hpp"
+#include "SFML/Graphics.hpp"
+#include "SFML/Window.hpp"
+
 namespace engine
 {
     // Dummy typedefs
@@ -21,14 +25,12 @@ namespace engine
     class Application
     {
     public:
-        void start();
+        void enterLoop();
     private:
         void loop();
 
-        StatePtrStack statePtrStack_;       // States go here
-        CommandQueue commandQueue_;         // External commands go here
-        EventQueue eventQueue_;             // Global events go here
-        SceneGraph sceneGraph_;             // All objects go here
-        ResourceHandler resourceHandler_;   // Resource handler
-    }
+        sf::Clock mainClock;
+        sf::RenderWindow window; 
+        int maxFramePeriod; 
+    };
 }
