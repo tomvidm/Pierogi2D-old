@@ -14,6 +14,7 @@ include_directories(
 set(SOURCES 
     main.cpp
     engine/Application.cpp
+    engine/TextureHandler.cpp
     engine/graphics/AnimatedSprite.cpp
     engine/graphics/SpriteAnimation.cpp
     )
