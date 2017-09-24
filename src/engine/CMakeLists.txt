@@ -3,3 +3,4 @@ set(ENGINE_SOURCES
 )
 
 add_subdirectory(graphics)
+add_subdirectory(animation)
