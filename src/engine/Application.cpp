@@ -35,12 +35,12 @@ namespace engine {
 
     void Application::drawSprites()
     {
-        for (uint i = 0; i < spriteVector.getFirstFreeIndex(); i++)
+        for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
-            if (spriteVector.getState(i) & ACTIVE == ACTIVE)
+            if (spritePool.getState(i) & ACTIVE == ACTIVE)
             {
-                spriteVector.get(i).update();
-                window.draw(spriteVector.get(i));
+                spritePool.get(i).update();
+                window.draw(spritePool.get(i));
             }
         }
     }
@@ -50,7 +50,7 @@ namespace engine {
     void Application::testAnimation()
     {
         //graphics::AnimatedSprite sprite = makeTestSprite();
-        spriteVector.pushObject(makeTestSprite());
+        spritePool.pushObject(makeTestSprite());
         
     }
 

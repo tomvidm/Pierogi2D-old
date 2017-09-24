@@ -13,19 +13,6 @@
 
 namespace engine
 {
-    // Dummy typedefs
-    typedef int Command;
-    typedef int State;
-    typedef int SceneGraph;
-    typedef int Event;
-
-
-    // Non-dummy typedefs
-    typedef std::unique_ptr<State> StatePtr;
-    typedef std::stack<StatePtr> StatePtrStack;
-    typedef std::queue<Command> CommandQueue;
-    typedef std::queue<Event> EventQueue;
-
     /*
         Very shitty application class so far.
     */
@@ -40,7 +27,7 @@ namespace engine
         void drawSprites();
 
         TextureHandler textureHandler;
-        Pool<graphics::AnimatedSprite, 1024> spriteVector;
+        Pool<graphics::AnimatedSprite, 1024> spritePool;
 
         sf::Clock mainClock;
         sf::RenderWindow window; 
