@@ -10,6 +10,7 @@
 #include "AnimatedSprite.h"
 #include "TextureHandler.h"
 #include "Pool.h"
+#include "VectorArray.h"
 
 namespace engine
 {
@@ -28,7 +29,7 @@ namespace engine
 
         TextureHandler textureHandler;
         Pool<graphics::AnimatedSprite, 1024> spritePool;
-
+        graphics::VectorArray varr;
         sf::Clock mainClock;
         sf::RenderWindow window; 
         int maxFramePeriod; 

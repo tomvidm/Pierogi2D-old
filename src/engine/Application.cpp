@@ -7,7 +7,7 @@ namespace engine {
     void Application::enterLoop() {
         window.create(sf::VideoMode(800, 600), "myproject");
         maxFramePeriod = 16667;
-        testAnimation();
+        varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
         while (window.isOpen())
         {
             loop();
@@ -43,6 +43,7 @@ namespace engine {
                 window.draw(spritePool.get(i));
             }
         }
+        window.draw(varr);
     }
 
     // Test function. Load texture, assign it to a spriteAnimation.
