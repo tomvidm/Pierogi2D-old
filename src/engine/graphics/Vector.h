@@ -1,11 +1,17 @@
 #include "SFML/Graphics.hpp"
 
+#include <math.h>
+#include <array>
+
 namespace engine {
 namespace graphics {
 
     /*
         The vector [0, 0, 1] should be the viewport normal.
     */
+
+    sf::Transform getProjectionMatrix(sf::Vector2f screenSize, float theta, float phi);
+    std::array<float, 4> getProjectionMatrix(sf::Vector2f screenSize, float theta, float phi);
 
     class Vector3
     {
@@ -16,8 +22,9 @@ namespace graphics {
 
         // Given a projection matrix (view angle of observer),
         // return the vector projected to screenspace
-        sf::Vector2f projectedVector(const Vector3& projector) const;
-        sf::Vertex projectedVertex(const Vector3& projector) const;
+        sf::Vector2f projectedVector(const sf::Transform& projMatrix) const;
+        sf::Vertex projectedVertex(const sf::Transform& projMatrix) const;
+
 
         // Operator overloads. Any division should be replaced by
         // multiplication of inverse. Division is slooooow
@@ -29,7 +36,7 @@ namespace graphics {
         Vector3 operator * (const float scalar) const;
 
     private:
-        float coordinates[3];
+        float coord[3];
     }
 }
 }
