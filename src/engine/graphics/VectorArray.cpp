@@ -10,7 +10,7 @@ namespace graphics {
 	void VectorArray::addVector(const sf::Vector2f& vec, const sf::Vector2f& origin)
 	{
 		
-		vertexArray.append(sf::Vertex(vec));
+		vertexArray.append(sf::Vertex(origin));
 		vertexArray.append(sf::Vertex(vec + origin));
 	}
 
