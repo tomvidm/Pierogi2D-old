@@ -11,6 +11,7 @@
 #include "TextureHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
+#include "Tilemap.h"
 
 namespace engine
 {
@@ -23,9 +24,12 @@ namespace engine
     public:
         void enterLoop();
         void testAnimation();
+
     private:
         void loop();
         void drawSprites();
+
+        graphics::Tilemap tmap;
 
         TextureHandler textureHandler;
         Pool<graphics::AnimatedSprite, 1024> spritePool;

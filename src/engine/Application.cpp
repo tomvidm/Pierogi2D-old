@@ -8,6 +8,8 @@ namespace engine {
         window.create(sf::VideoMode(800, 600), "myproject");
         maxFramePeriod = 16667;
         varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
+        tmap.setTileSize(sf::Vector2f(32.f, 32.f));
+        tmap.setSize(16, 16);
         while (window.isOpen())
         {
             loop();
@@ -44,6 +46,7 @@ namespace engine {
             }
         }
         window.draw(varr);
+        window.draw(tmap);
     }
 
     // Test function. Load texture, assign it to a spriteAnimation.

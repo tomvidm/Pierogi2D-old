@@ -19,6 +19,7 @@ set(SOURCES
     engine/graphics/SpriteAnimation.cpp
     engine/graphics/VectorArray.cpp
     engine/graphics/Vector.cpp
+    engine/graphics/Tilemap.cpp
     )
 
 add_executable(main ${SOURCES})

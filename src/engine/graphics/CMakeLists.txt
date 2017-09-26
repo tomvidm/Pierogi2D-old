@@ -3,4 +3,5 @@ set(GRAPHICS_SOURCES
 	SpriteAnimation.cpp
 	VectorArray.cpp
     Vector.cpp
+    Tilemap.cpp
 )

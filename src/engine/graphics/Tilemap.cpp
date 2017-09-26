@@ -4,10 +4,10 @@ namespace engine {
 namespace graphics {
     Tilemap::Tilemap()
     {
-        varr.setPrimitiveType(sf::PrimitiveType::Quads)
+        varr.setPrimitiveType(sf::PrimitiveType::Quads);
     }
 
-    void setSize(int u, int v)
+    void Tilemap::setSize(int u, int v)
     (
         usize = u;
         vsize = v;
@@ -15,7 +15,12 @@ namespace graphics {
         allocateVertices();
     )
 
-    void allocateVertices()
+    void Tilemap::setTileSize(sf::Vector2f& size)
+    {
+        tileSize = size;
+    }
+
+    void Tilemap::allocateVertices()
     {
         varr.resize(usize * vsize);
 
@@ -32,7 +37,7 @@ namespace graphics {
         }
     }
 
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const
+    void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         // apply the transform
         states.transform *= getTransform();

@@ -9,17 +9,19 @@ namespace graphics {
         Tilemap();
         
         void setSize(int u, int v);
+        void setTileSize(sf::Vector2f& size);
         void allocateVertices();
         void setTexture(sf::Texture& tex);
+
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
-        int usize, vsize;
+        int usize;
+        int vsize;
 
         sf::Vector2f tileSize;
 
         sf::Texture* texturePtr;
         sf::VertexArray varr;
-
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
     };
 
 }
