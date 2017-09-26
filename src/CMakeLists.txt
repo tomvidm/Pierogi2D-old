@@ -18,6 +18,7 @@ set(SOURCES
     engine/graphics/AnimatedSprite.cpp
     engine/graphics/SpriteAnimation.cpp
     engine/graphics/VectorArray.cpp
+    engine/graphics/Vector.cpp
     )
 
 add_executable(main ${SOURCES})

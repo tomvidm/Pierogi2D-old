@@ -5,17 +5,10 @@
 
 namespace engine {
 namespace graphics {
-
-    /*
-        The vector [0, 0, 1] should be the viewport normal.
-    */
-
-    sf::Transform getProjectionMatrix(sf::Vector2f screenSize, float theta, float phi);
-
     class Vector3
     {
     public:
-        Vector3(float, float, float);
+        Vector3(float x, float y, float z);
         Vector3(const Vector3& rhs_vec);
         ~Vector3();
 
@@ -28,12 +21,12 @@ namespace graphics {
 
         // Operator overloads. Any division should be replaced by
         // multiplication of inverse. Division is slooooow
-        void operator += (const sf::Vector3& rhs_vec);
-        void operator -= (const sf::Vector3& rhs_vec);
-        void operator *= (const float& scalar);
-        Vector3 operator + (const sf::Vector3& rhs_vec) const;
-        Vector3 operator - (const sf::Vector3& rhs_vec) const;
-        Vector3 operator * (const float scalar) const;
+        void operator+= (const Vector3& rhs_vec);
+        void operator-= (const Vector3& rhs_vec);
+        void operator*= (const float& scalar);
+        Vector3 operator+ (const Vector3& rhs_vec) const;
+        Vector3 operator- (const Vector3& rhs_vec) const;
+        Vector3 operator* (const float scalar) const;
 
         float x, y, z;
     };
