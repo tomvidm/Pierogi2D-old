@@ -11,7 +11,6 @@ namespace graphics {
     */
 
     sf::Transform getProjectionMatrix(sf::Vector2f screenSize, float theta, float phi);
-    std::array<float, 4> getProjectionMatrix(sf::Vector2f screenSize, float theta, float phi);
 
     class Vector3
     {
@@ -22,8 +21,9 @@ namespace graphics {
 
         // Given a projection matrix (view angle of observer),
         // return the vector projected to screenspace
-        sf::Vector2f projectedVector(const sf::Transform& projMatrix) const;
-        sf::Vertex projectedVertex(const sf::Transform& projMatrix) const;
+        // TEMPORARY SOLUTION IS TO JUST RETURN THE XY COORDINATES
+        sf::Vector2f projectedVector() const;
+        sf::Vertex projectedVertex() const;
 
 
         // Operator overloads. Any division should be replaced by
@@ -35,8 +35,7 @@ namespace graphics {
         Vector3 operator - (const sf::Vector3& rhs_vec) const;
         Vector3 operator * (const float scalar) const;
 
-    private:
-        float coord[3];
-    }
+        float x, y, z;
+    };
 }
 }
