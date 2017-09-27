@@ -1,4 +1,7 @@
+#pragma once
+
 #include "SFML/Graphics.hpp"
+#include "SFML/Window.hpp"
 
 namespace engine {
 namespace graphics {
@@ -6,8 +9,6 @@ namespace graphics {
     class Tilemap : public sf::Drawable, public sf::Transformable
     {
     public:
-        Tilemap();
-        
         void setSize(int u, int v);
         void setTileSize(sf::Vector2f& size);
         void allocateVertices();
