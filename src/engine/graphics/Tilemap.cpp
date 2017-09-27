@@ -19,12 +19,33 @@ namespace graphics {
         varr.setPrimitiveType(sf::PrimitiveType::Quads);
         varr.resize(4 * (usize * vsize));
 
+        grid.setPrimitiveType(sf::PrimitiveType::Lines);
+        grid.resize(2 * (usize + vsize + 2));
+
         for (int u = 0; u < usize; u++)
         {
             for (int v = 0; v < vsize; v++)
             {
                 setTilePlacement(u, v, &varr[4*(usize*v + u)]);
             }
+        }
+
+        for (int n = 0; n < usize + 1; n++)
+        {
+            float nf = static_cast<float>(n);
+            grid[2*n].position = nf*uVector;
+            grid[2*n].color = sf::Color::Black;
+            grid[2*n + 1].position = nf*uVector + (static_cast<float>(vsize))*vVector;
+            grid[2*n + 1].color = sf::Color::Black;
+        }
+
+        for (int n = 0; n < usize + 1; n++)
+        {
+            float nf = static_cast<float>(n);
+            grid[2*usize + 2*n].position = nf*vVector;
+            grid[2*usize + 2*n].color = sf::Color::Black;
+            grid[2*usize + 2*n + 1].position = nf*vVector + (static_cast<float>(usize))*uVector;
+            grid[2*usize + 2*n + 1].color = sf::Color::Black;
         }
     }
 
@@ -52,6 +73,7 @@ namespace graphics {
 
         // draw the vertex array
         target.draw(varr, states);
+        target.draw(grid, states);
     }
 }
 }

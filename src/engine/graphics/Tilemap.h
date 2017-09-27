@@ -26,6 +26,7 @@ namespace graphics {
 
         sf::Texture* texturePtr;
         sf::VertexArray varr;
+        sf::VertexArray grid;
     };
 
 }
