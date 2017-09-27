@@ -12,6 +12,7 @@ namespace graphics {
         void setSize(int u, int v);
         void setTileSize(sf::Vector2f& size);
         void allocateVertices();
+        void setTilePlacement(int u, int v, sf::Vertex* quad);
         //void setTexture(sf::Texture& tex);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
