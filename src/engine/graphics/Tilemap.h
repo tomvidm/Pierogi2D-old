@@ -18,6 +18,8 @@ namespace graphics {
     private:
         int usize;
         int vsize;
+        const sf::Vector2f uVector = 32.f*sf::Vector2f(1.f, 0.5f);
+        const sf::Vector2f vVector = 32.f*sf::Vector2f(-1.f, 0.5f);
 
         sf::Vector2f tileSize;
 

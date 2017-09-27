@@ -24,11 +24,17 @@ namespace graphics {
             for (int v = 0; v < vsize; v++)
             {
                 float half_border_size = 2.f;
-                sf::Vertex* quad = &varr[4*(usize*u + v)];
-                quad[0].position = sf::Vector2f(u*tileSize.x + half_border_size, v*tileSize.y + half_border_size);
-                quad[1].position = sf::Vector2f(u*tileSize.x + half_border_size, (v + 1)*tileSize.y - half_border_size);
-                quad[2].position = sf::Vector2f((u + 1)*tileSize.x - half_border_size, (v + 1)*tileSize.y - half_border_size);
-                quad[3].position = sf::Vector2f((u + 1)*tileSize.x - half_border_size, v*tileSize.y + half_border_size);
+                float uf = static_cast<float>(u);
+                float vf = static_cast<float>(v);
+                sf::Vertex* quad = &varr[4*(usize*v + u)];
+                quad[0].position = uf*uVector + vf*vVector;
+                quad[1].position = (uf + 1.f)*uVector + vf*vVector;
+                quad[2].position = (uf + 1.f)*uVector + (vf + 1)*vVector;
+                quad[3].position = uf*uVector + (vf + 1)*vVector;
+                quad[0].color = sf::Color(128, 128, 128);
+                quad[1].color = sf::Color(192, 128, 128);
+                quad[2].color = sf::Color(128, 192, 128);
+                quad[3].color = sf::Color(128, 128, 192);
             }
         }
     }

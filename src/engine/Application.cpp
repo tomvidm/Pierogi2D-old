@@ -10,6 +10,7 @@ namespace engine {
         varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
         tmap.setTileSize(sf::Vector2f(32.f, 32.f));
         tmap.setSize(16, 16);
+        tmap.setPosition(400, 0);
         while (window.isOpen())
         {
             loop();
