@@ -63,6 +63,11 @@ namespace graphics {
         quad[3].color = sf::Color(128, 128, 192);
     }
 
+    sf::Vector2i getScreenToWorldSpace(sf::Vector2i pos) const
+    {
+        return sf::Vector2i(0, 0);
+    }
+
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         // apply the transform

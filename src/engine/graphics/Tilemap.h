@@ -15,6 +15,8 @@ namespace graphics {
         void setTilePlacement(int u, int v, sf::Vertex* quad);
         //void setTexture(sf::Texture& tex);
 
+        sf::Vertex2i getScreenToWorldSpace(sf::Vector2i pos) const;
+
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         int usize;
