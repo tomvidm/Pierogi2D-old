@@ -5,7 +5,7 @@
 
 namespace engine {
     typedef unsigned int uint;
-
+    typedef std::deque<DebugLine>::const_iterator QueueIterator;
     class ConsoleQueue
     {
     public:
@@ -18,6 +18,9 @@ namespace engine {
         // void setMaxLines(uint maxLines);
 
         // void clearLines();
+
+        inline QueueIterator begin() const { return queue_.cbegin(); }
+        inline QueueIterator end() const { return queue_.cend(); }
     private:
         uint maxLines_;
         uint maxPrintedLines_;
