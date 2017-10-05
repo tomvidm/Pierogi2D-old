@@ -15,10 +15,12 @@ namespace graphics {
         void setTilePlacement(int u, int v, sf::Vertex* quad);
         //void setTexture(sf::Texture& tex);
 
-        sf::Vertex2i getScreenToWorldSpace(sf::Vector2i pos) const;
-
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+        inline void setGridVisibility(const bool& showOrNot) { showGrid = showOrNot; }
+        inline bool gridIsVisible() const { return showGrid; }
     private:
+        bool showGrid;
         int usize;
         int vsize;
         const sf::Vector2f uVector = 32.f*sf::Vector2f(1.f, 0.5f);
