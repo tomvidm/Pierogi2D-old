@@ -15,6 +15,7 @@ set(SOURCES
     main.cpp
     engine/Application.cpp
     engine/TextureHandler.cpp
+    engine/DebugLine.cpp
     engine/ConsoleQueue.cpp
     engine/graphics/AnimatedSprite.cpp
     engine/graphics/SpriteAnimation.cpp

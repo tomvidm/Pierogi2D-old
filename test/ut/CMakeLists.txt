@@ -6,6 +6,7 @@ add_subdirectory(engine)
 set(TEST_SOURCES
     test_Trivial.cpp
     engine/test_Pool.cpp
+    engine/test_ConsoleQueue.cpp
     )
 
 add_executable(run_ut ${TEST_SOURCES})

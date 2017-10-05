@@ -11,7 +11,7 @@ namespace engine {
     class DebugLine
     {
     public:
-        DebugLine(std::string string) : string_(string) {;}
+        DebugLine(std::string string);
         inline std::string set(std::string string) { string_ = string; }
         inline std::string get() const { return string_; }
     private:    
