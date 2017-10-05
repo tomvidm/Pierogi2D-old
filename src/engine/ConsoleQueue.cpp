@@ -3,7 +3,7 @@
 namespace engine {
     void ConsoleQueue::addDebugLine(const DebugLine& line)
     {
-        if (queue_.size() == maxStoredLines)
+        if (queue_.size() == maxStoredLines_)
         {
             queue_.pop_front();
         }

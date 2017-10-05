@@ -9,7 +9,9 @@ namespace engine {
 
     TEST_F(TestConsoleQueue, CorrectlyAddsLines)
     {
-        consoleQueue.addDebugLine(DebugLine("test string"));
-        EXPECT_EQUAL(consoleQueue.getNumLines(), 1);
+        std::string testString = "test string";
+        DebugLine debugLine(testString);
+        //consoleQueue.addDebugLine(testString);
+        EXPECT_EQ(consoleQueue.getNumLines(), 1);
     }
 }

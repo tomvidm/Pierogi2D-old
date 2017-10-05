@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 namespace engine {
@@ -11,11 +13,12 @@ namespace engine {
     class DebugLine
     {
     public:
-        DebugLine(std::string string);
-        inline std::string set(std::string string) { string_ = string; }
+        DebugLine(std::string str);
+
+        inline std::string set(std::string str) { string_ = str; }
         inline std::string get() const { return string_; }
     private:    
         uint timestamp_;
         std::string string_;
-    }
+    };
 }
