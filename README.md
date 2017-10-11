@@ -9,12 +9,7 @@ THe Visual Studio solution file should be in the follwoing folder: SOMEFUCKINGDI
 
 Download SFML-2.4.1 or something and put the root folder in the project root directory. Copy the dll files to bin/src/Debug. SFML should be linked and ready for action now.
 
-# Idèan hass
-* Early game budget àla Project Zomboid der strømnettet og vanntilførsel er tilgjengelig i noen få måneder før de forsvinner
-* Delegate rendering to a separate thread? How to handle concurrency and avoid data races?
-
-# Branches
-* gamestate-interface - declaration and implementation of a simple gamestate interface for practice
-* add-sfml-to-project - add sfml to project and fix cmakelists so that project files are generated with minimal effort
-* data-driven-prototyping - prototyping a data driven approach to handling objects
-* animated-sprite - SELVFORKLARENDE
+The Lua binder for C++ is header only and located in /includes/.
+Lua libraries must be downloaded to some folder and this folder must be added to system PATH manually. Dynamic libraries can
+be downloaded from here:
+https://sourceforge.net/projects/luabinaries/files/5.2/Windows%20Libraries/Dynamic/
