@@ -4,7 +4,7 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
 endif()
 
-project(Preppers)
+project(SFML-Game-Engine)
 
 # Copypasta from: https://crasci    t.com/2015/07/25/cmake-gtest/
 # ====================================================================

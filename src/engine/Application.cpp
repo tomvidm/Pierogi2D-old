@@ -46,6 +46,11 @@ namespace engine {
         window.draw(varr);
     }
 
+    void Application::loadConfiguration()
+    {
+        return; // Use Lua to load basic configuration such as window size etc
+    }
+
     // Test function. Load texture, assign it to a spriteAnimation.
     // Add frames and hope it works. And of course, push it to the spriteVector.
     void Application::testAnimation()

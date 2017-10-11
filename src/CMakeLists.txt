@@ -24,7 +24,11 @@ set(SOURCES
 add_executable(main ${SOURCES})
 
 if(SFML_FOUND)
-    include_directories(${SFML_INCLUDE_DIR})
-    target_link_libraries(main ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+    include_directories(${SFML_INCLUDE_DIR} ${LUA_INCLUDE_DIR} "../includes")
+    target_link_libraries(main ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${LUA_LIBRARIES})
+    target_compile_definitions(main PUBLIC
+                            -std=c++11
+                            -Wall
+                            )
 endif()
 
