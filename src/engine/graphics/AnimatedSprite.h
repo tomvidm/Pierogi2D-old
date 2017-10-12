@@ -11,6 +11,8 @@ namespace graphics {
         public:
             void update();
             void setAnimation(SpriteAnimation anim);
+
+            void loadFromLua( /* what arguments? */) = 0;   // load textures and frames from lua chunk.
         private:
             SpriteAnimation spriteAnimation;
     };
