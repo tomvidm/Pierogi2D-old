@@ -1,9 +1,10 @@
 spritesheet_testsprite = {
     file = "spritesheet_testsprite.png";
+    num_animations = 1;
     animations = {
         {
             animation_name = "animation_00";
-            frames = 8;
+            num_frames = 8;
             frames = {
                 { 50*1667, 0*184, 184, 0, 375 };
                 { 50*1667, 1*184, 184, 0, 375 };
