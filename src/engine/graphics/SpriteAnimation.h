@@ -48,7 +48,7 @@ namespace graphics {
         sf::Rect<int> getFrameRect();
 
         void update();
-        void loadFrameData(/* some arguments? */) = 0;   // SpriteAnimation only stores rects and frame durations!!!
+        void loadFrameData(/* some arguments? */);   // SpriteAnimation only stores rects and frame durations!!!
 
         inline void addFrame(Frame frame) { frames.push_back(frame); }
     private:

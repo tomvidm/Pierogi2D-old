@@ -6,6 +6,8 @@ endif()
 
 project(SFML-Game-Engine)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # Copypasta from: https://crasci    t.com/2015/07/25/cmake-gtest/
 # ====================================================================
 # Download and unpack googletest at configure time
