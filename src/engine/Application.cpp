@@ -5,7 +5,8 @@
 
 namespace engine {
     void Application::enterLoop() {
-        window.create(sf::VideoMode(800, 600), "myproject");
+        loadConfiguration();
+        window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         maxFramePeriod = 16667;
         varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
         while (window.isOpen())
@@ -48,6 +49,9 @@ namespace engine {
 
     void Application::loadConfiguration()
     {
+        luaState.Load("../../src/engine/conf.lua");
+        screenWidth = static_cast<int>(luaState["configuration"]["screenWidth"]);
+        screenHeight = static_cast<int>(luaState["configuration"]["screenHeight"]);
         return; // Use Lua to load basic configuration such as window size etc
     }
 

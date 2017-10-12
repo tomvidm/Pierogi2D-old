@@ -2,10 +2,12 @@
 #See the FindSFML.cmake file for additional details and instructions
 set(SFML_ROOT "../SFML-2.4.2")
 find_package(SFML 2 REQUIRED main network audio graphics window system)
+find_package(Lua 5.2 REQUIRED)
 
 add_subdirectory(engine)
 
 include_directories("${PROJECT_BINARY_DIR}")
+include_directories(${SFML_INCLUDE_DIR} ${LUA_INCLUDE_DIR} "../includes")
 include_directories(
     engine
     engine/graphics
@@ -21,14 +23,20 @@ set(SOURCES
     engine/graphics/Vector.cpp
     )
 
+set(LIBRARIES
+    ${LUA_LIBRARIES}
+    ${SFML_LIBRARIES}
+    ${SFML_DEPENDENCIES}
+    )
+
+message(STATUS ${LIBRARIES})
+
 add_executable(main ${SOURCES})
 
-if(SFML_FOUND)
-    include_directories(${SFML_INCLUDE_DIR} ${LUA_INCLUDE_DIR} "../includes")
-    target_link_libraries(main ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${LUA_LIBRARIES})
-    target_compile_definitions(main PUBLIC
-                            -std=c++11
-                            -Wall
-                            )
-endif()
+
+target_link_libraries(main ${LIBRARIES})
+target_compile_definitions(main PUBLIC
+                        -std=c++11
+                        -Wall
+                        )
 

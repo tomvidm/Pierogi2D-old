@@ -1,3 +1,5 @@
+#pragma once
+
 #include <queue>
 #include <stack>
 #include <memory>
@@ -37,6 +39,10 @@ namespace engine
         void loop();
         void drawSprites();
         void loadConfiguration();
+
+        sel::State luaState;
+        int screenWidth;
+        int screenHeight;
 
         TextureHandler textureHandler;
         Pool<graphics::AnimatedSprite, 1024> spritePool;
