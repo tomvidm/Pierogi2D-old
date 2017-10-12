@@ -5,4 +5,9 @@ namespace engine
         if (p == 1) return x;
         return x * myPow(x, p-1);
     }
+
+    int sum(int n)
+    {
+        return n*(n + 1)/2;
+    }
 }

@@ -6,7 +6,7 @@ namespace graphics {
     {
         usize = u;
         vsize = v;
-        allocateVertices();
+        allocateVerticesOrdered();
     }
 
     void Tilemap::setTileSize(sf::Vector2f& size)
@@ -27,6 +27,42 @@ namespace graphics {
             for (int v = 0; v < vsize; v++)
             {
                 setTilePlacement(u, v, &varr[4*(usize*v + u)]);
+            }
+        }
+
+        for (int n = 0; n < usize + 1; n++)
+        {
+            float nf = static_cast<float>(n);
+            grid[2*n].position = nf*uVector;
+            grid[2*n].color = sf::Color::Black;
+            grid[2*n + 1].position = nf*uVector + (static_cast<float>(vsize))*vVector;
+            grid[2*n + 1].color = sf::Color::Black;
+        }
+
+        for (int n = 0; n < usize + 1; n++)
+        {
+            float nf = static_cast<float>(n);
+            grid[2*usize + 2*n].position = nf*vVector;
+            grid[2*usize + 2*n].color = sf::Color::Black;
+            grid[2*usize + 2*n + 1].position = nf*vVector + (static_cast<float>(usize))*uVector;
+            grid[2*usize + 2*n + 1].color = sf::Color::Black;
+        }
+    }
+
+    // NOT CORRECT
+    void Tilemap::allocateVerticesOrdered()
+    {
+        varr.setPrimitiveType(sf::PrimitiveType::Quads);
+        varr.resize(4 * (usize * vsize));
+
+        grid.setPrimitiveType(sf::PrimitiveType::Lines);
+        grid.resize(2 * (usize + vsize + 2));
+
+        for (int n = 0; n <= usize + vsize; n++)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                setTilePlacement(i, n - i, &varr[4*(usize*(n - i) + i)]);
             }
         }
 

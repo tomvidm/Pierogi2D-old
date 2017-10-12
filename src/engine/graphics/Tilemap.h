@@ -3,6 +3,8 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
+#include "Utility.h"
+
 namespace engine {
 namespace graphics {
 
@@ -12,6 +14,7 @@ namespace graphics {
         void setSize(int u, int v);
         void setTileSize(sf::Vector2f& size);
         void allocateVertices();
+        void allocateVerticesOrdered();
         void setTilePlacement(int u, int v, sf::Vertex* quad);
         //void setTexture(sf::Texture& tex);
 
