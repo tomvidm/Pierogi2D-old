@@ -5,7 +5,8 @@
 
 namespace engine {
     void Application::enterLoop() {
-        window.create(sf::VideoMode(800, 600), "myproject");
+        loadConfiguration();
+        window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         maxFramePeriod = 16667;
         varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
         while (window.isOpen())
@@ -46,6 +47,14 @@ namespace engine {
         window.draw(varr);
     }
 
+    void Application::loadConfiguration()
+    {
+        luaState.Load("../../src/engine/conf.lua");
+        screenWidth = static_cast<int>(luaState["configuration"]["screenWidth"]);
+        screenHeight = static_cast<int>(luaState["configuration"]["screenHeight"]);
+        return; // Use Lua to load basic configuration such as window size etc
+    }
+
     // Test function. Load texture, assign it to a spriteAnimation.
     // Add frames and hope it works. And of course, push it to the spriteVector.
     void Application::testAnimation()
@@ -83,3 +92,6 @@ namespace engine {
         return sprite;
     }
 }
+
+
+    

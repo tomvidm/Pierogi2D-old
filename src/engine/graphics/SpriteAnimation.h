@@ -1,7 +1,17 @@
 #pragma once
 
+extern "C" 
+{
+    #include "lua.h"
+    #include "lualib.h"
+    #include "lauxlib.h"
+}
+
+#include "selene.h"
+
 #include "SFML/Graphics.hpp"
 #include <vector>
+#include <string>
 
 namespace engine {
     typedef unsigned int uint;
@@ -36,7 +46,9 @@ namespace graphics {
     {
     public:
         sf::Rect<int> getFrameRect();
+
         void update();
+        void loadFrameData(/* some arguments? */);   // SpriteAnimation only stores rects and frame durations!!!
 
         inline void addFrame(Frame frame) { frames.push_back(frame); }
     private:
