@@ -21,40 +21,41 @@ namespace engine {
         for (int i = 1; i <= numAnimations; i++)
         {
             std::string animationName = selector[i]["animation_name"];
+            std::cout << "Loading animation: " << animationName << std::endl;
             resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
         }
     }
 
     void AnimationHandler::loadTestData()
     {
-        resourceMap["spritesheet_testsprite"] = FrameData();
+        resourceMap["testsprite_walk_right"] = FrameData();
 
         Frame frame;
         frame.duration = 50*1667;
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*2, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*3, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*4, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*5, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*6, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
-        resourceMap["spritesheet_testsprite"].addFrame(frame);
+        resourceMap["testsprite_walk_right"].addFrame(frame);
 
         /*printFrame(resourceMap["spritesheet_testsprite"].getFrame(0));
         printFrame(resourceMap["spritesheet_testsprite"].getFrame(1));

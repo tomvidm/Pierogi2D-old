@@ -71,7 +71,7 @@ namespace engine {
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
         
-        sprite.setAnimation(animationHandler.get("testsprite_walk_right"));
+        sprite.setAnimation(animationHandler.get("testsprite_walk_right_wild"));
         return sprite;
     }
 }
