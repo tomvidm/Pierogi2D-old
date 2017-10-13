@@ -21,4 +21,6 @@ namespace engine {
         void loadFromLuaTable(std::string filename, const char* spritesheet);
         void loadTestData();
     };
+
+    Frame getFrameFromSelector(sel::Selector& selector, int frameIndex);
 }
