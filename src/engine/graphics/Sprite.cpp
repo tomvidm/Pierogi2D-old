@@ -4,8 +4,13 @@ namespace engine {
 namespace graphics {
     void Sprite::update() 
     {
-    	spriteAnimation.update();
-        setTextureRect(spriteAnimation.getFrameRect());
+        if (frameTimer.getElapsedTime().asMicroseconds() > spriteAnimation.getFrameDuration())
+        {
+            frameTimer.restart();
+
+            spriteAnimation.update();
+            setTextureRect(spriteAnimation.getFrameRect());
+        }
     }
 
     void Sprite::setAnimation(SpriteAnimation anim)

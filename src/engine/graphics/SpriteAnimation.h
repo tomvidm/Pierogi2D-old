@@ -39,8 +39,8 @@ namespace graphics {
         void update();
 
         inline void addFrame(Frame frame) { frames.push_back(frame); }
+        inline int getFrameDuration() const { return frames[currentFrame].duration; }
     private:
-        sf::Clock frameTimer;
         int currentFrame = 0;
         std::vector<Frame> frames;
     };

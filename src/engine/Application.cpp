@@ -8,7 +8,8 @@ namespace engine {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         maxFramePeriod = 16667;
-        varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
+        graphics::Sprite s = makeTestSprite();
+        spritePool.pushObject(s);
         while (window.isOpen())
         {
             loop();

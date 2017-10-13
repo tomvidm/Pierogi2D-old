@@ -9,13 +9,8 @@ namespace graphics {
 
     void SpriteAnimation::update()
     {
-        if (frameTimer.getElapsedTime().asMicroseconds() > frames[currentFrame].duration)
-        {
-            frameTimer.restart();
-
-            currentFrame += 1;
-            currentFrame %= frames.size();
-        }
+        currentFrame += 1;
+        currentFrame %= frames.size();
     }
 }
 }

@@ -13,6 +13,7 @@ namespace graphics {
             void setAnimation(SpriteAnimation anim);
         private:
             SpriteAnimation spriteAnimation;
+            sf::Clock frameTimer;
     };
 } 
 }
