@@ -2,6 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 #include <vector>
+#include <iostream>
 
 namespace engine {
     typedef unsigned int uint;
@@ -17,6 +18,8 @@ namespace engine {
         }
     };
 
+    void printFrame(Frame frame);
+
     class FrameData
     {
     public:
@@ -25,7 +28,7 @@ namespace engine {
         int getFrameDuration(int index) const;
         sf::Rect<int> getFrameRect(int index) const;
         inline int getNumFrames() const { return frames.size(); }
-
+        inline Frame getFrame(int index) const { return frames[index]; }
         inline void addFrame(Frame frame) { frames.push_back(frame); }
     private:
         std::vector<Frame> frames;
