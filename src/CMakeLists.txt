@@ -11,15 +11,6 @@ include_directories(${PROJECT_SOURCE_DIR}/src/engine
 set(SOURCES 
     main.cpp
     engine/Application.cpp
-# animations
-    engine/animation/AnimationHandler.cpp
-    engine/animation/AnimationController.cpp
-    engine/animation/FrameData.cpp
-# graphics
-    engine/graphics/VectorArray.cpp
-    engine/graphics/Vector.cpp
-    engine/graphics/Sprite.cpp
-    engine/graphics/TextureHandler.cpp
     )
 
 set(COMMON_LIBRARIES
@@ -28,10 +19,15 @@ set(COMMON_LIBRARIES
     ${SFML_DEPENDENCIES}
     )
 
+set(LIBRARIES
+    animation
+    graphics
+)
+
 add_executable(main ${SOURCES})
 
 
-target_link_libraries(main ${COMMON_LIBRARIES})
+target_link_libraries(main ${COMMON_LIBRARIES} ${LIBRARIES})
 target_compile_definitions(main PUBLIC
                         -std=c++11
                         -Wall

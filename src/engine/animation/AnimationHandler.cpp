@@ -6,8 +6,6 @@ namespace engine {
         ;
     }
 
-#include "assert.h"
-
     void AnimationHandler::loadFromLuaTable(std::string filename, const char* spritesheet)
     {
         using std::cout;
