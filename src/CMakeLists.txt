@@ -22,7 +22,7 @@ set(SOURCES
     engine/graphics/TextureHandler.cpp
     )
 
-set(LIBRARIES
+set(COMMON_LIBRARIES
     ${LUA_LIBRARIES}
     ${SFML_LIBRARIES}
     ${SFML_DEPENDENCIES}
@@ -31,7 +31,7 @@ set(LIBRARIES
 add_executable(main ${SOURCES})
 
 
-target_link_libraries(main ${LIBRARIES})
+target_link_libraries(main ${COMMON_LIBRARIES})
 target_compile_definitions(main PUBLIC
                         -std=c++11
                         -Wall
