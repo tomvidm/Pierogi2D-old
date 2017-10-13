@@ -13,20 +13,15 @@ namespace engine {
 
         sel::State luaState;
         luaState.Load(filename);
-        sel::Selector selector = luaState[spritesheet]["animations"][1];
-        std::string anim_name = selector["animation_name"];
-        std::string anim_key = static_cast<std::string>(spritesheet);
 
-        int numFrames = static_cast<int>(selector["num_frames"]);
-        selector = selector["frames"];
-        resourceMap[anim_key] = FrameData();
-        
+        sel::Selector selector = luaState[spritesheet];
+        int numAnimations = static_cast<int>(selector["num_animations"]);
+        selector = selector["animations"];
 
-        for (int i = 1; i <= numFrames; i++)
+        for (int i = 1; i <= numAnimations; i++)
         {
-            Frame newFrame = getFrameFromSelector(selector, i);
-            resourceMap[anim_key].addFrame(newFrame);
-            //printFrame(resourceMap[anim_key].getFrame(i - 1));
+            std::string animationName = selector[i]["animation_name"];
+            resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
         }
     }
 
@@ -71,7 +66,7 @@ namespace engine {
         printFrame(resourceMap["spritesheet_testsprite"].getFrame(7));*/
     }
 
-    Frame getFrameFromSelector(sel::Selector& selector, int frameIndex)
+    Frame getFrameFromSelector(sel::Selector selector, int frameIndex)
     {
         Frame frame;
         frame.duration = static_cast<int>(selector[frameIndex][1]);
@@ -80,5 +75,17 @@ namespace engine {
                                       sf::Vector2i(static_cast<int>(selector[frameIndex][4]),
                                                    static_cast<int>(selector[frameIndex][5])));
         return frame;
+    }
+
+    FrameData getFrameDataFromSelector(sel::Selector selector)
+    {
+        FrameData frameData;
+        int numFrames = static_cast<int>(selector["num_frames"]);
+        for (int i = 1; i <= numFrames; i++)
+        {
+            Frame newFrame = getFrameFromSelector(selector["frames"], i);
+            frameData.addFrame(newFrame);
+        }
+        return frameData;
     }
 }

@@ -22,5 +22,6 @@ namespace engine {
         void loadTestData();
     };
 
-    Frame getFrameFromSelector(sel::Selector& selector, int frameIndex);
+    Frame getFrameFromSelector(sel::Selector selector, int frameIndex);
+    FrameData getFrameDataFromSelector(sel::Selector selector);
 }

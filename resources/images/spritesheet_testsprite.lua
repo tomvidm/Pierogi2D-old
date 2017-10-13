@@ -3,7 +3,7 @@ spritesheet_testsprite = {
     num_animations = 1;
     animations = {
         {
-            animation_name = "walk_right";
+            animation_name = "testsprite_walk_right";
             num_frames = 8;
             frames = {
                 { 50*1667, 0*184, 184, 0, 375 };

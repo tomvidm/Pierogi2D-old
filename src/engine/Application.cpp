@@ -64,14 +64,14 @@ namespace engine {
 
     graphics::Sprite Application::makeTestSprite()
     {
-        animationHandler.loadTestData();
-        //animationHandler.loadFromLuaTable("../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
+        //animationHandler.loadTestData();
+        animationHandler.loadFromLuaTable("../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
 
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
         
-        sprite.setAnimation(animationHandler.get("spritesheet_testsprite"));
+        sprite.setAnimation(animationHandler.get("testsprite_walk_right"));
         return sprite;
     }
 }
