@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "SpriteAnimation.h"
+#include "AnimationController.h"
 
 namespace engine {
     typedef unsigned int uint;
@@ -10,10 +10,9 @@ namespace graphics {
     {
         public:
             void update();
-            void setAnimation(SpriteAnimation anim);
+            void setAnimation(FrameData& anim);
         private:
-            SpriteAnimation spriteAnimation;
-            sf::Clock frameTimer;
+            AnimationController animationController;
     };
 } 
 }

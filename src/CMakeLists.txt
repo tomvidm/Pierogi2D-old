@@ -17,8 +17,10 @@ set(SOURCES
     main.cpp
     engine/Application.cpp
     engine/TextureHandler.cpp
+    engine/AnimationHandler.cpp
     engine/graphics/Sprite.cpp
-    engine/graphics/SpriteAnimation.cpp
+    engine/graphics/AnimationController.cpp
+    engine/graphics/FrameData.cpp
     engine/graphics/VectorArray.cpp
     engine/graphics/Vector.cpp
     )

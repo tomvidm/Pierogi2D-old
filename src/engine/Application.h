@@ -11,6 +11,7 @@
 
 #include "Sprite.h"
 #include "TextureHandler.h"
+#include "AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
 
@@ -45,6 +46,7 @@ namespace engine
         int screenHeight;
 
         TextureHandler textureHandler;
+        AnimationHandler animationHandler;
         Pool<graphics::Sprite, 1024> spritePool;
         graphics::VectorArray varr;
         sf::Clock mainClock;

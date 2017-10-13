@@ -1,7 +1,8 @@
 #include "Application.h"
 
 #include "Sprite.h"
-#include "SpriteAnimation.h"
+#include "AnimationController.h"
+#include "FrameData.h"
 
 namespace engine {
     void Application::enterLoop() {
@@ -67,29 +68,41 @@ namespace engine {
 
     graphics::Sprite Application::makeTestSprite()
     {
+        animationHandler.loadTestData();
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
+
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
-        graphics::SpriteAnimation anim;
+        graphics::FrameData* frameData = &animationHandler.get("test");
         graphics::Frame frame;
+        
         frame.duration = 50*1667;
+
         frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*2, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*3, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*4, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*5, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*6, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
-        sprite.setAnimation(anim);
+        frameData->addFrame(frame);
+        
+        sprite.setAnimation(animationHandler.get("test"));
         return sprite;
     }
 }
