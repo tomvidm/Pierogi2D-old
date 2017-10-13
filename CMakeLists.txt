@@ -43,5 +43,13 @@ endif()
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
+#Find any version 2.X of SFML
+#See the FindSFML.cmake file for additional details and instructions
+
+set(SFML_ROOT "SFML-2.4.2")
+
+find_package(SFML 2 REQUIRED main network audio graphics window system)
+find_package(Lua 5.2 REQUIRED)
+
 add_subdirectory(src)
 add_subdirectory(test)

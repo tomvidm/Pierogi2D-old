@@ -1,28 +1,21 @@
-#Find any version 2.X of SFML
-#See the FindSFML.cmake file for additional details and instructions
-
-set(SFML_ROOT "../SFML-2.4.2")
-
-find_package(SFML 2 REQUIRED main network audio graphics window system)
-find_package(Lua 5.2 REQUIRED)
-
 add_subdirectory(engine)
 
-include_directories("${PROJECT_BINARY_DIR}")
-include_directories(${SFML_INCLUDE_DIR} ${LUA_INCLUDE_DIR} "../includes")
-include_directories(
-    engine
-    engine/graphics
-    )
+include_directories(${PROJECT_SOURCE_DIR}/src/engine
+                    ${PROJECT_SOURCE_DIR}/src/engine/animation
+                    ${PROJECT_SOURCE_DIR}/src/engine/graphics
+                    ${PROJECT_SOURCE_DIR}/includes
+                    ${SFML_INCLUDE_DIR} 
+                    ${LUA_INCLUDE_DIR} 
+                    )
 
 set(SOURCES 
     main.cpp
     engine/Application.cpp
-    # animations
+# animations
     engine/animation/AnimationHandler.cpp
     engine/animation/AnimationController.cpp
     engine/animation/FrameData.cpp
-    # graphics
+# graphics
     engine/graphics/VectorArray.cpp
     engine/graphics/Vector.cpp
     engine/graphics/Sprite.cpp

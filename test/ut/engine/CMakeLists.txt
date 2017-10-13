@@ -1,1 +1,1 @@
-# Hello world
+add_subdirectory(animation)
