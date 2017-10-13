@@ -1,14 +1,14 @@
-#include "AnimatedSprite.h"
+#include "Sprite.h"
 
 namespace engine {
 namespace graphics {
-    void AnimatedSprite::update() 
+    void Sprite::update() 
     {
     	spriteAnimation.update();
         setTextureRect(spriteAnimation.getFrameRect());
     }
 
-    void AnimatedSprite::setAnimation(SpriteAnimation anim)
+    void Sprite::setAnimation(SpriteAnimation anim)
     {
         spriteAnimation = anim;
     }

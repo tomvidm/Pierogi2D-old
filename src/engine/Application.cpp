@@ -1,6 +1,6 @@
 #include "Application.h"
 
-#include "AnimatedSprite.h"
+#include "Sprite.h"
 #include "SpriteAnimation.h"
 
 namespace engine {
@@ -38,7 +38,7 @@ namespace engine {
     {
         for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
-            if (spritePool.getState(i) & ACTIVE == ACTIVE)
+            if ((spritePool.getState(i) & ACTIVE) == ACTIVE)
             {
                 spritePool.get(i).update();
                 window.draw(spritePool.get(i));
@@ -64,10 +64,10 @@ namespace engine {
         
     }
 
-    graphics::AnimatedSprite Application::makeTestSprite()
+    graphics::Sprite Application::makeTestSprite()
     {
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
-        graphics::AnimatedSprite sprite;
+        graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
         graphics::SpriteAnimation anim;
         graphics::Frame frame;

@@ -6,7 +6,7 @@
 namespace engine {
     typedef unsigned int uint;
 namespace graphics {
-    class AnimatedSprite : public sf::Sprite
+    class Sprite : public sf::Sprite
     {
         public:
             void update();

@@ -15,7 +15,6 @@ namespace graphics {
 
             currentFrame += 1;
             currentFrame %= frames.size();
-            
         }
     }
 }
