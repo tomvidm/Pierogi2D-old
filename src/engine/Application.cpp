@@ -1,14 +1,16 @@
 #include "Application.h"
 
-#include "AnimatedSprite.h"
-#include "SpriteAnimation.h"
+#include "Sprite.h"
+#include "AnimationController.h"
+#include "FrameData.h"
 
 namespace engine {
     void Application::enterLoop() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         maxFramePeriod = 16667;
-        varr.addVector(sf::Vector2f(100, 100), sf::Vector2f(400, 100));
+        graphics::Sprite s = makeTestSprite();
+        spritePool.pushObject(s);
         while (window.isOpen())
         {
             loop();
@@ -38,7 +40,7 @@ namespace engine {
     {
         for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
-            if (spritePool.getState(i) & ACTIVE == ACTIVE)
+            if ((spritePool.getState(i) & ACTIVE) == ACTIVE)
             {
                 spritePool.get(i).update();
                 window.draw(spritePool.get(i));
@@ -64,31 +66,43 @@ namespace engine {
         
     }
 
-    graphics::AnimatedSprite Application::makeTestSprite()
+    graphics::Sprite Application::makeTestSprite()
     {
+        animationHandler.loadTestData();
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
-        graphics::AnimatedSprite sprite;
+
+        graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
-        graphics::SpriteAnimation anim;
+        graphics::FrameData* frameData = &animationHandler.get("test");
         graphics::Frame frame;
+        
         frame.duration = 50*1667;
+
         frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*2, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*3, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*4, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*5, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*6, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
+        frameData->addFrame(frame);
+        
         frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
-        anim.addFrame(frame);
-        sprite.setAnimation(anim);
+        frameData->addFrame(frame);
+        
+        sprite.setAnimation(animationHandler.get("test"));
         return sprite;
     }
 }

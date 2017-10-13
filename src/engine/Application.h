@@ -9,8 +9,9 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "AnimatedSprite.h"
+#include "Sprite.h"
 #include "TextureHandler.h"
+#include "AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
 
@@ -45,12 +46,13 @@ namespace engine
         int screenHeight;
 
         TextureHandler textureHandler;
-        Pool<graphics::AnimatedSprite, 1024> spritePool;
+        AnimationHandler animationHandler;
+        Pool<graphics::Sprite, 1024> spritePool;
         graphics::VectorArray varr;
         sf::Clock mainClock;
         sf::RenderWindow window; 
         int maxFramePeriod; 
 
-        graphics::AnimatedSprite makeTestSprite();
+        graphics::Sprite makeTestSprite();
     };
 }
