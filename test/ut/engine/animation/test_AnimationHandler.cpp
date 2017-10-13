@@ -11,7 +11,7 @@ namespace engine
     TEST_F(TestAnimationHandler, CorrectlyImportsAnimationFromLuaTable)
     {
         animationHandler.loadFromLuaTable("../../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
-        //FrameData animationHandler.get("spritesheet_testsprite");
-        EXPECT_TRUE(false);
+        FrameData frameData = animationHandler.get("spritesheet_testsprite");
+        EXPECT_EQ(frameData.getNumFrames(), 8);
     }
 }
