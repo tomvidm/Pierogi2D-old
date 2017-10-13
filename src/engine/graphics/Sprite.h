@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
-#include "AnimationController.h"
+#include "../animation/AnimationController.h"
 
 namespace engine {
     typedef unsigned int uint;

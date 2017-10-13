@@ -18,13 +18,15 @@ include_directories(
 set(SOURCES 
     main.cpp
     engine/Application.cpp
-    engine/TextureHandler.cpp
-    engine/AnimationHandler.cpp
-    engine/graphics/Sprite.cpp
-    engine/graphics/AnimationController.cpp
-    engine/graphics/FrameData.cpp
+    # animations
+    engine/animation/AnimationHandler.cpp
+    engine/animation/AnimationController.cpp
+    engine/animation/FrameData.cpp
+    # graphics
     engine/graphics/VectorArray.cpp
     engine/graphics/Vector.cpp
+    engine/graphics/Sprite.cpp
+    engine/graphics/TextureHandler.cpp
     )
 
 set(LIBRARIES

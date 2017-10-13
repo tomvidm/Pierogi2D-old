@@ -1,9 +1,5 @@
 #include "Application.h"
 
-#include "Sprite.h"
-#include "AnimationController.h"
-#include "FrameData.h"
-
 namespace engine {
     void Application::enterLoop() {
         loadConfiguration();

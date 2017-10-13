@@ -2,7 +2,7 @@
 
 #include "ResourceHandler.h"
 
-#include "graphics/FrameData.h"
+#include "FrameData.h"
 
 namespace engine {
     class AnimationHandler : public ResourceHandler<graphics::FrameData>

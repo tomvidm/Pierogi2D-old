@@ -10,8 +10,8 @@
 #include "SFML/Window.hpp"
 
 #include "Sprite.h"
-#include "TextureHandler.h"
-#include "AnimationHandler.h"
+#include "graphics/TextureHandler.h"
+#include "animation/AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
 
