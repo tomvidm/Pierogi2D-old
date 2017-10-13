@@ -5,7 +5,6 @@
 
 namespace engine {
     typedef unsigned int uint;
-namespace graphics {
     struct Frame
     {
         int duration;
@@ -33,5 +32,4 @@ namespace graphics {
     };
 
 
-}
 }

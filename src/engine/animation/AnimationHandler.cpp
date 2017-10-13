@@ -6,19 +6,36 @@ namespace engine {
         ;
     }
 
-    void AnimationHandler::loadFromLuaTable(std::string filename, std::string spritesheet)
+    void AnimationHandler::loadFromLuaTable(std::string filename, const char* spritesheet)
     {
         sel::State luaState;
         luaState.Load("filename");
+        sel::Selector selector = luaState[spritesheet]["animations"];
+        int numFrames = static_cast<int>(selector["num_frames"]);
+        selector = selector["frames"];
+        FrameData frameData;
 
-        sel::Selector selector = luaState[spritesheet];
+        for (int i = 0; i < numFrames; i++)
+        {
+            int duration = selector[i][0];
+            int xpos = selector[i][1];
+            int xsize = selector[i][2];
+            int ypos = selector[i][3];
+            int ysize = selector[i][4];
+
+            frameData.addFrame(Frame(duration, 
+                                     sf::Rect<int>(sf::Vector2i(xpos, ypos),
+                                                   sf::Vector2i(xsize, ysize))));
+
+        }
+
     }
 
     void AnimationHandler::loadTestData()
     {
-        resourceMap["test"] = graphics::FrameData();
+        resourceMap["test"] = FrameData();
 
-        graphics::Frame frame;
+        Frame frame;
         frame.duration = 50*1667;
         
         frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
