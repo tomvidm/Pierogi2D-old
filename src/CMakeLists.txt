@@ -12,6 +12,8 @@ include_directories(
 set(SOURCES 
     main.cpp
     engine/Application.cpp
+    engine/GameStateStack.cpp
+    engine/GameState.cpp
     )
 
 set(LIBRARIES

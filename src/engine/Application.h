@@ -14,6 +14,7 @@
 #include "animation/AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
+#include "GameStateStack.h"
 
 extern "C" 
 {
@@ -44,6 +45,8 @@ namespace engine
         sel::State luaState;
         int screenWidth;
         int screenHeight;
+
+        GameStateStack stateStack;
 
         TextureHandler textureHandler;
         AnimationHandler animationHandler;
