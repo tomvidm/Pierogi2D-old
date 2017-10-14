@@ -9,9 +9,9 @@ namespace engine
 	class GameStateStack
 	{
 	public:
-		void push(GameState& state);
-		void pop();
-		GameState* top();
+		void pushState(GameState& state);
+		void popState();
+		GameState* topState();
 	private:
 		StateStack _stack;
 	};

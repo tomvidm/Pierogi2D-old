@@ -5,6 +5,7 @@ namespace engine
 	class GameState : public IState
 	{
 	public:
-		void update();
+		virtual void handleInput();
+		virtual void update();
 	};
 }
