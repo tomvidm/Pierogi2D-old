@@ -11,7 +11,13 @@ namespace engine {
     {
         std::string testString = "test string";
         DebugLine debugLine(testString);
-        //consoleQueue.addDebugLine(testString);
-        EXPECT_EQ(consoleQueue.getNumLines(), 1);
+        for (int i = 0; i < 10; i++)
+        {
+            consoleQueue.addDebugLine(testString);
+        }
+        
+        EXPECT_EQ(consoleQueue.getNumLines(), 10);
+        consoleQueue.addDebugLine(testString);
+        EXPECT_EQ(consoleQueue.getNumLines(), 10);
     }
 }
