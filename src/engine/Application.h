@@ -35,6 +35,7 @@ namespace engine
         void start();
     private:
         void loop();
+        void handleRendering();
         void drawSprites();
         void loadConfiguration();
 

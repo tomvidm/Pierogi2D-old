@@ -18,6 +18,11 @@ namespace engine {
         stateStack.topState()->handleInput(&window);
         stateStack.topState()->update();
 
+        handleRendering();
+    }
+
+    void Application::handleRendering()
+    {
         if (mainClock.getElapsedTime().asMicroseconds() > maxFramePeriod)
         {
             mainClock.restart();
