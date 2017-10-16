@@ -1,44 +1,44 @@
-#Find any version 2.X of SFML
-#See the FindSFML.cmake file for additional details and instructions
-
-set(SFML_ROOT "../SFML-2.4.2")
-
-find_package(SFML 2 REQUIRED main network audio graphics window system)
-find_package(Lua 5.2 REQUIRED)
-
 add_subdirectory(engine)
 
-include_directories("${PROJECT_BINARY_DIR}")
-include_directories(${SFML_INCLUDE_DIR} ${LUA_INCLUDE_DIR} "../includes")
 include_directories(
-    engine
-    engine/graphics
+    ${PROJECT_SOURCE_DIR}/src/engine
+    ${PROJECT_SOURCE_DIR}/src/engine/animation
+    ${PROJECT_SOURCE_DIR}/src/engine/graphics
+    ${PROJECT_SOURCE_DIR}/includes
+    ${SFML_INCLUDE_DIR} 
+    ${LUA_INCLUDE_DIR} 
     )
 
 set(SOURCES 
     main.cpp
     engine/Application.cpp
-    engine/TextureHandler.cpp
+    engine/graphics/TextureHandler.cpp
     engine/DebugLine.cpp
     engine/ConsoleQueue.cpp
     engine/graphics/AnimatedSprite.cpp
     engine/graphics/SpriteAnimation.cpp
     engine/graphics/VectorArray.cpp
     engine/graphics/Vector.cpp
+    engine/GameStateStack.cpp
+    engine/GameState.cpp
     )
 
 set(LIBRARIES
-    ${LUA_LIBRARIES}
-    ${SFML_LIBRARIES}
-    ${SFML_DEPENDENCIES}
+    animation
+    graphics
     )
 
 add_executable(main ${SOURCES})
 
+target_link_libraries(
+    main 
+    ${COMMON_LIBRARIES} 
+    ${LIBRARIES}
+    )
 
-target_link_libraries(main ${LIBRARIES})
-target_compile_definitions(main PUBLIC
-                        -std=c++11
-                        -Wall
-                        )
+target_compile_definitions(
+    main PUBLIC
+    -std=c++11
+    -Wall
+    )
 

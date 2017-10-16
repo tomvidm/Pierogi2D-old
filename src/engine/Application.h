@@ -9,10 +9,13 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "AnimatedSprite.h"
-#include "TextureHandler.h"
+#include "Sprite.h"
+#include "graphics/TextureHandler.h"
+#include "animation/AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
+#include "GameState.h"
+#include "GameStateStack.h"
 
 extern "C" 
 {
@@ -26,31 +29,30 @@ extern "C"
 
 namespace engine
 {
-    /*
-        Very shitty application class so far.
-    */
-
     class Application
     {
     public:
-        void enterLoop();
-        void testAnimation();
+        void start();
     private:
         void loop();
+        void handleRendering();
         void drawSprites();
         void loadConfiguration();
 
-        sel::State luaState;
         int screenWidth;
         int screenHeight;
-
-        TextureHandler textureHandler;
-        Pool<graphics::AnimatedSprite, 1024> spritePool;
-        graphics::VectorArray varr;
-        sf::Clock mainClock;
-        sf::RenderWindow window; 
         int maxFramePeriod; 
 
-        graphics::AnimatedSprite makeTestSprite();
+        TextureHandler textureHandler;
+        AnimationHandler animationHandler;
+
+        GameStateStack stateStack;
+
+        sf::Clock mainClock;
+        sf::RenderWindow window;
+
+        Pool<graphics::Sprite, 1024> spritePool;
+
+        graphics::Sprite makeTestSprite();
     };
 }
