@@ -14,6 +14,7 @@
 #include "animation/AnimationHandler.h"
 #include "Pool.h"
 #include "VectorArray.h"
+#include "GameState.h"
 #include "GameStateStack.h"
 
 extern "C" 
@@ -28,33 +29,26 @@ extern "C"
 
 namespace engine
 {
-    /*
-        Very shitty application class so far.
-    */
-
     class Application
     {
     public:
-        void enterLoop();
-        void testAnimation();
+        void start();
     private:
         void loop();
         void drawSprites();
         void loadConfiguration();
 
-        sel::State luaState;
         int screenWidth;
         int screenHeight;
-
-        GameStateStack stateStack;
+        int maxFramePeriod; 
 
         TextureHandler textureHandler;
         AnimationHandler animationHandler;
-        Pool<graphics::Sprite, 1024> spritePool;
-        graphics::VectorArray varr;
+
+        GameStateStack stateStack;
+
         sf::Clock mainClock;
-        sf::RenderWindow window; 
-        int maxFramePeriod; 
+        sf::RenderWindow window;
 
         graphics::Sprite makeTestSprite();
     };

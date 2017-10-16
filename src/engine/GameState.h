@@ -1,3 +1,5 @@
+#pragma once
+
 #include "IState.h"
 
 namespace engine

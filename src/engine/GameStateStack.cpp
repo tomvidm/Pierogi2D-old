@@ -2,18 +2,18 @@
 
 namespace engine
 {
-	void GameStateStack::pushState(GameState& state)
+	void GameStateStack::pushState(GameState* state)
 	{
-		_stack.push(state);
+		_ptrStack.push(state);
 	}
 
 	void GameStateStack::popState()
 	{
-		_stack.pop();
+		_ptrStack.pop();
 	}
 
 	GameState* GameStateStack::topState()
 	{
-		return &_stack.top();
+		return _ptrStack.top();
 	}
 }

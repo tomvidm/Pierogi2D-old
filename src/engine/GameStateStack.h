@@ -1,18 +1,20 @@
+#pragma once
+
 #include <stack>
+
+#include "GameState.h"
 
 namespace engine
 {
-	class GameState;
-
-	typedef std::stack<GameState> StateStack;
+	typedef std::stack<GameState*> StatePtrStack;
 
 	class GameStateStack
 	{
 	public:
-		void pushState(GameState& state);
+		void pushState(GameState* state);
 		void popState();
 		GameState* topState();
 	private:
-		StateStack _stack;
+		StatePtrStack _ptrStack;
 	};
 }

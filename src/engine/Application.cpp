@@ -1,12 +1,12 @@
 #include "Application.h"
 
+
+
 namespace engine {
-    void Application::enterLoop() {
+    void Application::start() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
-        maxFramePeriod = 16667;
-        graphics::Sprite s = makeTestSprite();
-        spritePool.pushObject(s);
+
         while (window.isOpen())
         {
             loop();
@@ -34,7 +34,8 @@ namespace engine {
 
     void Application::drawSprites()
     {
-        for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
+        return;
+        /*for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
             if ((spritePool.getState(i) & ACTIVE) == ACTIVE)
             {
@@ -42,24 +43,17 @@ namespace engine {
                 window.draw(spritePool.get(i));
             }
         }
-        window.draw(varr);
+        window.draw(varr);*/
     }
 
     void Application::loadConfiguration()
     {
+        sel::State luaState;
         luaState.Load("../../src/engine/conf.lua");
         screenWidth = static_cast<int>(luaState["configuration"]["screenWidth"]);
         screenHeight = static_cast<int>(luaState["configuration"]["screenHeight"]);
+        maxFramePeriod = static_cast<int>(luaState["configuration"]["maxFramePeriod"]);
         return; // Use Lua to load basic configuration such as window size etc
-    }
-
-    // Test function. Load texture, assign it to a spriteAnimation.
-    // Add frames and hope it works. And of course, push it to the spriteVector.
-    void Application::testAnimation()
-    {
-        //graphics::AnimatedSprite sprite = makeTestSprite();
-        spritePool.pushObject(makeTestSprite());
-        
     }
 
     graphics::Sprite Application::makeTestSprite()
