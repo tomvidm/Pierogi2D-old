@@ -13,7 +13,7 @@ set(GRAPHICS_SOURCES
     )
 
 add_library(
-    graphics 
+    graphics
     ${GRAPHICS_SOURCES}
     )
 

@@ -12,13 +12,6 @@ include_directories(
 set(SOURCES 
     main.cpp
     engine/Application.cpp
-    engine/graphics/TextureHandler.cpp
-    engine/DebugLine.cpp
-    engine/ConsoleQueue.cpp
-    engine/graphics/AnimatedSprite.cpp
-    engine/graphics/SpriteAnimation.cpp
-    engine/graphics/VectorArray.cpp
-    engine/graphics/Vector.cpp
     engine/GameStateStack.cpp
     engine/GameState.cpp
     )
@@ -26,6 +19,7 @@ set(SOURCES
 set(LIBRARIES
     animation
     graphics
+    console
     )
 
 add_executable(main ${SOURCES})
