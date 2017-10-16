@@ -6,6 +6,7 @@ namespace engine {
     void Application::start() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
+        stateStack.pushState(GameState());
 
         while (window.isOpen())
         {
@@ -14,28 +15,24 @@ namespace engine {
     }
 
     void Application::loop() {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed) 
-            {
-                window.close();
-            }
-        }
+        stateStack.topState()->handleInput(&window);
+        stateStack.topState()->update();
 
         if (mainClock.getElapsedTime().asMicroseconds() > maxFramePeriod)
         {
             mainClock.restart();
             window.clear();
+
+            // DRAW THINGS
             drawSprites();
+
             window.display();
         }
     }
 
     void Application::drawSprites()
     {
-        return;
-        /*for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
+        for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
             if ((spritePool.getState(i) & ACTIVE) == ACTIVE)
             {
@@ -43,7 +40,6 @@ namespace engine {
                 window.draw(spritePool.get(i));
             }
         }
-        window.draw(varr);*/
     }
 
     void Application::loadConfiguration()
