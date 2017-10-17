@@ -1,6 +1,6 @@
 #include "Application.h"
 
-
+#include <iostream>
 
 namespace engine {
     // This function is meant to initialize all the necessary parts
@@ -51,7 +51,17 @@ namespace engine {
 
             if (event.type == sf::Event::TextEntered)
             {
-                debugConsole.handleEvent(event);
+                if (static_cast<int>(event.text.unicode) == 3)
+                {
+                    std::cout << "Toggle console " << std::endl;
+                    consoleFocus = !consoleFocus;
+                    return;
+                }
+                else if (consoleFocus)
+                {
+                    debugConsole.handleEvent(event);
+                    return;
+                }
             }
 
             eventVector.push_back(event);

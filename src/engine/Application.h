@@ -42,14 +42,19 @@ namespace engine
         void start();
     private:
         void loop();
+        
+        void loadConfiguration();
+
         void collectEvents();
+
         void handleRendering();
         void drawSprites();
-        void loadConfiguration();
 
         int screenWidth;
         int screenHeight;
         int maxFramePeriod; 
+
+        bool consoleFocus = false;
 
         TextureHandler textureHandler;
         AnimationHandler animationHandler;
@@ -62,6 +67,7 @@ namespace engine
         Pool<graphics::Sprite, 1024> spritePool;
 
         console::DebugConsole debugConsole;
+
         std::vector<sf::Event> eventVector;
 
         graphics::Sprite makeTestSprite();
