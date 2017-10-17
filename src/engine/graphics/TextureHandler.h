@@ -1,4 +1,7 @@
-#include "ResourceHandler.h"
+#ifndef TEXTUREHANDLER_H
+#define TEXTUREHANDLER_H
+
+#include "engine/ResourceHandler.h"
 
 #include "SFML/Graphics.hpp"
 
@@ -13,3 +16,5 @@ namespace engine
 		void loadFromFile(std::string filename, std::string id);
 	};
 }
+
+#endif

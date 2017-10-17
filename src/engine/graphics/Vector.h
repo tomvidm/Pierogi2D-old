@@ -1,3 +1,6 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include "SFML/Graphics.hpp"
 
 #include <math.h>
@@ -32,3 +35,5 @@ namespace graphics {
     };
 }
 }
+
+#endif

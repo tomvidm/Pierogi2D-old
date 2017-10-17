@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ANIMATIONHANDLER_H
+#define ANIMATIONHANDLER_H
 
 #include "ResourceHandler.h"
 #include "FrameData.h"
@@ -30,3 +31,5 @@ namespace engine {
     Frame getFrameFromSelector(sel::Selector selector, int frameIndex);
     FrameData getFrameDataFromSelector(sel::Selector selector);
 }
+
+#endif

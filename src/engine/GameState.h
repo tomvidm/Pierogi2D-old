@@ -1,7 +1,9 @@
-#pragma once
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
-#include "IState.h"
 #include "SFML/Graphics.hpp"
+
+#include "engine/IState.h"
 
 namespace engine
 {
@@ -13,3 +15,5 @@ namespace engine
 		virtual void update();
 	};
 }
+
+#endif

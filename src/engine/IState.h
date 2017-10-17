@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ISTATE_H
+#define ISTATE_H
 
 namespace engine {
 	class IState
@@ -7,3 +8,5 @@ namespace engine {
 		virtual void update() = 0;
 	};
 }
+
+#endif

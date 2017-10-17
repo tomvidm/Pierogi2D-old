@@ -1,3 +1,6 @@
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
 #pragma once
 
 #include <queue>
@@ -9,14 +12,14 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "Sprite.h"
-#include "graphics/TextureHandler.h"
 #include "animation/AnimationHandler.h"
-#include "Pool.h"
-#include "VectorArray.h"
+#include "graphics/Sprite.h"
+#include "graphics/TextureHandler.h"
+#include "console/DebugConsole.h"
+
 #include "GameState.h"
 #include "GameStateStack.h"
-#include "DebugConsole.h"
+#include "Pool.h"
 
 extern "C" 
 {
@@ -64,3 +67,5 @@ namespace engine
         graphics::Sprite makeTestSprite();
     };
 }
+
+#endif

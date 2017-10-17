@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTORARRAY_H
+#define VECTORARRAY_H
 
 #include <math.h> 
 
@@ -20,3 +21,5 @@ namespace graphics {
 	};
 }
 }
+
+#endif

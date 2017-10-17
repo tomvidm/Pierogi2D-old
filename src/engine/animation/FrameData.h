@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FRAMEDATA_H
+#define FRAMEDATA_H
 
 #include "SFML/Graphics.hpp"
 #include <vector>
@@ -44,3 +45,5 @@ namespace engine {
 
 
 }
+
+#endif

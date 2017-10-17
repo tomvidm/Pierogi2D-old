@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CONSOLEQUEUE_H
+#define CONSOLEQUEUE_H
+
 #include <deque>
 #include <string>
 #include <algorithm>
@@ -39,3 +41,5 @@ namespace engine {
         std::deque<DebugLine> queue_;
     };
 }
+
+#endif

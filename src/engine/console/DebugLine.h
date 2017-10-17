@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEBUGLINE_H
+#define DEBUGLINE_H
 
 #include <string>
 
@@ -22,3 +23,5 @@ namespace engine {
         std::string string_;
     };
 }
+
+#endif

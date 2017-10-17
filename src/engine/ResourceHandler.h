@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RESOURCEHANDLER_H
+#define RESOURCEHANDLER_H
 
 #include <string>
 #include <vector>
@@ -26,3 +27,5 @@ namespace engine
 		return resourceMap.at(id);
 	}
 }
+
+#endif

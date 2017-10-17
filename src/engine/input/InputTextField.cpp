@@ -2,7 +2,7 @@
 
 
 namespace engine {
-namespace console {
+namespace input {
     void InputTextField::handleEvent(sf::Event event)
     {
         if (static_cast<int>(event.text.unicode) == 8)

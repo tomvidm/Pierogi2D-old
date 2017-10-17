@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ANIMATIONCONTROLLER_H
+#define ANIMATIONCONTROLLER_H
 
 #include "FrameData.h"
 
@@ -28,3 +29,5 @@ namespace graphics {
     };
 }
 }
+
+#endif

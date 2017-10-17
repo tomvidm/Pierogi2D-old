@@ -1,7 +1,8 @@
-#pragma once
+#ifndef DEBUGCONSOLE_H
+#define DEBUGCONSOLE_H
 
 #include "ConsoleQueue.h"
-#include "InputTextField.h"
+#include "engine/input/InputTextField.h"
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
@@ -33,3 +34,5 @@ namespace console {
     };
 }
 }
+
+#endif

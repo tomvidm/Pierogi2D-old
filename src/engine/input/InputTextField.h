@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUTTEXTFIELD_H
+#define INPUTTEXTFIELD_H
 
 #include <string>
 #include "SFML/Window.hpp"
@@ -21,3 +22,5 @@ namespace input {
     };
 }
 }
+
+#endif

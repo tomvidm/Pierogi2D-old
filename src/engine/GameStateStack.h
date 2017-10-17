@@ -1,8 +1,9 @@
-#pragma once
+#ifndef GAMESTATESTACK_H
+#define GAMESTATESTACK_H
 
 #include <stack>
 
-#include "GameState.h"
+#include "engine/GameState.h"
 
 namespace engine
 {
@@ -19,3 +20,5 @@ namespace engine
 		StateStack _stack;
 	};
 }
+
+#endif

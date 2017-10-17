@@ -9,6 +9,9 @@
     ObjectState::INACTIVE - previously used slot. Index is kept in a linked list.
 */
 
+#ifndef POOL_H
+#define POOL_H
+
 #include <list>
 #include <iostream>
 
@@ -181,3 +184,5 @@ namespace engine
         }
     }
 }
+
+#endif
