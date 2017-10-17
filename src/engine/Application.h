@@ -30,6 +30,9 @@ extern "C"
 
 namespace engine
 {
+    // This is the top level class holding all of the information
+    // of the running engine. Look in the cpp file for details.
+
     class Application
     {
     public:

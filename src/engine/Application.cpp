@@ -3,22 +3,17 @@
 
 
 namespace engine {
+    // This function is meant to initialize all the necessary parts
+    // of the "game". Until this engine become fully capable of giving
+    // Lua scripts the ability to call functions like "CREATE A FRIGGIN OBJECT",
+    // this will be the playground.
     void Application::start() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         stateStack.pushState(GameState());
-        debugConsole.initDefaultConsoleFont();
-        debugConsole.addLine("Line 1");
-        debugConsole.addLine("Line 2");
-        debugConsole.addLine("Line 3");
-        debugConsole.addLine("Line 4");
-        debugConsole.addLine("Line 5");
-        debugConsole.addLine("Line 6");
-        debugConsole.addLine("Line 7");
-        debugConsole.addLine("Line 8");
-        debugConsole.addLine("Line 9");
-        debugConsole.addLine("Line 10");
 
+        // For now, this is where the main loop happens.
+        // There are probably better ways to loop.
         while (window.isOpen())
         {
             loop();
@@ -26,7 +21,7 @@ namespace engine {
     }
 
     void Application::loop() {
-        // Unused as of now
+        // These are unused for now.
         //stateStack.topState()->handleInput(&window);
         //stateStack.topState()->update();
         
@@ -35,6 +30,14 @@ namespace engine {
         handleRendering();
     }
 
+    // This method pushes all the events to the 
+    // private variable eventVector.
+    // The solution is temporary, but the motivation is this:
+    // When calling pollEvent on a window, events are popped from a stack.
+    // When more than one object needs to respond to some event,
+    // it is better to store the events and pass a reference to this vector
+    // than to have a monolithic function send every imaginable input to 
+    // the relevant objects.
     void Application::collectEvents()
     {
         eventVector.clear();
@@ -55,8 +58,11 @@ namespace engine {
         }
     }
 
+    // This is self explanatory and this method will change a lot.
     void Application::handleRendering()
     {
+        // Using the mainClock, the framerate is kept near constant.
+        // (Should probably be minFramePeriod???)
         if (mainClock.getElapsedTime().asMicroseconds() > maxFramePeriod)
         {
             mainClock.restart();
@@ -70,6 +76,11 @@ namespace engine {
         }
     }
 
+    // This runs through the sprites in the spritePool and draws them.
+    // One problem will be to handle differing "depth" with different kinds
+    // of drawables. VertexArrays, Sprites and so on will need to be handled
+    // separately which will create headaches.
+    // NEEDS SOME EXTRA R&D TO FIND SOME NEAT WAY TO DO THIS
     void Application::drawSprites()
     {
         for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
@@ -82,6 +93,9 @@ namespace engine {
         }
     }
 
+    // Basic configurations like resolution and frame rate is
+    // currently stored in a lua file and loaded here using
+    // the Selene Lua wrapper for c++.
     void Application::loadConfiguration()
     {
         sel::State luaState;
@@ -92,6 +106,7 @@ namespace engine {
         return; // Use Lua to load basic configuration such as window size etc
     }
 
+    // Temporary construction of a sprite for runtime testing.
     graphics::Sprite Application::makeTestSprite()
     {
         //animationHandler.loadTestData();

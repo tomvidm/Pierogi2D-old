@@ -9,6 +9,11 @@ namespace engine {
     typedef unsigned int uint;
     typedef std::deque<DebugLine>::const_iterator QueueIterator;
 
+    // The ConsoleQueue is a wrapper holding a deque of DebugLine objects.
+    // This class takes care of the logic behind showing N lines out of M total lines.
+    // It also has a public interface letting the user retrieve a single string
+    // representing all of the desired console lines.
+
     class ConsoleQueue
     {
     public:

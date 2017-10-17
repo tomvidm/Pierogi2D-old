@@ -4,10 +4,10 @@
 
 namespace engine {
 
-    // Should be modified to be able to let one
-    // or more values within a line point to some data
-    // for realtime updates. This class should be used
-    // by both realtime debug output and console lines.
+    // The DebugLine is a wrapper for a console message.
+    // Very simple, but necessary for planned features
+    // such as runtime construction of more complex
+    // messages with variables.
 
     typedef unsigned int uint;
     class DebugLine

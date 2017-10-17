@@ -6,6 +6,10 @@
 
 namespace engine
 {
+	// This template class represent a simple storage mechanism for
+	// objects we wish to retrieve by a key. The TextureHandler and
+	// AnimationHandler are example specializations of this class.
+
 	template <class ResourceType>
 	class ResourceHandler
 	{

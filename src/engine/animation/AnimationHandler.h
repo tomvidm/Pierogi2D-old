@@ -14,6 +14,11 @@ extern "C"
 
 
 namespace engine {
+
+    // The AnimationHandler is a simple template specialization of
+    // the ResourceHandler. The purpose is to load frame data from
+    // a file or lua table and store them by string keys in a map.
+
     class AnimationHandler : public ResourceHandler<FrameData>
     {
     public:

@@ -5,6 +5,11 @@
 #include <iostream>
 
 namespace engine {
+    
+    // Frame is plain old data representing a frame of an animation.
+    // The frame has no knowledge of a texture. It only stores the duration
+    // and a Rect.
+
     typedef unsigned int uint;
     struct Frame
     {
@@ -19,6 +24,9 @@ namespace engine {
     };
 
     void printFrame(Frame frame);
+
+    // FrameData is a vector of Frame object, representing one
+    // animation.
 
     class FrameData
     {

@@ -4,8 +4,11 @@
 #include "SFML/Window.hpp"
 
 namespace engine {
-namespace console {
+namespace input {
 
+    // This is a class representing the content of the user input
+    // field in the console. Given a TextInput event, this class
+    // takes care of updating the string.
 
     class InputTextField
     {

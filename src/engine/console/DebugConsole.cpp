@@ -3,6 +3,11 @@
 
 namespace engine {
 namespace console {
+    DebugConsole::DebugConsole()
+    {
+        initDefaultConsoleFont();
+    }
+
     void DebugConsole::handleEvent(sf::Event event)
     {
         std::cout << static_cast<int>(event.text.unicode) << std::endl;
@@ -32,6 +37,9 @@ namespace console {
         inputText.setString("PLACEHOLDER");
     }
 
+    // The debug console keeps track of console messages through
+    // its member consoleQueue. This function asks for a stirng representation
+    // of all the messages and put that string into the text object.
     void DebugConsole::update()
     {
         consoleText.setString(consoleQueue.getDebugString());
