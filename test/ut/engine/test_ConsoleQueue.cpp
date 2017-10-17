@@ -19,5 +19,7 @@ namespace engine {
         EXPECT_EQ(consoleQueue.getNumLines(), 10);
         consoleQueue.addDebugLine(testString);
         EXPECT_EQ(consoleQueue.getNumLines(), 10);
+
+        EXPECT_EQ(consoleQueue.getDebugString(), "test string\ntest string\ntest string\ntest string\ntest string\ntest string\ntest string\ntest string\ntest string\ntest string\n");
     }
 }

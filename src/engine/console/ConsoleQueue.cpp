@@ -9,4 +9,15 @@ namespace engine {
         }
         queue_.push_back(line);
     }
+
+    std::string ConsoleQueue::getDebugString() const
+    {
+        std::string output = "";
+        for (auto i = begin(); i != end(); i++)
+        {
+            output.append(i->get());
+            output.append("\n");
+        }
+        return output;
+    }
 }

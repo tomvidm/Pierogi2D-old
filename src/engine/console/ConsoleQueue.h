@@ -1,5 +1,6 @@
 #pragma once
 #include <deque>
+#include <string>
 
 #include "DebugLine.h"
 
@@ -11,6 +12,8 @@ namespace engine {
     {
     public:
         void addDebugLine(const DebugLine& line);
+
+        std::string getDebugString() const;
 
         inline uint getNumLines() const { return queue_.size(); }
         inline uint getMaxStoredLines() const { return maxStoredLines_; }
