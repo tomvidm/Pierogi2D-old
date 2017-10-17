@@ -36,6 +36,7 @@ namespace engine
         void start();
     private:
         void loop();
+        void collectEvents();
         void handleRendering();
         void drawSprites();
         void loadConfiguration();
@@ -55,6 +56,7 @@ namespace engine
         Pool<graphics::Sprite, 1024> spritePool;
 
         console::DebugConsole debugConsole;
+        std::vector<sf::Event> eventVector;
 
         graphics::Sprite makeTestSprite();
     };

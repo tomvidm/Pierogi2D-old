@@ -5,6 +5,7 @@ include_directories(
 	${PROJECT_SOURCE_DIR}/src/engine/animation
 	${PROJECT_SOURCE_DIR}/src/engine/graphics
     ${PROJECT_SOURCE_DIR}/src/engine/console
+    ${PROJECT_SOURCE_DIR}/src/engine/input
 	${PROJECT_SOURCE_DIR}/includes
 	${SFML_INCLUDE_DIR}
 	${LUA_INCLUDE_DIR}
@@ -24,6 +25,7 @@ set(LIBRARIES
 	animation
     graphics
     console
+    input
     )
 
 add_executable(

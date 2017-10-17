@@ -26,10 +26,33 @@ namespace engine {
     }
 
     void Application::loop() {
-        stateStack.topState()->handleInput(&window);
-        stateStack.topState()->update();
+        // Unused as of now
+        //stateStack.topState()->handleInput(&window);
+        //stateStack.topState()->update();
+        
+        collectEvents();
         debugConsole.update();
         handleRendering();
+    }
+
+    void Application::collectEvents()
+    {
+        eventVector.clear();
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+
+            if (event.type == sf::Event::TextEntered)
+            {
+                debugConsole.handleEvent(event);
+            }
+
+            eventVector.push_back(event);
+        }
     }
 
     void Application::handleRendering()

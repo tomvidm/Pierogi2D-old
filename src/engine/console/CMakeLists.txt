@@ -1,5 +1,6 @@
 include_directories(
     ${PROJECT_SOURCE_DIR}/src/engine
+    ${PROJECT_SOURCE_DIR}/src/engine/input
 	${PROJECT_SOURCE_DIR}/includes
 	${SFML_INCLUDE_DIR} 
     ${LUA_INCLUDE_DIR} 
@@ -20,5 +21,6 @@ target_link_libraries(
 	console
 	graphics
 	animation
+	input
 	${COMMON_LIBRARIES}
 	)

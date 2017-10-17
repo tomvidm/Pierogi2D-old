@@ -1,37 +1,48 @@
 #include "DebugConsole.h"
+#include <iostream>
 
 namespace engine {
 namespace console {
-    void DebugConsole::handleInput()
+    void DebugConsole::handleEvent(sf::Event event)
     {
-        ;
+        std::cout << static_cast<int>(event.text.unicode) << std::endl;
+        if (static_cast<int>(event.text.unicode) == 13)
+        {
+            consoleQueue.addDebugLine(DebugLine(inputTextField.getString()));
+            inputTextField.clear();
+            update();
+            return;
+        }
+        inputTextField.handleEvent(event);
+        inputText.setString(inputTextField.getString());
     }
 
     void DebugConsole::initDefaultConsoleFont()
     {
         font.loadFromFile("../../resources/fonts/cour.ttf");
-        textField.setFont(font);
-        textField.setCharacterSize(14);
-        textField.setFillColor(sf::Color::Red);
-        textField.setStyle(sf::Text::Bold);
-        inputTextField.setFont(font);
-        inputTextField.setCharacterSize(14);
-        inputTextField.setFillColor(sf::Color::Red);
-        inputTextField.setStyle(sf::Text::Bold);
-        inputTextField.setPosition(sf::Vector2f(0, consoleQueue.getMaxPrintedLines()*16));
-        inputTextField.setString("PLACEHOLDER");
+        consoleText.setFont(font);
+        consoleText.setCharacterSize(14);
+        consoleText.setFillColor(sf::Color::Red);
+        consoleText.setStyle(sf::Text::Bold);
+        inputText.setFont(font);
+        inputText.setCharacterSize(14);
+        inputText.setFillColor(sf::Color::Red);
+        inputText.setStyle(sf::Text::Bold);
+        inputText.setPosition(sf::Vector2f(0, static_cast<float>(consoleQueue.getMaxPrintedLines()*16)));
+        inputText.setString("PLACEHOLDER");
     }
 
     void DebugConsole::update()
     {
-        textField.setString(consoleQueue.getDebugString());
+        consoleText.setString(consoleQueue.getDebugString());
+        inputText.setString(inputTextField.getString());
     }
 
     void DebugConsole::draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
         states.transform *= getTransform();
-        target.draw(textField, states);
-        target.draw(inputTextField, states);
+        target.draw(consoleText, states);
+        target.draw(inputText, states);
     }
 
     void DebugConsole::addLine(std::string line)
