@@ -1,5 +1,6 @@
 ﻿[![Coverage Status](https://coveralls.io/repos/github/tomvidm/sfml-game-engine/badge.svg?branch=master)](https://coveralls.io/github/tomvidm/sfml-game-engine?branch=master)
 # Introduction
+A simple game engine written in C++. Mostly for educational purposes, but will hopefully be useful one day. Work in progress.
 
 # How to build
 ## Prerequisites
