@@ -19,6 +19,7 @@ set(LIBRARIES
     graphics
     console
     input
+    random
     )
 
 add_executable(main ${SOURCES})

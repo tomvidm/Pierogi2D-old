@@ -5,16 +5,16 @@ include_directories(
     ${LUA_INCLUDE_DIR} 
     )
 
-set(INPUT_SOURCES
-    InputTextField.cpp
+set(RANDOM_SOURCES
+    Random.cpp
     )
 
 add_library(
-    input
-    ${INPUT_SOURCES}
+    random
+    ${RANDOM_SOURCES}
     )
 
 target_link_libraries(
-    input
+    random
     ${COMMON_LIBRARIES}
     )

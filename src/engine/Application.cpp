@@ -10,10 +10,22 @@ namespace engine {
     void Application::start() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
-        stateStack.pushState(GameState());
+        srand(time(NULL));
 
+        graphics::Sprite newSprite = makeTestSprite();
+        newSprite.setScale(0.4, 0.4);
+        for (int i = 0; i < 12; i++)
+        {
+            newSprite.setPosition(sf::Vector2f(screenWidth*random::randFloat(), screenHeight*random::randFloat()));
+            spritePool.pushObject(newSprite);
+        }
+
+        stateStack.pushState(GameState());
+        
         // For now, this is where the main loop happens.
         // There are probably better ways to loop.
+        
+
         while (window.isOpen())
         {
             loop();
@@ -26,7 +38,7 @@ namespace engine {
         //stateStack.topState()->update();
         
         collectEvents();
-        debugConsole.update();
+        
         handleRendering();
     }
 
@@ -51,7 +63,8 @@ namespace engine {
 
             if (event.type == sf::Event::TextEntered)
             {
-                if (static_cast<int>(event.text.unicode) == 3)
+                debugConsole.update();
+                if (static_cast<int>(event.text.unicode) == 3) // CTRL + C
                 {
                     std::cout << "Toggle console " << std::endl;
                     consoleFocus = !consoleFocus;
@@ -79,7 +92,7 @@ namespace engine {
             window.clear();
 
             // DRAW THINGS
-            //drawSprites();
+            drawSprites();
             window.draw(debugConsole);
 
             window.display();
@@ -119,14 +132,15 @@ namespace engine {
     // Temporary construction of a sprite for runtime testing.
     graphics::Sprite Application::makeTestSprite()
     {
-        //animationHandler.loadTestData();
-        animationHandler.loadFromLuaTable("../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
+        animationHandler.loadTestData();
+        //animationHandler.loadFromLuaTable("../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
         textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
 
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
         
-        sprite.setAnimation(animationHandler.get("testsprite_walk_right_wild"));
+        sprite.setAnimation(animationHandler.get("testsprite_walk_right"));
+        sprite.setPosition(sf::Vector2f(200, 200));
         return sprite;
     }
 }

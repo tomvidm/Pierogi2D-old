@@ -6,9 +6,9 @@ include_directories(
 	)
 
 set(CONSOLE_SOURCES
-	engine/console/DebugConsole.cpp
-	engine/console/ConsoleQueue.cpp
-	engine/console/DebugLine.cpp
+	DebugConsole.cpp
+	ConsoleQueue.cpp
+	DebugLine.cpp
 	)
 
 add_library(

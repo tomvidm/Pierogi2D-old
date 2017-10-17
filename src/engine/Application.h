@@ -7,6 +7,8 @@
 #include <stack>
 #include <memory>
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
@@ -16,6 +18,7 @@
 #include "graphics/Sprite.h"
 #include "graphics/TextureHandler.h"
 #include "console/DebugConsole.h"
+#include "random/Random.h"
 
 #include "GameState.h"
 #include "GameStateStack.h"
@@ -40,6 +43,8 @@ namespace engine
     {
     public:
         void start();
+
+        graphics::Sprite testSprite;
     private:
         void loop();
         

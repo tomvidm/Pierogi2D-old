@@ -1,5 +1,6 @@
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
+    ${PROJECT_SOURCE_DIR}/src/engine
 	${PROJECT_SOURCE_DIR}/includes
 	${SFML_INCLUDE_DIR} 
     ${LUA_INCLUDE_DIR} 
@@ -7,9 +8,9 @@ include_directories(
 
 set(
     ANIMATION_SOURCES
-	engine/animation/AnimationHandler.cpp
-	engine/animation/AnimationController.cpp
-	engine/animation/FrameData.cpp
+	AnimationHandler.cpp
+	AnimationController.cpp
+	FrameData.cpp
 	)
 
 add_library(
