@@ -15,6 +15,7 @@ namespace console {
         void addLine(std::string line);
     private:
         sf::Text textField;
+        sf::Text inputTextField;
         sf::Font font;
         ConsoleQueue consoleQueue;
     };

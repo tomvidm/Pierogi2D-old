@@ -8,7 +8,16 @@ namespace engine {
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         stateStack.pushState(GameState());
         debugConsole.initDefaultConsoleFont();
-        debugConsole.addLine("Hello World!");
+        debugConsole.addLine("Line 1");
+        debugConsole.addLine("Line 2");
+        debugConsole.addLine("Line 3");
+        debugConsole.addLine("Line 4");
+        debugConsole.addLine("Line 5");
+        debugConsole.addLine("Line 6");
+        debugConsole.addLine("Line 7");
+        debugConsole.addLine("Line 8");
+        debugConsole.addLine("Line 9");
+        debugConsole.addLine("Line 10");
 
         while (window.isOpen())
         {
