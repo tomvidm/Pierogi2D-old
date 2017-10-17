@@ -9,6 +9,7 @@ namespace engine {
 
     TEST_F(TestConsoleQueue, CorrectlyAddsLines)
     {
+        EXPECT_EQ(consoleQueue.getDebugString(), "");
         std::string testString = "test string";
         DebugLine debugLine(testString);
         for (int i = 0; i < 10; i++)

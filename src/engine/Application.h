@@ -16,6 +16,7 @@
 #include "VectorArray.h"
 #include "GameState.h"
 #include "GameStateStack.h"
+#include "DebugConsole.h"
 
 extern "C" 
 {
@@ -52,6 +53,8 @@ namespace engine
         sf::RenderWindow window;
 
         Pool<graphics::Sprite, 1024> spritePool;
+
+        console::DebugConsole debugConsole;
 
         graphics::Sprite makeTestSprite();
     };

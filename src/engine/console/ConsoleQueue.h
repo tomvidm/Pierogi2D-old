@@ -1,6 +1,7 @@
 #pragma once
 #include <deque>
 #include <string>
+#include <algorithm>
 
 #include "DebugLine.h"
 
@@ -24,7 +25,7 @@ namespace engine {
 
         inline void clearLines() { queue_.clear(); }
 
-        inline QueueIterator begin() const { return queue_.cend() - maxPrintedLines_; }
+        inline QueueIterator begin() const { return queue_.cend() - std::min<int>(maxPrintedLines_, queue_.size()); }
         inline QueueIterator end() const { return queue_.cend(); }
     private:
         uint maxStoredLines_ = 10;

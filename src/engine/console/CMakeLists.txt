@@ -6,6 +6,7 @@ include_directories(
 	)
 
 set(CONSOLE_SOURCES
+	DebugConsole.cpp
 	ConsoleQueue.cpp
 	DebugLine.cpp
 	)

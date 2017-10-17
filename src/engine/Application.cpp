@@ -7,6 +7,8 @@ namespace engine {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         stateStack.pushState(GameState());
+        debugConsole.initDefaultConsoleFont();
+        debugConsole.addLine("Hello World!");
 
         while (window.isOpen())
         {
@@ -17,7 +19,7 @@ namespace engine {
     void Application::loop() {
         stateStack.topState()->handleInput(&window);
         stateStack.topState()->update();
-
+        debugConsole.update();
         handleRendering();
     }
 
@@ -29,7 +31,8 @@ namespace engine {
             window.clear();
 
             // DRAW THINGS
-            drawSprites();
+            //drawSprites();
+            window.draw(debugConsole);
 
             window.display();
         }
