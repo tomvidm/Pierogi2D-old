@@ -1,4 +1,6 @@
-﻿# sfml-game-engine
+﻿[![Coverage Status](https://coveralls.io/repos/github/tomvidm/sfml-game-engine/badge.svg?branch=master)](https://coveralls.io/github/tomvidm/sfml-game-engine?branch=master)
+
+# sfml-game-engine
 ## Dependencies
 * `SFML` - graphics, input, sound
 * `Lua` - Scripting
