@@ -10,6 +10,6 @@ namespace engine
     protected:
         virtual void SetUp();
 
-        AnimationHandler animationHandler;
+        animation::AnimationHandler animationHandler;
     };
 }

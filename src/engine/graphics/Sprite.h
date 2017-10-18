@@ -2,11 +2,11 @@
 #define SPRITE_H
 
 #include "SFML/Graphics.hpp"
+
 #include "../animation/AnimationController.h"
 
-namespace engine {
+namespace engine { namespace graphics {
     typedef unsigned int uint;
-namespace graphics {
 
     // The Sprite class is an extension of sf::Sprite with the added
     // fuctionality implemented by AnimationController.
@@ -20,12 +20,10 @@ namespace graphics {
             void update();
             void updateRect();
 
-            void setAnimation(FrameData& anim);
+            void setAnimation(animation::FrameData& anim);
         private:
-
-            AnimationController animationController;
+            animation::AnimationController animationController;
     };
-} 
-}
+}}
 
 #endif

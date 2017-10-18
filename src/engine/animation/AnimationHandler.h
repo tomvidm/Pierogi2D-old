@@ -1,12 +1,11 @@
 #ifndef ANIMATIONHANDLER_H
 #define ANIMATIONHANDLER_H
 
-#include <iostream>
 #include <set>
 
+#include "../Directories.h"
 #include "ResourceHandler.h"
 #include "FrameData.h"
-#include "../Directories.h"
 
 extern "C" 
 {
@@ -18,7 +17,7 @@ extern "C"
 #include "selene.h"
 
 
-namespace engine {
+namespace engine { namespace animation {
 
     // The AnimationHandler is a simple template specialization of
     // the ResourceHandler. The purpose is to load frame data from
@@ -35,6 +34,6 @@ namespace engine {
 
     Frame getFrameFromSelector(sel::Selector selector, int frameIndex);
     FrameData getFrameDataFromSelector(sel::Selector selector);
-}
+}}
 
 #endif

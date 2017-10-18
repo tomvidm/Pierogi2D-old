@@ -7,7 +7,7 @@
 
 #include "DebugLine.h"
 
-namespace engine {
+namespace engine { namespace console {
     typedef unsigned int uint;
     typedef std::deque<DebugLine>::const_iterator QueueIterator;
 
@@ -40,6 +40,6 @@ namespace engine {
 
         std::deque<DebugLine> queue_;
     };
-}
+}}
 
 #endif

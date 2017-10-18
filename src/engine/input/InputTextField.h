@@ -4,8 +4,7 @@
 #include <string>
 #include "SFML/Window.hpp"
 
-namespace engine {
-namespace input {
+namespace engine { namespace input {
 
     // This is a class representing the content of the user input
     // field in the console. Given a TextInput event, this class
@@ -20,7 +19,6 @@ namespace input {
     private:
         std::string string;
     };
-}
-}
+}}
 
 #endif

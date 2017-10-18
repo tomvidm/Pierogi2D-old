@@ -1,13 +1,12 @@
 #ifndef VECTORARRAY_H
 #define VECTORARRAY_H
 
+#include <vector>
 #include <math.h> 
 
 #include "SFML/Graphics.hpp"
-#include <vector>
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace graphics {
 	class VectorArray : public sf::Drawable
 	{
 	public:

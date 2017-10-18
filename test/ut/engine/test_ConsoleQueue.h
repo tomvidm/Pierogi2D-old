@@ -10,6 +10,6 @@ namespace engine
     protected:
         virtual void SetUp();
 
-        ConsoleQueue consoleQueue;
+        console::ConsoleQueue consoleQueue;
     };
 }

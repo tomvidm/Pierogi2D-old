@@ -5,8 +5,7 @@
 
 #include <memory>
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace animation {
 
     // The AnimationController is a class used by Sprite to simplify
     // the process of getting a Rect of a spritesheet and to update this
@@ -27,7 +26,6 @@ namespace graphics {
         int numFrames = 0;
         bool isStatic = true;
     };
-}
-}
+}}
 
 #endif

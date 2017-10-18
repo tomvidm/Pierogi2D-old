@@ -1,12 +1,11 @@
 #include "AnimationHandler.h"
 #include <iostream>
-namespace engine {
+
+namespace engine { namespace animation {
     void AnimationHandler::loadFromFile(std::string filename)
     {   
         using std::cout;
         using std::endl;
-
-        cout << "Loading spritesheet animations from " << filename;
 
         if (!isAlreadyLoaded(filename))
         {
@@ -16,20 +15,14 @@ namespace engine {
 
             sel::Selector selector = luaState[filename.c_str()];
             int numAnimations = static_cast<int>(selector["num_animations"]);
-            cout << "\tLoading " << numAnimations << " animations..." << endl;
             selector = selector["animations"];
 
             for (int i = 1; i <= numAnimations; i++)
             {
-                std::string animationName = selector[i]["animation_name"];
-                cout << "\t" << animationName << endl;
+                std::string animationName = selector["animation_name"];
+                cout << animationName << endl;
                 resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
             }
-            cout << "... success!" << endl;
-        }
-        else
-        {
-            cout << "\t... already loaded!" << endl;
         }
     }
 
@@ -66,4 +59,4 @@ namespace engine {
                                                    static_cast<int>(selector[frameIndex][5])));
         return frame;
     }
-}
+}}

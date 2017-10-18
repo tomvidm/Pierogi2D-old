@@ -2,7 +2,6 @@
 #define POOL_H
 
 #include <list>
-#include <iostream>
 
 namespace engine
 {

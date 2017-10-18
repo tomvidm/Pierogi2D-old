@@ -1,7 +1,6 @@
 #include "VectorArray.h"
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace graphics {
 	VectorArray::VectorArray()
 	{
 		vertexArray.setPrimitiveType(sf::PrimitiveType::Lines);

@@ -3,13 +3,12 @@
 
 #include <set>
 
-#include "engine/ResourceHandler.h"
-#include "../Directories.h"
-
 #include "SFML/Graphics.hpp"
 
-namespace engine
-{
+#include "../Directories.h"
+#include "engine/ResourceHandler.h"
+
+namespace engine { namespace graphics {
     // This is a simple template specialization of the ResourceHandler.
     // It stores textures in a map by string keys.
 
@@ -21,6 +20,6 @@ namespace engine
     private:
         std::set<std::string> alreadyLoadedFiles;
 	};
-}
+}}
 
 #endif

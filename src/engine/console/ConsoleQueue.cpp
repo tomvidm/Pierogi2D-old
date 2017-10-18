@@ -1,6 +1,6 @@
 #include "ConsoleQueue.h"
 
-namespace engine {
+namespace engine { namespace console {
     void ConsoleQueue::addDebugLine(const DebugLine& line)
     {
         if (queue_.size() == maxStoredLines_)
@@ -20,4 +20,4 @@ namespace engine {
         }
         return output;
     }
-}
+}}

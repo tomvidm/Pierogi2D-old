@@ -1,13 +1,12 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include "SFML/Graphics.hpp"
-
 #include <math.h>
 #include <array>
 
-namespace engine {
-namespace graphics {
+#include "SFML/Graphics.hpp"
+
+namespace engine { namespace graphics {
     class Vector3
     {
     public:

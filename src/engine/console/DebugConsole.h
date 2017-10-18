@@ -1,14 +1,13 @@
 #ifndef DEBUGCONSOLE_H
 #define DEBUGCONSOLE_H
 
-#include "ConsoleQueue.h"
-#include "engine/input/InputTextField.h"
-
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-namespace engine {
-namespace console {
+#include "ConsoleQueue.h"
+#include "engine/input/InputTextField.h"
+
+namespace engine { namespace console {
 
     // The DebugConsole is responsible for handling console messages
     // and user console input. It inherits from sf::Drawable and
@@ -32,7 +31,6 @@ namespace console {
         sf::Font font;
         ConsoleQueue consoleQueue;
     };
-}
-}
+}}
 
 #endif

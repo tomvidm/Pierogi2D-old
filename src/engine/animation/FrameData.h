@@ -1,11 +1,11 @@
 #ifndef FRAMEDATA_H
 #define FRAMEDATA_H
 
-#include "SFML/Graphics.hpp"
 #include <vector>
-#include <iostream>
 
-namespace engine {
+#include "SFML/Graphics.hpp"
+
+namespace engine { namespace animation {
     
     // Frame is plain old data representing a frame of an animation.
     // The frame has no knowledge of a texture. It only stores the duration
@@ -32,8 +32,6 @@ namespace engine {
     class FrameData
     {
     public:
-        //FrameData();
-
         int getFrameDuration(int index) const;
         sf::Rect<int> getFrameRect(int index) const;
         inline int getNumFrames() const { return frames.size(); }
@@ -42,8 +40,6 @@ namespace engine {
     private:
         std::vector<Frame> frames;
     };
-
-
-}
+}}
 
 #endif

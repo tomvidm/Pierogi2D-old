@@ -60,8 +60,8 @@ namespace engine
 
         bool consoleFocus = false;
 
-        TextureHandler textureHandler;
-        AnimationHandler animationHandler;
+        graphics::TextureHandler textureHandler;
+        animation::AnimationHandler animationHandler;
 
         GameStateStack stateStack;
 

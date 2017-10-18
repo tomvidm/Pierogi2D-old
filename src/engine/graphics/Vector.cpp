@@ -1,7 +1,6 @@
 #include "Vector.h"
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace graphics {
     Vector3::Vector3(float x, float y, float z)
     : x(x), y(y), z(z)
     {

@@ -5,8 +5,7 @@ namespace engine {
 
     enum class ComponentType
     {
-        SPRITE,
-        BEHAVIOUR
+        SPRITE
     };
 
     class Entity

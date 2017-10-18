@@ -1,7 +1,6 @@
 #include "AnimationController.h"
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace animation {
     // Return true if update happened
     bool AnimationController::update()
     {
@@ -25,5 +24,4 @@ namespace graphics {
     {
         return frameData->getFrameRect(currentFrameIndex); 
     }
-}
-}
+}}

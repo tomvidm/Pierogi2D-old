@@ -11,7 +11,7 @@ namespace engine
     TEST_F(TestAnimationHandler, CorrectlyImportsAnimationFromLuaTable)
     {
         animationHandler.loadFromFile("testsprite");
-        FrameData frameData = animationHandler.get("testsprite_walk_right");
+        animation::FrameData frameData = animationHandler.get("testsprite_walk_right");
         EXPECT_EQ(frameData.getNumFrames(), 8);
     }
 }

@@ -1,10 +1,6 @@
-
-
 #include "DebugConsole.h"
-#include <iostream>
 
-namespace engine {
-namespace console {
+namespace engine { namespace console {
     DebugConsole::DebugConsole()
     {
         initDefaultConsoleFont();
@@ -12,7 +8,6 @@ namespace console {
 
     void DebugConsole::handleEvent(sf::Event event)
     {
-        std::cout << static_cast<int>(event.text.unicode) << std::endl;
         if (static_cast<int>(event.text.unicode) == 13)
         {
             consoleQueue.addDebugLine(DebugLine(inputTextField.getString()));
@@ -59,5 +54,4 @@ namespace console {
     {
         consoleQueue.addDebugLine(DebugLine(line));
     }
-}
-}
+}}

@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace engine {
+namespace engine { namespace console {
 
     // The DebugLine is a wrapper for a console message.
     // Very simple, but necessary for planned features
@@ -11,6 +11,7 @@ namespace engine {
     // messages with variables.
 
     typedef unsigned int uint;
+
     class DebugLine
     {
     public:
@@ -22,6 +23,6 @@ namespace engine {
         uint timestamp_;
         std::string string_;
     };
-}
+}}
 
 #endif

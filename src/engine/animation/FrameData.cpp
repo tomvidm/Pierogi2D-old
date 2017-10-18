@@ -1,17 +1,6 @@
 #include "FrameData.h"
 
-namespace engine {
-
-	void printFrame(Frame frame)
-	{
-		using std::cout;
-		using std::endl;
-		cout << frame.duration << ", "
-			 << frame.texRect.left << ", "
-		     << frame.texRect.top << ", "
-             << frame.texRect.width << ", "
-		     << frame.texRect.height << endl;
-	}
+namespace engine { namespace animation {
 
     sf::Rect<int> FrameData::getFrameRect(int index) const
     {
@@ -22,4 +11,4 @@ namespace engine {
     {
         return frames[index].duration;
     }
-}
+}}

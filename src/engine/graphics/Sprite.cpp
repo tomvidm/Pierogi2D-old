@@ -1,7 +1,6 @@
 #include "Sprite.h"
 
-namespace engine {
-namespace graphics {
+namespace engine { namespace graphics {
     void Sprite::update() 
     {
         // This calls the update() function of animationController.
@@ -13,7 +12,7 @@ namespace graphics {
         }
     }
 
-    void Sprite::setAnimation(FrameData& anim)
+    void Sprite::setAnimation(animation::FrameData& anim)
     {
         animationController.setFrameData(anim);
     }
@@ -22,5 +21,4 @@ namespace graphics {
     {
         setTextureRect(animationController.getFrameRect());
     }
-}
-}
+}}
