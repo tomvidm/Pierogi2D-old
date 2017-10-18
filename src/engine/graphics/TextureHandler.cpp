@@ -2,9 +2,10 @@
 
 namespace engine
 {
-	void TextureHandler::loadFromFile(std::string filename, std::string id)
+	void TextureHandler::loadFromFile(std::string filename)
 	{	
-		resourceMap[id] = sf::Texture();
-		resourceMap[id].loadFromFile(filename);
+        std::cout << "Loading texture from images/" + filename + ".png" << "... success!" << std::endl;
+		resourceMap[filename] = sf::Texture();
+		resourceMap[filename].loadFromFile(directories::relativePathToResources + "images/" + filename + ".png");
 	}
 }

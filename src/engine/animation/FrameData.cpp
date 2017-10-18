@@ -1,6 +1,7 @@
 #include "FrameData.h"
 
 namespace engine {
+
 	void printFrame(Frame frame)
 	{
 		using std::cout;

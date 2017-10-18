@@ -1,4 +1,4 @@
-spritesheet_testsprite = {
+testsprite = {
     file = "spritesheet_testsprite.png";
     num_animations = 2;
     animations = {

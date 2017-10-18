@@ -1,85 +1,48 @@
 #include "AnimationHandler.h"
 #include <iostream>
 namespace engine {
-    void AnimationHandler::loadFromFile(std::string filename, std::string id)
+    void AnimationHandler::loadFromFile(std::string filename)
     {   
-        ;
-    }
-
-    void AnimationHandler::loadFromLuaTable(std::string filename, const char* spritesheet)
-    {
         using std::cout;
         using std::endl;
 
-        sel::State luaState;
-        luaState.Load(filename);
+        cout << "Loading spritesheet animations from " << filename;
 
-        sel::Selector selector = luaState[spritesheet];
-        int numAnimations = static_cast<int>(selector["num_animations"]);
-        selector = selector["animations"];
-
-        for (int i = 1; i <= numAnimations; i++)
+        if (!isAlreadyLoaded(filename))
         {
-            std::string animationName = selector[i]["animation_name"];
-            std::cout << "Loading animation: " << animationName << std::endl;
-            resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
+            alreadyLoadedFiles.insert(filename);
+            sel::State luaState;
+            luaState.Load(directories::relativePathToResources + "images/" + filename + ".lua");
+
+            sel::Selector selector = luaState[filename.c_str()];
+            int numAnimations = static_cast<int>(selector["num_animations"]);
+            cout << "\tLoading " << numAnimations << " animations..." << endl;
+            selector = selector["animations"];
+
+            for (int i = 1; i <= numAnimations; i++)
+            {
+                std::string animationName = selector[i]["animation_name"];
+                cout << "\t" << animationName << endl;
+                resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
+            }
+            cout << "... success!" << endl;
+        }
+        else
+        {
+            cout << "\t... already loaded!" << endl;
         }
     }
 
-    void AnimationHandler::loadTestData()
+    bool AnimationHandler::isAlreadyLoaded(std::string filename) const 
     {
-        resourceMap["testsprite_walk_right"] = FrameData();
-
-        Frame frame;
-        frame.duration = 50*1667;
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(0, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*2, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*3, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*4, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*5, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*6, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-        
-        frame.texRect = sf::Rect<int>(sf::Vector2i(184*7, 0), sf::Vector2i(184, 375));
-        resourceMap["testsprite_walk_right"].addFrame(frame);
-
-        /*printFrame(resourceMap["spritesheet_testsprite"].getFrame(0));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(1));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(2));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(3));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(4));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(5));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(6));
-        printFrame(resourceMap["spritesheet_testsprite"].getFrame(7));*/
-    }
-
-    Frame getFrameFromSelector(sel::Selector selector, int frameIndex)
-    {
-        Frame frame;
-        frame.duration = static_cast<int>(selector[frameIndex][1]);
-        frame.texRect = sf::Rect<int>(sf::Vector2i(static_cast<int>(selector[frameIndex][2]),
-                                                   static_cast<int>(selector[frameIndex][3])),
-                                      sf::Vector2i(static_cast<int>(selector[frameIndex][4]),
-                                                   static_cast<int>(selector[frameIndex][5])));
-        return frame;
+        return static_cast<bool>(alreadyLoadedFiles.count(filename));
     }
 
     FrameData getFrameDataFromSelector(sel::Selector selector)
     {
+        using std::cout;
+        using std::endl;
+
         FrameData frameData;
         int numFrames = static_cast<int>(selector["num_frames"]);
         for (int i = 1; i <= numFrames; i++)
@@ -88,5 +51,19 @@ namespace engine {
             frameData.addFrame(newFrame);
         }
         return frameData;
+    }
+
+    Frame getFrameFromSelector(sel::Selector selector, int frameIndex)
+    {
+        using std::cout;
+        using std::endl;
+
+        Frame frame;
+        frame.duration = static_cast<int>(selector[frameIndex][1]);
+        frame.texRect = sf::Rect<int>(sf::Vector2i(static_cast<int>(selector[frameIndex][2]),
+                                                   static_cast<int>(selector[frameIndex][3])),
+                                      sf::Vector2i(static_cast<int>(selector[frameIndex][4]),
+                                                   static_cast<int>(selector[frameIndex][5])));
+        return frame;
     }
 }

@@ -56,13 +56,9 @@ namespace engine {
             {
                 if (event.key.code == sf::Keyboard::Space)
                 {
-                    graphics::Sprite newSprite = makeTestSprite();
-                    newSprite.setScale(0.4, 0.4);
-                    for (int i = 0; i < 50; i++)
-                    {
-                        newSprite.setPosition(sf::Vector2f(screenWidth*random::randFloat(), screenHeight*random::randFloat()));
-                        spritePool.pushObject(newSprite);
-                    }
+                    graphics::Sprite newSprite2 = loadSprite("testsprite");
+                    newSprite2.setPosition(sf::Vector2f(300, 200));
+                    spritePool.pushObject(newSprite2);
                 }
             }
 
@@ -135,17 +131,42 @@ namespace engine {
     }
 
     // Temporary construction of a sprite for runtime testing.
-    graphics::Sprite Application::makeTestSprite()
+/*    graphics::Sprite Application::makeTestSprite()
     {
-        animationHandler.loadTestData();
-        //animationHandler.loadFromLuaTable("../../resources/images/spritesheet_testsprite.lua", "spritesheet_testsprite");
-        textureHandler.loadFromFile("../../resources/images/testsprite.png", "testsprite");
+        //animationHandler.loadTestData();
+        std::string spritename = "testsprite";
+        animationHandler.loadFromLuaTable(spritename + ".lua", spritename.c_str());
+        textureHandler.loadFromFile(spritename + ".png", spritename.c_str());
 
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get("testsprite"));
         
         sprite.setAnimation(animationHandler.get("testsprite_walk_right"));
-        sprite.setPosition(sf::Vector2f(200, 200));
+        sprite.updateRect();
+        return sprite;
+    }
+
+    graphics::Sprite Application::makeTestSprite2()
+    {
+        animationHandler.loadFromLuaTable("../../resources/images/testsprite2.lua", "testsprite2");
+        textureHandler.loadFromFile("../../resources/images/testsprite2.png", "testsprite2");
+
+        graphics::Sprite sprite;
+        sprite.setTexture(textureHandler.get("testsprite2"));
+        
+        sprite.setAnimation(animationHandler.get("testsprite2_standing"));
+        sprite.updateRect();
+        return sprite;
+    }*/
+
+    graphics::Sprite Application::loadSprite(std::string spritename)
+    {
+        animationHandler.loadFromFile(spritename);
+        textureHandler.loadFromFile(spritename);
+        graphics::Sprite sprite;
+        sprite.setTexture(textureHandler.get(spritename));
+        sprite.setAnimation(animationHandler.get(spritename + "_walk_right"));
+        sprite.updateRect();
         return sprite;
     }
 }

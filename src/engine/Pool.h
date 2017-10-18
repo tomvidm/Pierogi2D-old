@@ -34,7 +34,7 @@ namespace engine
         inline uint getFirstFreeIndex() const { return firstFreeObject_; }
 
         uint activateObject();
-        void pushObject(ObjectType& obj);
+        void pushObject(ObjectType obj);
         
         uint getFirstAvailableIndex(uint id = 0) const;
 
@@ -97,7 +97,7 @@ namespace engine
     // returned by activateObject().
 
     template <class ObjectType, uint POOL_SIZE>
-    void Pool<ObjectType, POOL_SIZE>::pushObject(ObjectType& obj)
+    void Pool<ObjectType, POOL_SIZE>::pushObject(ObjectType obj)
     {
         objectPool_[activateObject()] = obj;
     }

@@ -2,6 +2,7 @@
 #define TEXTUREHANDLER_H
 
 #include "engine/ResourceHandler.h"
+#include "../Directories.h"
 
 #include "SFML/Graphics.hpp"
 
@@ -13,7 +14,7 @@ namespace engine
 	class TextureHandler : public ResourceHandler<sf::Texture>
 	{
 	public:
-		void loadFromFile(std::string filename, std::string id);
+		void loadFromFile(std::string filename);
 	};
 }
 

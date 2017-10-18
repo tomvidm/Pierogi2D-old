@@ -18,9 +18,11 @@ namespace graphics {
     {
         public:
             void update();
+            void updateRect();
 
             void setAnimation(FrameData& anim);
         private:
+
             AnimationController animationController;
     };
 } 

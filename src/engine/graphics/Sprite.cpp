@@ -9,13 +9,18 @@ namespace graphics {
         // rect multiple times during one frame.
         if (animationController.update())
         {
-            setTextureRect(animationController.getFrameRect());
+            updateRect();
         }
     }
 
     void Sprite::setAnimation(FrameData& anim)
     {
         animationController.setFrameData(anim);
+    }
+
+    void Sprite::updateRect()
+    {
+        setTextureRect(animationController.getFrameRect());
     }
 }
 }

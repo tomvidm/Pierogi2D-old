@@ -19,6 +19,7 @@
 #include "graphics/TextureHandler.h"
 #include "console/DebugConsole.h"
 #include "random/Random.h"
+#include "Directories.h"
 
 #include "GameState.h"
 #include "GameStateStack.h"
@@ -75,7 +76,7 @@ namespace engine
 
         std::vector<sf::Event> eventVector;
 
-        graphics::Sprite makeTestSprite();
+        graphics::Sprite loadSprite(std::string spritename);
     };
 }
 

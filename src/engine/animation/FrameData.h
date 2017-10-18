@@ -32,7 +32,7 @@ namespace engine {
     class FrameData
     {
     public:
-       //FrameData();
+        //FrameData();
 
         int getFrameDuration(int index) const;
         sf::Rect<int> getFrameRect(int index) const;

@@ -20,5 +20,10 @@ namespace graphics {
         frameData = &anim;
         numFrames = frameData->getNumFrames();
     }
+
+    sf::Rect<int> AnimationController::getFrameRect() const 
+    {
+        return frameData->getFrameRect(currentFrameIndex); 
+    }
 }
 }

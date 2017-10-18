@@ -19,7 +19,7 @@ namespace graphics {
     public:
         bool update();
         void setFrameData(FrameData& anim);
-        inline sf::Rect<int> getFrameRect() const { return frameData->getFrameRect(currentFrameIndex); }
+        sf::Rect<int> getFrameRect() const;
     private:
         sf::Clock frameTimer;
         FrameData* frameData = nullptr;

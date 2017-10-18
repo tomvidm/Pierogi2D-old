@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
 
 namespace engine
 {
@@ -15,7 +16,7 @@ namespace engine
 	class ResourceHandler
 	{
 	public:
-		virtual void loadFromFile(std::string filename, std::string id) = 0;
+		virtual void loadFromFile(std::string filename) = 0;
 		ResourceType& get(std::string id);
 	protected:
 		std::map<std::string, ResourceType> resourceMap;
