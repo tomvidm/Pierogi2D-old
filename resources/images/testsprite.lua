@@ -1,5 +1,5 @@
 testsprite = {
-    file = "spritesheet_testsprite.png";
+    file = "testsprite.png";
     num_animations = 2;
     animations = {
         {

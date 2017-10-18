@@ -8,8 +8,8 @@ namespace engine {
 		using std::endl;
 		cout << frame.duration << ", "
 			 << frame.texRect.left << ", "
-		     << frame.texRect.width << ", "
 		     << frame.texRect.top << ", "
+             << frame.texRect.width << ", "
 		     << frame.texRect.height << endl;
 	}
 

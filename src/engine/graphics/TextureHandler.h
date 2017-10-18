@@ -1,6 +1,8 @@
 #ifndef TEXTUREHANDLER_H
 #define TEXTUREHANDLER_H
 
+#include <set>
+
 #include "engine/ResourceHandler.h"
 #include "../Directories.h"
 
@@ -15,6 +17,9 @@ namespace engine
 	{
 	public:
 		void loadFromFile(std::string filename);
+        bool isAlreadyLoaded(std::string filename) const;
+    private:
+        std::set<std::string> alreadyLoadedFiles;
 	};
 }
 

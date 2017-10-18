@@ -28,7 +28,6 @@ namespace engine {
     {
     public:
         void loadFromFile(std::string filename);
-        void loadTestData();
         bool isAlreadyLoaded(std::string filename) const;
     private:
         std::set<std::string> alreadyLoadedFiles;

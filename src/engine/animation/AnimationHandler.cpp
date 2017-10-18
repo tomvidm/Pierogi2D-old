@@ -61,8 +61,8 @@ namespace engine {
         Frame frame;
         frame.duration = static_cast<int>(selector[frameIndex][1]);
         frame.texRect = sf::Rect<int>(sf::Vector2i(static_cast<int>(selector[frameIndex][2]),
-                                                   static_cast<int>(selector[frameIndex][3])),
-                                      sf::Vector2i(static_cast<int>(selector[frameIndex][4]),
+                                                   static_cast<int>(selector[frameIndex][4])),
+                                      sf::Vector2i(static_cast<int>(selector[frameIndex][3]),
                                                    static_cast<int>(selector[frameIndex][5])));
         return frame;
     }

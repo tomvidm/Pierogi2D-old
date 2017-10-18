@@ -11,7 +11,6 @@ namespace engine {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         srand(time(NULL));
-
         stateStack.pushState(GameState());
         
         // For now, this is where the main loop happens.
@@ -56,9 +55,7 @@ namespace engine {
             {
                 if (event.key.code == sf::Keyboard::Space)
                 {
-                    graphics::Sprite newSprite2 = loadSprite("testsprite");
-                    newSprite2.setPosition(sf::Vector2f(300, 200));
-                    spritePool.pushObject(newSprite2);
+                    spriteVector.push_back(loadSprite("testsprite", "walk_right"));
                 }
             }
 
@@ -107,14 +104,20 @@ namespace engine {
     // NEEDS SOME EXTRA R&D TO FIND SOME NEAT WAY TO DO THIS
     void Application::drawSprites()
     {
-        for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
+        for (auto s = spriteVector.begin(); s != spriteVector.end(); s++)
+        {
+            s->update();
+            window.draw(*s);
+        }
+       
+/*        for (uint i = 0; i < spritePool.getFirstFreeIndex(); i++)
         {
             if ((spritePool.getState(i) & ACTIVE) == ACTIVE)
             {
                 spritePool.get(i).update();
                 window.draw(spritePool.get(i));
             }
-        }
+        }*/
     }
 
     // Basic configurations like resolution and frame rate is
@@ -130,44 +133,25 @@ namespace engine {
         return; // Use Lua to load basic configuration such as window size etc
     }
 
-    // Temporary construction of a sprite for runtime testing.
-/*    graphics::Sprite Application::makeTestSprite()
-    {
-        //animationHandler.loadTestData();
-        std::string spritename = "testsprite";
-        animationHandler.loadFromLuaTable(spritename + ".lua", spritename.c_str());
-        textureHandler.loadFromFile(spritename + ".png", spritename.c_str());
-
-        graphics::Sprite sprite;
-        sprite.setTexture(textureHandler.get("testsprite"));
-        
-        sprite.setAnimation(animationHandler.get("testsprite_walk_right"));
-        sprite.updateRect();
-        return sprite;
-    }
-
-    graphics::Sprite Application::makeTestSprite2()
-    {
-        animationHandler.loadFromLuaTable("../../resources/images/testsprite2.lua", "testsprite2");
-        textureHandler.loadFromFile("../../resources/images/testsprite2.png", "testsprite2");
-
-        graphics::Sprite sprite;
-        sprite.setTexture(textureHandler.get("testsprite2"));
-        
-        sprite.setAnimation(animationHandler.get("testsprite2_standing"));
-        sprite.updateRect();
-        return sprite;
-    }*/
-
-    graphics::Sprite Application::loadSprite(std::string spritename)
+    graphics::Sprite Application::loadSprite(std::string spritename, std::string animation)
     {
         animationHandler.loadFromFile(spritename);
         textureHandler.loadFromFile(spritename);
         graphics::Sprite sprite;
         sprite.setTexture(textureHandler.get(spritename));
-        sprite.setAnimation(animationHandler.get(spritename + "_walk_right"));
+        sprite.setAnimation(animationHandler.get(spritename + "_" + animation));
         sprite.updateRect();
         return sprite;
+    }
+
+    void Application::setSprite(graphics::Sprite& sprite, std::string spritename, std::string animation)
+    {
+        animationHandler.loadFromFile(spritename);
+        textureHandler.loadFromFile(spritename);
+        
+        sprite.setTexture(textureHandler.get(spritename));
+        sprite.setAnimation(animationHandler.get(spritename + "_" + animation));
+        sprite.updateRect();
     }
 }
 

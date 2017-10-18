@@ -44,8 +44,6 @@ namespace engine
     {
     public:
         void start();
-
-        graphics::Sprite testSprite;
     private:
         void loop();
         
@@ -71,12 +69,14 @@ namespace engine
         sf::RenderWindow window;
 
         Pool<graphics::Sprite, 512> spritePool;
+        std::vector<graphics::Sprite> spriteVector;
 
         console::DebugConsole debugConsole;
 
         std::vector<sf::Event> eventVector;
 
-        graphics::Sprite loadSprite(std::string spritename);
+        graphics::Sprite loadSprite(std::string spritename, std::string animation);
+        void setSprite(graphics::Sprite& sprite, std::string spritename, std::string animation);
     };
 }
 
