@@ -44,7 +44,9 @@ namespace engine {
     void Application::collectEvents()
     {
         eventVector.clear();
-        sf::Event event;
+
+        
+        /*sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -76,7 +78,7 @@ namespace engine {
             }
 
             eventVector.push_back(event);
-        }
+        }*/
     }
 
     // This is self explanatory and this method will change a lot.

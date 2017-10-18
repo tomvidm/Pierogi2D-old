@@ -7,17 +7,17 @@
 
 namespace engine
 {
-	typedef std::stack<GameState> StateStack;
+	typedef std::stack<GameState*> StatePtrStack;
 
 	class GameStateStack
 	{
 	public:
-		void pushState(GameState state);
+		void pushState(GameState* state);
 		void popState();
 		
 		GameState* topState();
 	private:
-		StateStack _stack;
+		StatePtrStack _stack;
 	};
 }
 

@@ -2,7 +2,7 @@
 
 namespace engine
 {
-	void GameStateStack::pushState(GameState state)
+	void GameStateStack::pushState(GameState* state)
 	{
 		_stack.push(state);
 	}
@@ -14,6 +14,6 @@ namespace engine
 
 	GameState* GameStateStack::topState()
 	{
-		return &_stack.top();
+		return _stack.top();
 	}
 }

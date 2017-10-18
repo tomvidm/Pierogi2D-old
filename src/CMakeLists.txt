@@ -12,6 +12,7 @@ set(SOURCES
     engine/Application.cpp
     engine/GameStateStack.cpp
     engine/GameState.cpp
+    engine/GameStateTest.cpp
     )
 
 set(LIBRARIES
