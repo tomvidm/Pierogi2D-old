@@ -55,7 +55,7 @@ namespace engine {
             {
                 if (event.key.code == sf::Keyboard::Space)
                 {
-                    spriteVector.push_back(loadSprite("testsprite", "walk_right"));
+                    spriteVector.push_back(loadSprite("testsprite2", "running"));
                 }
             }
 
@@ -87,7 +87,7 @@ namespace engine {
         if (mainClock.getElapsedTime().asMicroseconds() > maxFramePeriod)
         {
             mainClock.restart();
-            window.clear();
+            window.clear(sf::Color::White);
 
             // DRAW THINGS
             drawSprites();
@@ -141,6 +141,7 @@ namespace engine {
         sprite.setTexture(textureHandler.get(spritename));
         sprite.setAnimation(animationHandler.get(spritename + "_" + animation));
         sprite.updateRect();
+        sprite.setScale(sf::Vector2f(3.f, 3.f));
         return sprite;
     }
 
