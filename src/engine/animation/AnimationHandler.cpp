@@ -19,7 +19,7 @@ namespace engine { namespace animation {
 
             for (int i = 1; i <= numAnimations; i++)
             {
-                std::string animationName = selector["animation_name"];
+                std::string animationName = selector[i]["animation_name"];
                 cout << animationName << endl;
                 resourceMap[animationName] = getFrameDataFromSelector(selector[i]);
             }
