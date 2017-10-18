@@ -1,14 +1,3 @@
-/*
-    This template class represent a fixed-size container. All objects are preallocated
-    and "activated" when wanted. New objects are "activated" with incrementing index
-    firstFreeObject_, and deactivated object ids are pushed to a linked list, so to ensure
-    few holes in the pool for cache hits.
-
-    ObjectState::ACTIVE - Object is in use.
-    ObjectState::FREE - Object slot has not been used yet. Internal variable always points to first free slot.
-    ObjectState::INACTIVE - previously used slot. Index is kept in a linked list.
-*/
-
 #ifndef POOL_H
 #define POOL_H
 
@@ -22,6 +11,16 @@ namespace engine
     const uint TOTALLY_UNUSED   = 0;
     const uint HAS_BEEN_USED    = 1 << 0;
     const uint ACTIVE           = 1 << 1;
+
+    // The Pool class is a template class that preallocates a fixed size 
+    // array of ObjectType on the stack. One application can be to store
+    // objects that will have a very short lifetime resulting in rapid creation
+    // and deletion. Using a standard vector would lead to O(N) time complexity
+    // for deletion, but this Pool class will lead to constant time complexity.
+    // In addition to the fixed array, a linked list containing indexes for 
+    // "deleted" objects is stored. therefore, when creating a new object,
+    // the Pool will always allocate the object to the first element of the
+    // linked list of unused indexes.
 
     template <class ObjectType, uint POOL_SIZE>
     class Pool
@@ -66,11 +65,10 @@ namespace engine
         freeAll();
     }
 
-    /*
-        When called, an object is "activated" and the index is returned. Adding
-        an object is as simple as changing a few flags here. setting up the object and
-        assigning sprites etc are left to something else.
-    */
+    // This method is named ActivateObject, but it is misleading.
+    // It simply looks for a free index, sets the bitmask to ACTIVE
+    // and returns said index.
+
     template <class ObjectType, uint POOL_SIZE>
     uint Pool<ObjectType, POOL_SIZE>::activateObject()
     {
@@ -94,6 +92,9 @@ namespace engine
             return -1; // No more space
         }
     }
+
+    // TThis method copies the contents of the input object to the index
+    // returned by activateObject().
 
     template <class ObjectType, uint POOL_SIZE>
     void Pool<ObjectType, POOL_SIZE>::pushObject(ObjectType& obj)

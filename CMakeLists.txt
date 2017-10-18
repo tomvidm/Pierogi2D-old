@@ -8,6 +8,7 @@ project(SFML-Game-Engine)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+if (NOT ${gtest_SOURCE_DIR})
 # ====================================================================
 # ====================================================================
 # Copypasta from: https://crasci    t.com/2015/07/25/cmake-gtest/
@@ -36,6 +37,7 @@ add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src"
 if(CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include"
                         "${gmock_SOURCE_DIR}/include")
+endif()
 endif()
 
 # Now simply link your own targets against gtest, gmock,

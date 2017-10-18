@@ -69,7 +69,7 @@ namespace engine
         sf::Clock mainClock;
         sf::RenderWindow window;
 
-        Pool<graphics::Sprite, 1024> spritePool;
+        Pool<graphics::Sprite, 512> spritePool;
 
         console::DebugConsole debugConsole;
 

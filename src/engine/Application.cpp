@@ -12,14 +12,6 @@ namespace engine {
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         srand(time(NULL));
 
-        graphics::Sprite newSprite = makeTestSprite();
-        newSprite.setScale(0.4, 0.4);
-        for (int i = 0; i < 12; i++)
-        {
-            newSprite.setPosition(sf::Vector2f(screenWidth*random::randFloat(), screenHeight*random::randFloat()));
-            spritePool.pushObject(newSprite);
-        }
-
         stateStack.pushState(GameState());
         
         // For now, this is where the main loop happens.
@@ -59,6 +51,19 @@ namespace engine {
             if (event.type == sf::Event::Closed)
             {
                 window.close();
+            }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Space)
+                {
+                    graphics::Sprite newSprite = makeTestSprite();
+                    newSprite.setScale(0.4, 0.4);
+                    for (int i = 0; i < 50; i++)
+                    {
+                        newSprite.setPosition(sf::Vector2f(screenWidth*random::randFloat(), screenHeight*random::randFloat()));
+                        spritePool.pushObject(newSprite);
+                    }
+                }
             }
 
             if (event.type == sf::Event::TextEntered)
