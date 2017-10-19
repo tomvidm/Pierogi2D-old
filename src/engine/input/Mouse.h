@@ -14,8 +14,6 @@ namespace engine { namespace input {
     class Mouse 
     {
     public:
-        static MouseEvent getMouseEvent(sf::Event& event);
-
         static inline sf::Vector2i getMousePos(sf::Window& window) 
         { 
             return sf::Mouse::getPosition(window); 
@@ -27,9 +25,6 @@ namespace engine { namespace input {
             return sf::Vector2f(static_cast<float>(mpos.x), static_cast<float>(mpos.y)) ;
         }
 
-    
-        static MouseEvent mouseEvent;
-
         static bool leftIsPressed;
         static bool rightIsPressed;
 
@@ -39,9 +34,9 @@ namespace engine { namespace input {
         static sf::Time leftClickTimeThreshold;
         static sf::Time rightClickTimeThreshold;
 
-        static void processEvent(sf::Event& event);
-        static void processMouseButtonPress(sf::Event& event);
-        static void processMouseButtonRelease(sf::Event& event);
+        static void registerButtonPressEvent(sf::Event& event);
+        static MouseEvent returnMouseEventOnRelease(sf::Event& event);
+        
         //static bool leftHold();
         //static bool rightHold();
     };

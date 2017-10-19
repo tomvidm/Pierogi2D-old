@@ -14,10 +14,9 @@ namespace engine { namespace state {
         sf::Event event;
         while (window->pollEvent(event))
         {
-            if (event.type == sf::Event::MouseButtonPressed ||
-                event.type == sf::Event::MouseButtonReleased)
+            if (event.type == sf::Event::MouseButtonReleased)
             {
-                input::MouseEvent mouseEvent = input::Mouse::getMouseEvent(event);
+                input::MouseEvent mouseEvent = input::Mouse::returnMouseEventOnRelease(event);
                 switch (mouseEvent)
                 {
                     case input::MouseEvent::LEFT_CLICKED:
@@ -29,6 +28,10 @@ namespace engine { namespace state {
                     default:
                         break;
                 }
+            }
+            else if (event.type == sf::Event::MouseButtonPressed)
+            {
+                input::Mouse::registerButtonPressEvent(event);
             }
         }
     }

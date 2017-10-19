@@ -1,54 +1,32 @@
 #include "Mouse.h"
 #include <iostream>
 namespace engine { namespace input {
-    MouseEvent Mouse::getMouseEvent(sf::Event& event)
+    void Mouse::registerButtonPressEvent(sf::Event& event)
     {
-        processEvent(event);
-        
-        return mouseEvent;
-    }
-
-    void Mouse::processEvent(sf::Event& event)
-    {
-        switch (event.type)
-        {
-            case sf::Event::MouseButtonPressed:
-                processMouseButtonPress(event);
-                break;
-            case sf::Event::MouseButtonReleased:
-                processMouseButtonRelease(event);
-                break;
-        }
-    }
-
-    void Mouse::processMouseButtonPress(sf::Event& event)
-    {
-        if (!leftIsPressed && event.mouseButton.button == sf::Mouse::Button::Left)
+        if (event.mouseButton.button == sf::Mouse::Button::Left)
         {
             leftHoldTimer.restart();
             leftIsPressed = true;
-            mouseEvent = MouseEvent::NONE;
         }
-        else if (!rightIsPressed  && event.mouseButton.button == sf::Mouse::Button::Right)
+        else if (event.mouseButton.button == sf::Mouse::Button::Right)
         {
             rightHoldTimer.restart();
             rightIsPressed = true;
-            mouseEvent = MouseEvent::NONE;
         }
     }
 
-    void Mouse::processMouseButtonRelease(sf::Event& event)
+    MouseEvent Mouse::returnMouseEventOnRelease(sf::Event& event)
     {
         if (event.mouseButton.button == sf::Mouse::Button::Left)
         {
             leftIsPressed = false;
             if (leftHoldTimer.restart() < leftClickTimeThreshold)
             {
-                mouseEvent = MouseEvent::LEFT_CLICKED;
+                return MouseEvent::LEFT_CLICKED;
             }
             else
             {
-                mouseEvent = MouseEvent::LEFT_RELEASED;
+                return MouseEvent::LEFT_RELEASED;
             }
         }
 
@@ -57,19 +35,16 @@ namespace engine { namespace input {
             rightIsPressed = false;
             if (rightHoldTimer.restart() < rightClickTimeThreshold)
             {
-                mouseEvent = MouseEvent::RIGHT_CLICKED;
+                return MouseEvent::RIGHT_CLICKED;
             }
             else
             {
-                mouseEvent = MouseEvent::RIGHT_RELEASED;
+                return MouseEvent::RIGHT_RELEASED;
             }
         }
     }
 
     // STATIC VARIABLE INITIALIZATION
-
-    MouseEvent Mouse::mouseEvent = MouseEvent::NONE;
-
     bool Mouse::leftIsPressed = false;
     bool Mouse::rightIsPressed = false;
 
