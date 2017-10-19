@@ -14,16 +14,16 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "animation/AnimationHandler.h"
-#include "graphics/Sprite.h"
-#include "graphics/TextureHandler.h"
+#include "Scene.h"
+#include "Directories.h"
+#include "Pool.h"
+
+
 #include "console/DebugConsole.h"
 #include "random/Random.h"
-#include "Directories.h"
-
 #include "state/GameStateTest.h"
 #include "state/GameStateStack.h"
-#include "Pool.h"
+
 
 extern "C" 
 {
@@ -49,34 +49,19 @@ namespace engine
         
         void loadConfiguration();
 
-        void collectEvents();
-
-        void handleRendering();
-        void drawSprites();
-
         int screenWidth;
         int screenHeight;
         int maxFramePeriod; 
 
         bool consoleFocus = false;
 
-        graphics::TextureHandler textureHandler;
-        animation::AnimationHandler animationHandler;
-
+        Scene scene;
         state::GameStateStack stateStack;
 
         sf::Clock mainClock;
         sf::RenderWindow window;
 
-        Pool<graphics::Sprite, 512> spritePool;
-        std::vector<graphics::Sprite> spriteVector;
-
         console::DebugConsole debugConsole;
-
-        std::vector<sf::Event> eventVector;
-
-        graphics::Sprite loadSprite(std::string spritename, std::string animation);
-        void setSprite(graphics::Sprite& sprite, std::string spritename, std::string animation);
     };
 }
 

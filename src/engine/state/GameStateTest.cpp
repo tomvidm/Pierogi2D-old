@@ -1,8 +1,8 @@
 #include "GameStateTest.h"
 
 namespace engine { namespace state {
-	GameStateTest::GameStateTest(Application* applicationPtr)
-	: GameState::GameState(applicationPtr)
+	GameStateTest::GameStateTest(Application* applicationPtr, Scene* scenePtr)
+	: GameState::GameState(applicationPtr, scenePtr)
 	{
 		;
 	}
@@ -12,12 +12,12 @@ namespace engine { namespace state {
         ;
     }
 
-    void GameStateTest::render(sf::RenderWindow* window)
+    void GameStateTest::update()
     {
         ;
     }
 
-    void GameStateTest::update()
+    void GameStateTest::render(sf::RenderWindow* window)
     {
         ;
     }

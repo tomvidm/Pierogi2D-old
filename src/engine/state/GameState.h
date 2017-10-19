@@ -7,14 +7,16 @@
 
 namespace engine { 
 	class Application;
+    class Scene;
 namespace state {
 
 	class GameState : public IGameState
 	{
 	public:
-		GameState(Application* applicationPtr);
+		GameState(Application* applicationPtr, Scene* scenePtr);
 	protected:
-		Application* applicationPtr_;
+		Application* applicationPtr;
+        Scene* scenePtr;
 	};
 }}
 
