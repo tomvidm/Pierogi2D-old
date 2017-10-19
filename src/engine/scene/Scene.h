@@ -32,7 +32,7 @@ namespace engine { namespace scene {
         void update();
         void render(sf::RenderWindow* window);
 
-        void addObject(std::string objectName);
+        void addObject(std::string objectName, sf::Window& window);
     private:
         std::vector<gameobject::Entity> entities;
         std::vector<graphics::Sprite> sprites;

@@ -1,5 +1,7 @@
 #include "Scene.h"
 
+#include "engine/input/Mouse.h"
+
 namespace engine { namespace scene {
     void Scene::update()
     {
@@ -19,7 +21,7 @@ namespace engine { namespace scene {
         window->display();
     }
 
-    void Scene::addObject(std::string objectName)
+    void Scene::addObject(std::string objectName, sf::Window& window)
     {
         sel::State luaState;
         luaState.Load(directories::relativePathToResources + "objects/" + objectName + ".lua");
@@ -37,6 +39,7 @@ namespace engine { namespace scene {
         sprite.updateRect();
         //sprite.setScale(spriteScale);
         sprite.setScale(3.f, 3.f);
+        sprite.setPosition(input::Mouse::getMouseFloatPos(window));
 
         entities.push_back(gameobject::Entity());
         sprites.push_back(sprite);

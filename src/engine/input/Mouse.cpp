@@ -77,6 +77,6 @@ namespace engine { namespace input {
     sf::Clock Mouse::leftHoldTimer = sf::Clock();
     sf::Clock Mouse::rightHoldTimer = sf::Clock();
 
-    sf::Time Mouse::leftClickTimeThreshold = sf::milliseconds(100);
-    sf::Time Mouse::rightClickTimeThreshold = sf::milliseconds(100);
+    sf::Time Mouse::leftClickTimeThreshold = sf::milliseconds(200);
+    sf::Time Mouse::rightClickTimeThreshold = sf::milliseconds(200);
 }}

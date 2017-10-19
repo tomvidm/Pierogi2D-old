@@ -6,7 +6,7 @@ namespace engine { namespace state {
 	GameStateTest::GameStateTest(Application* applicationPtr, scene::Scene* scenePtr)
 	: GameState::GameState(applicationPtr, scenePtr)
 	{
-		scenePtr->addObject("test_object");
+		;
 	}
 
     void GameStateTest::handleInput(sf::Window* window)
@@ -26,6 +26,7 @@ namespace engine { namespace state {
                     std::cout << "LEFT CLIK!!!" << std::endl;
                     sf::Vector2i mpos = input::Mouse::getMousePos(*window);
                     std::cout << mpos.x << ", " << mpos.y << std::endl;
+                    scenePtr->addObject("test_object", *window);
                 }
                 else if (input::Mouse::isRightClick(event))
                 {

@@ -17,6 +17,7 @@ add_library(
 target_link_libraries(
     scene
     gameobject
+    input
     lua
     ${COMMON_LIBRARIES}
     )
