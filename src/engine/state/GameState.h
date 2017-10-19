@@ -1,23 +1,21 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "engine/IState.h"
+#include "SFML/Graphics.hpp"
 
-namespace engine
-{
+#include "IGameState.h"
+
+namespace engine { 
 	class Application;
-	class sf::RenderWindow;
+namespace state {
 
-	class GameState : public IState
+	class GameState : public IGameState
 	{
 	public:
 		GameState(Application* applicationPtr);
-		virtual void handleInput(sf::Window* window) = 0;
-		virtual void render() = 0;
-		virtual void update() = 0;
 	protected:
 		Application* applicationPtr_;
 	};
-}
+}}
 
 #endif

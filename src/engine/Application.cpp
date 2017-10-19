@@ -11,7 +11,7 @@ namespace engine {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         srand(time(NULL));
-        stateStack.pushState(GameState());
+        stateStack.pushState(new state::GameStateTest(this));
         
         // For now, this is where the main loop happens.
         // There are probably better ways to loop.

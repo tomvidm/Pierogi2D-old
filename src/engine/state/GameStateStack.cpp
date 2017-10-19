@@ -1,7 +1,6 @@
-#include "engine/GameStateStack.h"
+#include "GameStateStack.h"
 
-namespace engine
-{
+namespace engine { namespace state {
 	void GameStateStack::pushState(GameState* state)
 	{
 		_stack.push(state);
@@ -16,4 +15,4 @@ namespace engine
 	{
 		return _stack.top();
 	}
-}
+}}

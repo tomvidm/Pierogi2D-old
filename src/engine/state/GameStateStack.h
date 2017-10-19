@@ -3,10 +3,9 @@
 
 #include <stack>
 
-#include "engine/GameState.h"
+#include "GameState.h"
 
-namespace engine
-{
+namespace engine { namespace state {
 	typedef std::stack<GameState*> StatePtrStack;
 
 	class GameStateStack
@@ -19,6 +18,6 @@ namespace engine
 	private:
 		StatePtrStack _stack;
 	};
-}
+}}
 
 #endif

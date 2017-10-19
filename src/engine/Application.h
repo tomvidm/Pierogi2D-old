@@ -21,8 +21,8 @@
 #include "random/Random.h"
 #include "Directories.h"
 
-#include "GameState.h"
-#include "GameStateStack.h"
+#include "state/GameStateTest.h"
+#include "state/GameStateStack.h"
 #include "Pool.h"
 
 extern "C" 
@@ -63,7 +63,7 @@ namespace engine
         graphics::TextureHandler textureHandler;
         animation::AnimationHandler animationHandler;
 
-        GameStateStack stateStack;
+        state::GameStateStack stateStack;
 
         sf::Clock mainClock;
         sf::RenderWindow window;
