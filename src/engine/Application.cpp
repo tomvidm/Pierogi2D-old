@@ -13,10 +13,6 @@ namespace engine {
         srand(time(NULL));
         stateStack.pushState(new state::GameStateTest(this));
         
-        // For now, this is where the main loop happens.
-        // There are probably better ways to loop.
-        
-
         while (window.isOpen())
         {
             loop();
@@ -24,13 +20,9 @@ namespace engine {
     }
 
     void Application::loop() {
-        // These are unused for now.
-        //stateStack.topState()->handleInput(&window);
-        //stateStack.topState()->update();
-        
-        collectEvents();
-        
-        handleRendering();
+        stateStack.topState()->handleInput(&window);
+        stateStack.topState()->update();
+        stateStack.topState()->render(&window);
     }
 
     // This method pushes all the events to the 
@@ -43,8 +35,7 @@ namespace engine {
     // the relevant objects.
     void Application::collectEvents()
     {
-        eventVector.clear();
-
+        //eventVector.clear();
         
         /*sf::Event event;
         while (window.pollEvent(event))

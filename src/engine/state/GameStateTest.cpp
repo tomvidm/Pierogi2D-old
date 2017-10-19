@@ -7,12 +7,12 @@ namespace engine { namespace state {
 		;
 	}
 
-    void GameStateTest::handleInput()
+    void GameStateTest::handleInput(sf::Window* window)
     {
         ;
     }
 
-    void GameStateTest::render()
+    void GameStateTest::render(sf::RenderWindow* window)
     {
         ;
     }
