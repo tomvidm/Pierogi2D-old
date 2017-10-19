@@ -7,6 +7,7 @@ include_directories(
 
 set(INPUT_SOURCES
     InputTextField.cpp
+    Mouse.cpp
     )
 
 add_library(

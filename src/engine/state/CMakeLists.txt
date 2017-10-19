@@ -19,5 +19,6 @@ add_library(
 target_link_libraries(
     states
     scene
+    input
     ${COMMON_LIBRARIES}
     )

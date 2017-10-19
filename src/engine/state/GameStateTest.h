@@ -1,9 +1,11 @@
 #ifndef GAMESTATETEST_H
 #define GAMESTATETEST_H
 
+#include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
 
 #include "engine/scene/Scene.h"
+#include "engine/input/Mouse.h"
 
 #include "GameState.h"
 
