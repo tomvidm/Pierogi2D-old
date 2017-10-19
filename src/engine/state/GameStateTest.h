@@ -3,13 +3,15 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "engine/scene/Scene.h"
+
 #include "GameState.h"
 
 namespace engine { namespace state { 
 	class GameStateTest : public GameState
 	{
 	public:
-		GameStateTest(Application* applicationPtr, Scene* scenePtr);
+		GameStateTest(Application* applicationPtr, scene::Scene* scenePtr);
 		virtual void handleInput(sf::Window* window);
         virtual void update();
 		virtual void render(sf::RenderWindow* window);		

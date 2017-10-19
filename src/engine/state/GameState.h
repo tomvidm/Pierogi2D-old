@@ -3,20 +3,21 @@
 
 #include "SFML/Graphics.hpp"
 
+#include "engine/scene/Scene.h"
+
 #include "IGameState.h"
 
 namespace engine { 
 	class Application;
-    class Scene;
 namespace state {
 
 	class GameState : public IGameState
 	{
 	public:
-		GameState(Application* applicationPtr, Scene* scenePtr);
+		GameState(Application* applicationPtr, scene::Scene* scenePtr);
 	protected:
 		Application* applicationPtr;
-        Scene* scenePtr;
+        scene::Scene* scenePtr;
 	};
 }}
 

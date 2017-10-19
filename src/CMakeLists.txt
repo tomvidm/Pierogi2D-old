@@ -18,7 +18,10 @@ set(LIBRARIES
     console
     input
     random
-    state
+    states
+    scene
+    gameobject
+    lua
     )
 
 add_executable(main ${SOURCES})

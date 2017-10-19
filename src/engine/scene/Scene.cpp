@@ -1,14 +1,22 @@
 #include "Scene.h"
 
-namespace engine {
-    void update()
+namespace engine { namespace scene {
+    void Scene::update()
     {
-        ;
+        for (auto s = sprites.begin(); s != sprites.end(); s++)
+        {
+            s->update();
+        }
     }
 
-    void render(sf::RenderWindow* window)
+    void Scene::render(sf::RenderWindow* window)
     {
-        ;
+        window->clear(sf::Color::White);
+        for (auto s : sprites)
+        {
+            window->draw(s);
+        }
+        window->display();
     }
 
     void Scene::addObject(std::string objectName)
@@ -18,8 +26,8 @@ namespace engine {
 
         sel::Selector selector = luaState["properties"]["sprite"];
         std::string spritename = selector["texture"];
-        std::string animation = "testsprite2_running"; // HACK
-        sf::Vector2f spriteScale = getVector2f(selector);
+        std::string animation = "running"; // HACK
+        //sf::Vector2f spriteScale = lua::getVector2f(selector);
 
         animationHandler.loadFromFile(spritename);
         textureHandler.loadFromFile(spritename);
@@ -27,9 +35,10 @@ namespace engine {
         sprite.setTexture(textureHandler.get(spritename));
         sprite.setAnimation(animationHandler.get(spritename + "_" + animation));
         sprite.updateRect();
-        sprite.setScale(spriteScale);
+        //sprite.setScale(spriteScale);
+        sprite.setScale(3.f, 3.f);
 
-        entities.push_back(Entity());
+        entities.push_back(gameobject::Entity());
         sprites.push_back(sprite);
     }
-}
+}}

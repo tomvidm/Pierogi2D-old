@@ -4,7 +4,7 @@
 #include <set>
 
 #include "../Directories.h"
-#include "ResourceHandler.h"
+#include "../ResourceHandler.h"
 #include "FrameData.h"
 
 extern "C" 

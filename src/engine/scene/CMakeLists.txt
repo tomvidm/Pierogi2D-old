@@ -5,19 +5,18 @@ include_directories(
     ${LUA_INCLUDE_DIR} 
     )
 
-set(CONSOLE_SOURCES
-    GameState.cpp
-    GameStateStack.cpp
-    GameStateTest.cpp
+set(SCENE_SOURCES
+    Scene.cpp
     )
 
 add_library(
-    states
-    ${CONSOLE_SOURCES}
+    scene
+    ${SCENE_SOURCES}
     )
 
 target_link_libraries(
-    states
     scene
+    gameobject
+    lua
     ${COMMON_LIBRARIES}
     )

@@ -5,13 +5,13 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Directories.h"
+#include "../Directories.h"
 
-#include "Entity.h"
-#include "graphics/Sprite.h"
-#include "animation/AnimationHandler.h"
-#include "graphics/TextureHandler.h"
-#include "lua/LuaHelpers.h"
+#include "engine/gameobject/Entity.h"
+#include "engine/graphics/Sprite.h"
+#include "engine/animation/AnimationHandler.h"
+#include "engine/graphics/TextureHandler.h"
+#include "engine/lua/LuaHelpers.h"
 
 extern "C" 
 {
@@ -22,7 +22,7 @@ extern "C"
 
 #include "selene.h"
 
-namespace engine { 
+namespace engine { namespace scene {
 
     // This class holds all the objects of a scene.
 
@@ -34,13 +34,13 @@ namespace engine {
 
         void addObject(std::string objectName);
     private:
-        std::vector<Entity> entities;
+        std::vector<gameobject::Entity> entities;
         std::vector<graphics::Sprite> sprites;
 
         graphics::TextureHandler textureHandler;
         animation::AnimationHandler animationHandler;
 
     };
-}
+}}
 
 #endif

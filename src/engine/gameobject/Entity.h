@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 
-namespace engine {
+namespace engine { namespace gameobject {
 
     enum class ComponentType
     {
@@ -23,6 +23,6 @@ namespace engine {
         std::map<ComponentType, int> componentMap;  // maps some component to its corresponding index
     };
 
-}
+}}
 
 #endif

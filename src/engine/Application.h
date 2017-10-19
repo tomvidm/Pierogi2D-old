@@ -14,11 +14,9 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "Scene.h"
 #include "Directories.h"
-#include "Pool.h"
 
-
+#include "scene/Scene.h"
 #include "console/DebugConsole.h"
 #include "random/Random.h"
 #include "state/GameStateTest.h"
@@ -55,7 +53,7 @@ namespace engine
 
         bool consoleFocus = false;
 
-        Scene scene;
+        scene::Scene scene;
         state::GameStateStack stateStack;
 
         sf::Clock mainClock;
