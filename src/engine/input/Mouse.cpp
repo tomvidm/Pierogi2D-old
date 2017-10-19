@@ -1,6 +1,32 @@
 #include "Mouse.h"
 #include <iostream>
 namespace engine { namespace input {
+    bool Mouse::isLeftClick(sf::Event& event)
+    {
+        if (event.type == sf::Event::MouseButtonReleased &&
+            returnMouseEventOnRelease(event) == MouseEvent::LEFT_CLICKED)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+    bool Mouse::isRightClick(sf::Event& event)
+    {
+        if (event.type == sf::Event::MouseButtonReleased &&
+            returnMouseEventOnRelease(event) == MouseEvent::RIGHT_CLICKED)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
     void Mouse::registerButtonPressEvent(sf::Event& event)
     {
         if (event.mouseButton.button == sf::Mouse::Button::Left)

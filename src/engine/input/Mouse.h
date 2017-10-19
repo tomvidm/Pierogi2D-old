@@ -25,6 +25,12 @@ namespace engine { namespace input {
             return sf::Vector2f(static_cast<float>(mpos.x), static_cast<float>(mpos.y)) ;
         }
 
+        static bool isLeftClick(sf::Event& event);
+        static bool isRightClick(sf::Event& event);
+
+        static void registerButtonPressEvent(sf::Event& event);
+        static MouseEvent returnMouseEventOnRelease(sf::Event& event);
+    private:
         static bool leftIsPressed;
         static bool rightIsPressed;
 
@@ -33,9 +39,6 @@ namespace engine { namespace input {
 
         static sf::Time leftClickTimeThreshold;
         static sf::Time rightClickTimeThreshold;
-
-        static void registerButtonPressEvent(sf::Event& event);
-        static MouseEvent returnMouseEventOnRelease(sf::Event& event);
         
         //static bool leftHold();
         //static bool rightHold();

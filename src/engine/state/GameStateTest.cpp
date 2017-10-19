@@ -14,24 +14,23 @@ namespace engine { namespace state {
         sf::Event event;
         while (window->pollEvent(event))
         {
-            if (event.type == sf::Event::MouseButtonReleased)
-            {
-                input::MouseEvent mouseEvent = input::Mouse::returnMouseEventOnRelease(event);
-                switch (mouseEvent)
-                {
-                    case input::MouseEvent::LEFT_CLICKED:
-                        std::cout << "LEFT CLICK" << std::endl;
-                        break;
-                    case input::MouseEvent::LEFT_RELEASED:
-                        std::cout << "LEFT HOLD RELEASED" << std::endl;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (event.type == sf::Event::MouseButtonPressed)
+            if (event.type == sf::Event::MouseButtonPressed)
             {
                 input::Mouse::registerButtonPressEvent(event);
+            }
+
+            if (event.type == sf::Event::MouseButtonReleased)
+            {
+                if (input::Mouse::isLeftClick(event))
+                {
+                    std::cout << "LEFT CLIK!!!" << std::endl;
+                    sf::Vector2i mpos = input::Mouse::getMousePos(*window);
+                    std::cout << mpos.x << ", " << mpos.y << std::endl;
+                }
+                else if (input::Mouse::isRightClick(event))
+                {
+                    std::cout << "RIGHT CLICK!!!" << std::endl;
+                }
             }
         }
     }
