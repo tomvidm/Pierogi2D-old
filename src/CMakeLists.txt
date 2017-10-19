@@ -21,6 +21,7 @@ set(LIBRARIES
     console
     input
     random
+    state
     )
 
 add_executable(main ${SOURCES})
