@@ -4,6 +4,8 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
+#include "../Directories.h"
+
 #include "ConsoleQueue.h"
 #include "engine/input/InputTextField.h"
 

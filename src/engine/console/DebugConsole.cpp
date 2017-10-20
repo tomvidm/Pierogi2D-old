@@ -21,7 +21,7 @@ namespace engine { namespace console {
 
     void DebugConsole::initDefaultConsoleFont()
     {
-        font.loadFromFile("../../resources/fonts/cour.ttf");
+        font.loadFromFile(directories::fontsDirectory + "cour.ttf");
         consoleText.setFont(font);
         consoleText.setCharacterSize(14);
         consoleText.setFillColor(sf::Color::Red);
