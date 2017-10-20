@@ -18,7 +18,7 @@ namespace engine { namespace console {
     class DebugConsole : public sf::Drawable, public sf::Transformable
     {
     public:
-        DebugConsole::DebugConsole();
+        DebugConsole();
         void handleEvent(sf::Event event);
         void update();
         void draw(sf::RenderTarget &target, sf::RenderStates states) const;
