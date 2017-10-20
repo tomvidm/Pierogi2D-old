@@ -10,6 +10,7 @@ namespace engine {
     void Application::start() {
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
+        engine::input::Mouse::setWindowContext(window);
         srand(static_cast<unsigned int>(time(NULL)));
         stateStack.pushState(new state::GameStateTest(this, &scene, &window));
     

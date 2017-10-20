@@ -104,9 +104,9 @@ namespace graphics {
         quad[2].color = sf::Color(128, 192, 128);
         quad[3].color = sf::Color(128, 128, 192);
     }
-    void Tilemap::update(sf::Window* window)
+    void Tilemap::update()
     {
-        sf::Vector2i indexes = getMouseOverVector(window);
+        sf::Vector2i indexes = getMouseOverVector();
         c.setPosition(sf::Vector2f(-8.f, 8) + (float)(indexes.x)*uVector + (float)(indexes.y)*vVector);
     }
 
@@ -124,9 +124,9 @@ namespace graphics {
         if (showGrid) target.draw(grid, states);
     }
 
-    sf::Vector2i Tilemap::getMouseOverVector(sf::Window* window) const
+    sf::Vector2i Tilemap::getMouseOverVector() const
     {
-        sf::Vector2f relativeMousePos = engine::input::Mouse::getMouseFloatPos(*window) - getPosition();
+        sf::Vector2f relativeMousePos = engine::input::Mouse::getMouseFloatPos() - getPosition();
         float xpos = relativeMousePos.x;
         float ypos = relativeMousePos.y;
         float upos = xpos/2 + ypos;

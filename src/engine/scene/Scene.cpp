@@ -22,7 +22,7 @@ namespace engine { namespace scene {
 
     void Scene::render(sf::RenderWindow* window)
     {
-        tmap.update(window);
+        tmap.update();
         window->clear(sf::Color::White);
         window->draw(tmap);
         for (auto s : sprites)

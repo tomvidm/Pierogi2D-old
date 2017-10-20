@@ -21,6 +21,7 @@
 #include "random/Random.h"
 #include "state/GameStateTest.h"
 #include "state/GameStateStack.h"
+#include "input/Mouse.h"
 
 
 extern "C" 

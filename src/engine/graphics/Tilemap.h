@@ -21,7 +21,7 @@ namespace graphics {
         void allocateVerticesOrdered();
         void setTilePlacement(int u, int v, sf::Vertex* quad);
         sf::CircleShape c;
-        void update(sf::Window* window);
+        void update();
         //void setTexture(sf::Texture& tex);
 
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -29,7 +29,7 @@ namespace graphics {
         inline void setGridVisibility(const bool& showOrNot) { showGrid = showOrNot; }
         inline bool gridIsVisible() const { return showGrid; }
 
-        sf::Vector2i getMouseOverVector(sf::Window* window) const;
+        sf::Vector2i getMouseOverVector() const;
     private:
         bool showGrid;
         int usize;

@@ -1,6 +1,11 @@
 #include "Mouse.h"
 #include <iostream>
 namespace engine { namespace input {
+    void Mouse::setWindowContext(sf::Window& window)
+    {
+        windowContext = &window;
+    }
+
     bool Mouse::isLeftClick(sf::Event& event)
     {
         if (event.type == sf::Event::MouseButtonReleased &&
@@ -76,6 +81,8 @@ namespace engine { namespace input {
     }
 
     // STATIC VARIABLE INITIALIZATION
+    sf::Window* Mouse::windowContext = nullptr;
+
     bool Mouse::leftIsPressed = false;
     bool Mouse::rightIsPressed = false;
 
