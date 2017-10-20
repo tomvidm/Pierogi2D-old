@@ -6,6 +6,16 @@ namespace engine { namespace input {
         windowContext = &window;
     }
 
+    bool Mouse::isLeftHold() 
+    {
+        return leftIsPressed;
+    }
+
+    bool Mouse::isRightHold()
+    {
+        return rightIsPressed;
+    }
+
     bool Mouse::isLeftClick(sf::Event& event)
     {
         if (event.type == sf::Event::MouseButtonReleased &&

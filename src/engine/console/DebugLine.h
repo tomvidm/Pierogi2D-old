@@ -8,10 +8,9 @@
 
 namespace engine { namespace console {
 
-    // The DebugLine is a wrapper for a console message.
-    // Very simple, but necessary for planned features
-    // such as runtime construction of more complex
-    // messages with variables.
+    // The DebugLine stores a vector of ValueFields
+    // and has the purpose of returnin a string constructed
+    // from these fields.
 
     typedef unsigned int uint;
 

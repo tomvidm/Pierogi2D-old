@@ -23,11 +23,9 @@ namespace engine { namespace console {
     // This class contains a string and a union of 
     // different types and pointers. The purpose is to enable
     // DebugLine to have a vector of ValueFields to compose lines
-    // containing different types. Example:
-    // Bob wants to print the values of an integer and a given string
-    // like this:
-    // "When Ashley had", 3, "apples left, 
-    // she said 'Mikhail Gorbachev is a potato'""
+    // containing different types. This allows for composing strings
+    // from other strings and fixed-size values (int, double, float)
+    // and from values pointed to by pointers.
 
     class ValueField
     {

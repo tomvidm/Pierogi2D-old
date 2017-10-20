@@ -11,6 +11,11 @@ namespace engine { namespace input {
         RIGHT_CLICKED, RIGHT_RELEASED
     };
 
+    // This is a wrapper for mouse input. The purpose of this
+    // is for simplifying the detection of single/double click or hold,
+    // and getting relative mouse position by requiring the user
+    // to set a window context.
+
     class Mouse 
     {
     public:
@@ -27,6 +32,8 @@ namespace engine { namespace input {
             return sf::Vector2f(static_cast<float>(mpos.x), static_cast<float>(mpos.y)) ;
         }
 
+        static bool isLeftHold();
+        static bool isRightHold();
         static bool isLeftClick(sf::Event& event);
         static bool isRightClick(sf::Event& event);
 
