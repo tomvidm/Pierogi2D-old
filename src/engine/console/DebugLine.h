@@ -17,9 +17,9 @@ namespace engine { namespace console {
     public:
         DebugLine(std::string str);
 
-        inline std::string set(std::string str) { string_ = str; }
-        inline std::string get() const { return string_; }
-    private:    
+        virtual void set(std::string str);
+        virtual std::string get() const;
+    protected:    
         uint timestamp_;
         std::string string_;
     };

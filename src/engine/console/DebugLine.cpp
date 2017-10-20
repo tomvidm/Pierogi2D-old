@@ -6,4 +6,14 @@ namespace engine { namespace console {
     {
         ;
     }
+
+    void DebugLine::set(std::string str)
+    {
+        string_ = str;
+    }
+
+    std::string DebugLine::get() const 
+    {
+        return string_;
+    }
 }}

@@ -9,6 +9,7 @@ set(CONSOLE_SOURCES
 	DebugConsole.cpp
 	ConsoleQueue.cpp
 	DebugLine.cpp
+	ValueField.cpp
 	)
 
 add_library(

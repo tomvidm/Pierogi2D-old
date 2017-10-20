@@ -28,7 +28,7 @@ namespace engine { namespace scene {
 
         sel::Selector selector = luaState["properties"]["sprite"];
         std::string spritename = selector["texture"];
-        std::string animation = "running"; // HACK
+        std::string animation = "standing"; // HACK
         //sf::Vector2f spriteScale = lua::getVector2f(selector);
 
         animationHandler.loadFromFile(spritename);
@@ -39,7 +39,7 @@ namespace engine { namespace scene {
         sprite.updateRect();
         //sprite.setScale(spriteScale);
         sprite.setScale(3.f, 3.f);
-        sprite.setPosition(input::Mouse::getMouseFloatPos(window));
+        sprite.setPosition(input::Mouse::getMouseFloatPos(window) - sf::Vector2f(1.5*48.f, 1.5*48.f));
 
         entities.push_back(gameobject::Entity());
         sprites.push_back(sprite);

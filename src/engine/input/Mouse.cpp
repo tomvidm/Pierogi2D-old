@@ -68,6 +68,11 @@ namespace engine { namespace input {
                 return MouseEvent::RIGHT_RELEASED;
             }
         }
+
+        else 
+        {
+            return MouseEvent::NONE;
+        }
     }
 
     // STATIC VARIABLE INITIALIZATION
