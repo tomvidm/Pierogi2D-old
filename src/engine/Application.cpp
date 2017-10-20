@@ -12,7 +12,7 @@ namespace engine {
         window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
         srand(static_cast<unsigned int>(time(NULL)));
         stateStack.pushState(new state::GameStateTest(this, &scene, &window));
-        
+    
         while (window.isOpen())
         {
             loop();

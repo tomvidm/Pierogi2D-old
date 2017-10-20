@@ -32,7 +32,6 @@ extern "C"
 
 #include "selene.h"
 
-
 namespace engine
 {
     // This is the top level class holding all of the information
@@ -49,6 +48,7 @@ namespace engine
 
         int screenWidth;
         int screenHeight;
+
         int maxFramePeriod; 
 
         bool consoleFocus = false;
