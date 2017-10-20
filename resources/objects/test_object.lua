@@ -1,5 +1,5 @@
 properties = {
 	sprite = {
-		texture = "char2x"
+		texture = "testsprite2"
 }
 }

@@ -42,6 +42,7 @@ namespace engine { namespace gui {
         std::vector<std::unique_ptr<Widget>> widgets;
 
         sf::FloatRect boundingBox;
+        sf::RectangleShape rectShape;
 
         bool isResizable_;
         bool isMovable_;

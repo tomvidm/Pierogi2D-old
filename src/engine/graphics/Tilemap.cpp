@@ -4,8 +4,7 @@ namespace engine {
 namespace graphics {
     Tilemap::Tilemap()
     {
-        c.setRadius(8.f);
-        c.setFillColor(sf::Color::White);
+        ;
     }
 
     void Tilemap::setSize(int u, int v)
@@ -32,7 +31,7 @@ namespace graphics {
         {
             for (int v = 0; v < vsize; v++)
             {
-                setTilePlacement(u, v, &varr[4*(usize*v + u)]);
+                setTilePlacement(u, v);
             }
         }
 
@@ -68,7 +67,7 @@ namespace graphics {
         {
             for (int i = 0; i < n; i++)
             {
-                setTilePlacement(i, n - i, &varr[4*(usize*(n - i) + i)]);
+                setTilePlacement(i, n - i);
             }
         }
 
@@ -91,8 +90,11 @@ namespace graphics {
         }
     }
 
-    void Tilemap::setTilePlacement(int u, int v, sf::Vertex* quad)
+
+
+    void Tilemap::setTilePlacement(int u, int v)
     {
+        sf::Vertex* quad = getQuad(u, v);
         float uf = static_cast<float>(u);
         float vf = static_cast<float>(v);
         quad[0].position = uf*uVector + vf*vVector;
@@ -106,8 +108,15 @@ namespace graphics {
     }
     void Tilemap::update()
     {
+        for (int u = 0; u < usize; u++)
+        {
+            for (int v = 0; v < vsize; v++)
+            {
+                setDefaultColor(u, v);
+            }
+        }
         sf::Vector2i indexes = getMouseOverVector();
-        c.setPosition(sf::Vector2f(-8.f, 8) + (float)(indexes.x)*uVector + (float)(indexes.y)*vVector);
+        setDarkerDefaultColor(indexes.x, indexes.y);
     }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -120,7 +129,6 @@ namespace graphics {
 
         // draw the vertex array
         target.draw(varr, states);
-        target.draw(c, states);
         if (showGrid) target.draw(grid, states);
     }
 
@@ -133,6 +141,31 @@ namespace graphics {
         float vpos = -xpos/2 + ypos;
         return sf::Vector2i(static_cast<int>(floor(upos/32.f)),
                             static_cast<int>(floor(vpos/32.f)));
+    }
+
+    sf::Vertex* Tilemap::getQuad(int u, int v)
+    {
+        return &varr[4*(usize*v + u)];
+    }
+
+    void Tilemap::setDefaultColor(int u, int v)
+    {
+        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
+        sf::Vertex* quad = getQuad(u, v);
+        quad[0].color = sf::Color(128, 128, 128);
+        quad[1].color = sf::Color(192, 128, 128);
+        quad[2].color = sf::Color(128, 192, 128);
+        quad[3].color = sf::Color(128, 128, 192);
+    }
+
+    void Tilemap::setDarkerDefaultColor(int u, int v)
+    {
+        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
+        sf::Vertex* quad = getQuad(u, v);
+        quad[0].color = sf::Color(64, 64, 64);
+        quad[1].color = sf::Color(128, 64, 64);
+        quad[2].color = sf::Color(64, 128, 64);
+        quad[3].color = sf::Color(64, 64, 128);
     }
 }
 }

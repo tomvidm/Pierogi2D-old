@@ -19,8 +19,7 @@ namespace graphics {
         void setTileSize(sf::Vector2f& size);
         void allocateVertices();
         void allocateVerticesOrdered();
-        void setTilePlacement(int u, int v, sf::Vertex* quad);
-        sf::CircleShape c;
+        void setTilePlacement(int u, int v);
         void update();
         //void setTexture(sf::Texture& tex);
 
@@ -36,6 +35,9 @@ namespace graphics {
         int vsize;
         const sf::Vector2f uVector = 32.f*sf::Vector2f(1.f, 0.5f);
         const sf::Vector2f vVector = 32.f*sf::Vector2f(-1.f, 0.5f);
+        sf::Vertex* getQuad(int u, int v);
+        void setDefaultColor(int u, int v);
+        void setDarkerDefaultColor(int u, int v);
 
         sf::Vector2f tileSize;
 
