@@ -11,6 +11,7 @@
 #include "engine/graphics/Sprite.h"
 #include "engine/animation/AnimationHandler.h"
 #include "engine/graphics/TextureHandler.h"
+#include "engine/graphics/Tilemap.h"
 #include "engine/lua/LuaHelpers.h"
 
 extern "C" 
@@ -29,6 +30,7 @@ namespace engine { namespace scene {
     class Scene 
     {
     public:
+        Scene();
         void update();
         void render(sf::RenderWindow* window);
 
@@ -41,6 +43,9 @@ namespace engine { namespace scene {
 
         graphics::TextureHandler textureHandler;
         animation::AnimationHandler animationHandler;
+
+        sf::RectangleShape measureRect;
+        graphics::Tilemap tmap;
 
     };
 }}

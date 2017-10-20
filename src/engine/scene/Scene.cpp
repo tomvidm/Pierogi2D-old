@@ -3,6 +3,15 @@
 #include "engine/input/Mouse.h"
 
 namespace engine { namespace scene {
+    Scene::Scene()
+    {
+        textureHandler.loadFromFile("measure256x256");
+        tmap.setSize(16, 16);
+        tmap.setTileSize(sf::Vector2f(0, 0));
+        tmap.setGridVisibility(true);
+        tmap.setPosition(sf::Vector2f(1024/2, 0));
+    }
+
     void Scene::update()
     {
         for (auto s = sprites.begin(); s != sprites.end(); s++)
@@ -13,7 +22,9 @@ namespace engine { namespace scene {
 
     void Scene::render(sf::RenderWindow* window)
     {
+        tmap.update(window);
         window->clear(sf::Color::White);
+        window->draw(tmap);
         for (auto s : sprites)
         {
             window->draw(s);
@@ -38,7 +49,7 @@ namespace engine { namespace scene {
         sprite.setAnimation(spritename + "_" + animation);
         sprite.updateRect();
         //sprite.setScale(spriteScale);
-        sprite.setScale(3.f, 3.f);
+        sprite.setScale(1.f, 1.f);
         sprite.setPosition(200, 200);
 
         entities.push_back(gameobject::Entity());

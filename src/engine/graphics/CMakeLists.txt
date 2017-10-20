@@ -22,5 +22,6 @@ add_library(
 target_link_libraries(
     graphics 
     animation 
+    input
     ${COMMON_LIBRARIES}
     )

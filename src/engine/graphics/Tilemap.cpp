@@ -2,11 +2,17 @@
 
 namespace engine {
 namespace graphics {
+    Tilemap::Tilemap()
+    {
+        c.setRadius(8.f);
+        c.setFillColor(sf::Color::White);
+    }
+
     void Tilemap::setSize(int u, int v)
     {
         usize = u;
         vsize = v;
-        allocateVerticesOrdered();
+        allocateVertices();
     }
 
     void Tilemap::setTileSize(sf::Vector2f& size)
@@ -98,6 +104,11 @@ namespace graphics {
         quad[2].color = sf::Color(128, 192, 128);
         quad[3].color = sf::Color(128, 128, 192);
     }
+    void Tilemap::update(sf::Window* window)
+    {
+        sf::Vector2i indexes = getMouseOverVector(window);
+        c.setPosition(sf::Vector2f(-8.f, 8) + (float)(indexes.x)*uVector + (float)(indexes.y)*vVector);
+    }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
@@ -109,7 +120,19 @@ namespace graphics {
 
         // draw the vertex array
         target.draw(varr, states);
+        target.draw(c, states);
         if (showGrid) target.draw(grid, states);
+    }
+
+    sf::Vector2i Tilemap::getMouseOverVector(sf::Window* window) const
+    {
+        sf::Vector2f relativeMousePos = engine::input::Mouse::getMouseFloatPos(*window) - getPosition();
+        float xpos = relativeMousePos.x;
+        float ypos = relativeMousePos.y;
+        float upos = xpos/2 + ypos;
+        float vpos = -xpos/2 + ypos;
+        return sf::Vector2i(static_cast<int>(floor(upos/32.f)),
+                            static_cast<int>(floor(vpos/32.f)));
     }
 }
 }
