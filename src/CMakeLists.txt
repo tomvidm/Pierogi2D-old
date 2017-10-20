@@ -22,6 +22,7 @@ set(LIBRARIES
     scene
     gameobject
     lua
+    gui
     )
 
 add_executable(main ${SOURCES})
