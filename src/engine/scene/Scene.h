@@ -47,7 +47,6 @@ namespace engine { namespace scene {
 
         sf::RectangleShape measureRect;
         graphics::Tilemap tmap;
-        gui::Window win;
 
 
     };

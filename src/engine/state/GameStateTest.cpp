@@ -7,7 +7,7 @@ namespace engine { namespace state {
 	: GameState::GameState(applicationPtr, scenePtr, windowPtr)
 	{
 		playerIndex = scenePtr->addObject("test_object", *windowPtr);
-        scenePtr->getSprite(playerIndex).setAnimation("testsprite2_standing");
+        scenePtr->getSprite(playerIndex).setAnimation("char2x_standing");
 	}
 
     void GameStateTest::handleInput(sf::Window* window)
@@ -25,12 +25,12 @@ namespace engine { namespace state {
                 if (input::Mouse::isLeftClick(event))
                 {
                     std::cout << "Left click." << std::endl;
-                    scenePtr->getSprite(playerIndex).setAnimation("testsprite2_running");
+                    scenePtr->getSprite(playerIndex).setAnimation("char2x_running");
                 }
                 else if (input::Mouse::isRightClick(event))
                 {
                     std::cout << "Right click." << std::endl;
-                    scenePtr->getSprite(playerIndex).setAnimation("testsprite2_standing");
+                    scenePtr->getSprite(playerIndex).setAnimation("char2x_standing");
                 }
             }
         }
