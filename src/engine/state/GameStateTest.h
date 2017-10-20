@@ -13,10 +13,12 @@ namespace engine { namespace state {
 	class GameStateTest : public GameState
 	{
 	public:
-		GameStateTest(Application* applicationPtr, scene::Scene* scenePtr);
+		GameStateTest(Application* applicationPtr, scene::Scene* scenePtr, sf::Window* window);
 		virtual void handleInput(sf::Window* window);
         virtual void update();
 		virtual void render(sf::RenderWindow* window);		
+    private:
+        int playerIndex;
 	};
 }}
 

@@ -1,5 +1,5 @@
 configuration = {
-    screenWidth = 640;
-    screenHeight = 640;
+    screenWidth = 1024;
+    screenHeight = 768;
     maxFramePeriod = 16667
 }

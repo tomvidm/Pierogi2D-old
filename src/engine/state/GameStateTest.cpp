@@ -3,10 +3,11 @@
 #include "GameStateTest.h"
 
 namespace engine { namespace state {
-	GameStateTest::GameStateTest(Application* applicationPtr, scene::Scene* scenePtr)
-	: GameState::GameState(applicationPtr, scenePtr)
+	GameStateTest::GameStateTest(Application* applicationPtr, scene::Scene* scenePtr, sf::Window* windowPtr)
+	: GameState::GameState(applicationPtr, scenePtr, windowPtr)
 	{
-		;
+		playerIndex = scenePtr->addObject("test_object", *windowPtr);
+        scenePtr->getSprite(playerIndex).setAnimation("testsprite2_standing");
 	}
 
     void GameStateTest::handleInput(sf::Window* window)
@@ -23,14 +24,13 @@ namespace engine { namespace state {
             {
                 if (input::Mouse::isLeftClick(event))
                 {
-                    std::cout << "LEFT CLIK!!!" << std::endl;
-                    sf::Vector2i mpos = input::Mouse::getMousePos(*window);
-                    std::cout << mpos.x << ", " << mpos.y << std::endl;
-                    scenePtr->addObject("test_object", *window);
+                    std::cout << "Left click." << std::endl;
+                    scenePtr->getSprite(playerIndex).setAnimation("testsprite2_running");
                 }
                 else if (input::Mouse::isRightClick(event))
                 {
-                    std::cout << "RIGHT CLICK!!!" << std::endl;
+                    std::cout << "Right click." << std::endl;
+                    scenePtr->getSprite(playerIndex).setAnimation("testsprite2_standing");
                 }
             }
         }

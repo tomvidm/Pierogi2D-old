@@ -1,9 +1,12 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include <string>
+
 #include "SFML/Graphics.hpp"
 
 #include "../animation/AnimationController.h"
+#include "engine/animation/AnimationHandler.h"
 
 namespace engine { namespace graphics {
     typedef unsigned int uint;
@@ -17,12 +20,15 @@ namespace engine { namespace graphics {
     class Sprite : public sf::Sprite
     {
         public:
+            Sprite(engine::animation::AnimationHandler& animHandler);
             void update();
             void updateRect();
 
-            void setAnimation(animation::FrameData& anim);
+            void setAnimation(std::string animationName);
         private:
+            std::string spritename;
             animation::AnimationController animationController;
+
     };
 }}
 

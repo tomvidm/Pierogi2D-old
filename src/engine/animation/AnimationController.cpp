@@ -14,10 +14,21 @@ namespace engine { namespace animation {
         return false;
     }
 
+    void AnimationController::setAnimation(std::string animationName)
+    {
+        setFrameData(animHandlerPtr->get(animationName));
+        currentFrameIndex = 0;
+    }
+
     void AnimationController::setFrameData(FrameData& anim)
     {
         frameData = &anim;
         numFrames = frameData->getNumFrames();
+    }
+
+    void AnimationController::setAnimationHandler(AnimationHandler& animHandler)
+    {
+        animHandlerPtr = &animHandler;
     }
 
     sf::Rect<int> AnimationController::getFrameRect() const 

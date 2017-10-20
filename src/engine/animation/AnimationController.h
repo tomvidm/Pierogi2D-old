@@ -2,6 +2,7 @@
 #define ANIMATIONCONTROLLER_H
 
 #include "FrameData.h"
+#include "AnimationHandler.h"
 
 #include <memory>
 
@@ -17,9 +18,13 @@ namespace engine { namespace animation {
     {
     public:
         bool update();
+        void setAnimation(std::string animationName);
         void setFrameData(FrameData& anim);
+        void setAnimationHandler(AnimationHandler& animHandler);
         sf::Rect<int> getFrameRect() const;
+
     private:
+        AnimationHandler* animHandlerPtr;
         sf::Clock frameTimer;
         FrameData* frameData = nullptr;
         int currentFrameIndex = 0;

@@ -1,6 +1,11 @@
 #include "Sprite.h"
 
 namespace engine { namespace graphics {
+    Sprite::Sprite(engine::animation::AnimationHandler& animHandler)
+    {
+        animationController.setAnimationHandler(animHandler);
+    }
+
     void Sprite::update() 
     {
         // This calls the update() function of animationController.
@@ -12,9 +17,10 @@ namespace engine { namespace graphics {
         }
     }
 
-    void Sprite::setAnimation(animation::FrameData& anim)
+    void Sprite::setAnimation(std::string animationName)
     {
-        animationController.setFrameData(anim);
+        animationController.setAnimation(animationName);
+        updateRect();
     }
 
     void Sprite::updateRect()
