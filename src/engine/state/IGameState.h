@@ -12,7 +12,7 @@ namespace engine { namespace state {
 	{
 	public:
 		virtual void update() = 0;
-		virtual void handleInput(sf::Window* window) = 0;
+		virtual void handleInput(sf::RenderWindow* window) = 0;
 		virtual void render(sf::RenderWindow* window) = 0;
 	};
 }}

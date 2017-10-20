@@ -8,7 +8,7 @@ namespace engine { namespace scene {
         textureHandler.loadFromFile("measure256x256");
         tmap.setSize(16, 16);
         tmap.setTileSize(sf::Vector2f(0, 0));
-        tmap.setGridVisibility(true);
+        tmap.setGridVisibility(false);
         tmap.setPosition(sf::Vector2f(1024/2, 0));
     }
 
@@ -32,7 +32,7 @@ namespace engine { namespace scene {
         window->display();
     }
 
-    int Scene::addObject(std::string objectName, sf::Window& window)
+    int Scene::addObject(std::string objectName, sf::RenderWindow& window)
     {
         sel::State luaState;
         luaState.Load(directories::relativePathToResources + "objects/" + objectName + ".lua");

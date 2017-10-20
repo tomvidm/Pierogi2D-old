@@ -19,7 +19,7 @@ namespace engine { namespace input {
     class Mouse 
     {
     public:
-        static void setWindowContext(sf::Window& window);
+        static void setWindowContext(sf::RenderWindow& window);
 
         static inline sf::Vector2i getMousePos() 
         { 
@@ -29,7 +29,7 @@ namespace engine { namespace input {
         static inline sf::Vector2f getMouseFloatPos() 
         { 
             sf::Vector2i mpos = sf::Mouse::getPosition(*windowContext);
-            return sf::Vector2f(static_cast<float>(mpos.x), static_cast<float>(mpos.y)) ;
+            return windowContext->mapPixelToCoords(mpos);
         }
 
         static bool isLeftHold();
@@ -40,7 +40,7 @@ namespace engine { namespace input {
         static void registerButtonPressEvent(sf::Event& event);
         static MouseEvent returnMouseEventOnRelease(sf::Event& event);
     private:
-        static sf::Window* windowContext;
+        static sf::RenderWindow* windowContext;
 
         static bool leftIsPressed;
         static bool rightIsPressed;

@@ -1,7 +1,7 @@
 #include "Mouse.h"
 #include <iostream>
 namespace engine { namespace input {
-    void Mouse::setWindowContext(sf::Window& window)
+    void Mouse::setWindowContext(sf::RenderWindow& window)
     {
         windowContext = &window;
     }
@@ -91,7 +91,7 @@ namespace engine { namespace input {
     }
 
     // STATIC VARIABLE INITIALIZATION
-    sf::Window* Mouse::windowContext = nullptr;
+    sf::RenderWindow* Mouse::windowContext = nullptr;
 
     bool Mouse::leftIsPressed = false;
     bool Mouse::rightIsPressed = false;

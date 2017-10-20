@@ -3,18 +3,27 @@
 #include "GameStateTest.h"
 
 namespace engine { namespace state {
-	GameStateTest::GameStateTest(Application* applicationPtr, scene::Scene* scenePtr, sf::Window* windowPtr)
-	: GameState::GameState(applicationPtr, scenePtr, windowPtr)
+	GameStateTest::GameStateTest(Application* applicationPtr, scene::Scene* scenePtr, sf::RenderWindow* window)
+	: GameState::GameState(applicationPtr, scenePtr, window)
 	{
-		playerIndex = scenePtr->addObject("test_object", *windowPtr);
+        
+        
+		
+        view.setSize(sf::Vector2f(640, 480));
+        window->setView(view);
+        playerIndex = scenePtr->addObject("test_object", *window);
         scenePtr->getSprite(playerIndex).setAnimation("char2x_standing");
 	}
 
-    void GameStateTest::handleInput(sf::Window* window)
+    void GameStateTest::handleInput(sf::RenderWindow* window)
     {
         sf::Event event;
         while (window->pollEvent(event))
         {
+            if (event.type == sf::Event::Closed)
+            {
+                windowPtr->close();
+            }
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 input::Mouse::registerButtonPressEvent(event);
@@ -24,6 +33,8 @@ namespace engine { namespace state {
             {
                 if (input::Mouse::isLeftClick(event))
                 {
+                    view.setCenter(engine::input::Mouse::getMouseFloatPos());
+                    window->setView(view);
                     std::cout << "Left click." << std::endl;
                     scenePtr->getSprite(playerIndex).setAnimation("char2x_running");
                 }

@@ -15,11 +15,11 @@ namespace state {
 	class GameState : public IGameState
 	{
 	public:
-		GameState(Application* applicationPtr, scene::Scene* scenePtr, sf::Window* window);
+		GameState(Application* applicationPtr, scene::Scene* scenePtr, sf::RenderWindow* window);
 	protected:
 		Application* applicationPtr;
         scene::Scene* scenePtr;
-        sf::Window* windowPtr;
+        sf::RenderWindow* windowPtr;
 	};
 }}
 
