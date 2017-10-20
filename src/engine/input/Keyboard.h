@@ -3,11 +3,15 @@
 
 #include <map>
 
+#include "SFML/Window.h"
+
 namespace engine { namespace input {
     class Keyboard
     {
-    public:
-        int a;
+        //void processEvent(sf::Event& event);
+    private:
+        static bool keyState[103] = {false};
+        }
     };
 }}
 
