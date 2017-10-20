@@ -10,6 +10,9 @@ namespace engine { namespace console {
     ValueField::ValueField(float val)
     : floatValue(val), fieldType(FieldType::FLOAT) {;}
 
+    ValueField::ValueField(std::string val)
+    : string(val), fieldType(FieldType::STRING) {;}
+
     ValueField::ValueField(int* valPtr)
     : intValuePtr(valPtr), fieldType(FieldType::INT_PTR) {;}
 
@@ -29,6 +32,7 @@ namespace engine { namespace console {
             case FieldType::INT: return std::to_string(intValue);
             case FieldType::UINT: return std::to_string(uintValue);
             case FieldType::FLOAT: return std::to_string(floatValue);
+            case FieldType::STRING: return string;
             case FieldType::INT_PTR: return std::to_string(*intValuePtr);
             case FieldType::UINT_PTR: return std::to_string(*uintValuePtr);
             case FieldType::FLOAT_PTR: return std::to_string(*floatValuePtr);

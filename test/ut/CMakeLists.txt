@@ -17,6 +17,8 @@ set(TEST_SOURCES
     test_Trivial.cpp
     engine/test_Pool.cpp
     engine/test_ConsoleQueue.cpp
+    engine/test_ValueField.cpp
+    engine/test_DebugLine.cpp
     engine/animation/test_AnimationHandler.cpp
     )
 

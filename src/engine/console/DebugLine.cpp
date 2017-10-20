@@ -1,19 +1,33 @@
 #include "DebugLine.h"
 
 namespace engine { namespace console {
-    DebugLine::DebugLine(std::string str)
-    : string_(str) 
+    DebugLine::DebugLine()
     {
         ;
     }
 
+    DebugLine::DebugLine(std::string str)
+    {
+        fields.push_back(ValueField(str));
+    }
+
     void DebugLine::set(std::string str)
     {
-        string_ = str;
+        fields.push_back(ValueField(str));
+    }
+
+    void DebugLine::addField(ValueField& field)
+    {
+        fields.push_back(field);
     }
 
     std::string DebugLine::get() const 
     {
-        return string_;
+        std::string result = "";
+        for (auto v : fields)
+        {
+            result = result + v.get();
+        }
+        return result;
     }
 }}
