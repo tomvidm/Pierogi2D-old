@@ -23,5 +23,6 @@ target_link_libraries(
     graphics 
     animation 
     input
+    random
     ${COMMON_LIBRARIES}
     )

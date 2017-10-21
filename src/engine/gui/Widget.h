@@ -11,7 +11,8 @@
 namespace engine { namespace gui {
 
     class WidgetManager;
-
+    class Widget;
+    
     enum class WidgetType
     {
         WINDOW,
@@ -21,6 +22,12 @@ namespace engine { namespace gui {
         IMAGE,
         CLOSE
     };
+
+    struct WidgetTypePair
+    {
+        WidgetType widgetType;
+        std::unique_ptr<Widget> windgetPtr;
+    }; 
 
     // The Widget is a base class for representing windows,
     // buttons, text fields and more.
@@ -34,12 +41,14 @@ namespace engine { namespace gui {
         inline bool isMovable() const { return isMovable_; }
 
         bool snapsToLeftEdge() const;
+
+        void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     protected:
         WidgetManager* widgetManager;
-        WidgetType widgetType;
+        WidgetType widgetType = WidgetType::WINDOW;
 
         Widget* parent = nullptr;
-        std::vector<std::unique_ptr<Widget>> widgets;
+        std::vector<WidgetTypePair> widgets;
 
         sf::FloatRect boundingBox;
         sf::RectangleShape rectShape;

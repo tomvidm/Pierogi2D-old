@@ -48,11 +48,13 @@ namespace engine { namespace input {
         {
             leftHoldTimer.restart();
             leftIsPressed = true;
+            leftPressPosition = getMouseFloatPos();
         }
         else if (event.mouseButton.button == sf::Mouse::Button::Right)
         {
             rightHoldTimer.restart();
             rightIsPressed = true;
+            rightPressPosition = getMouseFloatPos();
         }
     }
 
@@ -92,6 +94,9 @@ namespace engine { namespace input {
 
     // STATIC VARIABLE INITIALIZATION
     sf::RenderWindow* Mouse::windowContext = nullptr;
+
+    sf::Vector2f Mouse::leftPressPosition;
+    sf::Vector2f Mouse::rightPressPosition;
 
     bool Mouse::leftIsPressed = false;
     bool Mouse::rightIsPressed = false;

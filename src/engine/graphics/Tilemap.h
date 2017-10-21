@@ -37,7 +37,6 @@ namespace graphics {
         const sf::Vector2f vVector = 32.f*sf::Vector2f(-1.f, 0.5f);
         sf::Vertex* getQuad(int u, int v);
         void setDefaultColor(int u, int v);
-        void setDarkerDefaultColor(int u, int v);
 
         sf::Vector2f tileSize;
 

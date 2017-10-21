@@ -14,4 +14,11 @@ namespace engine { namespace gui {
                                               boundingBox.height - 2*snapSize));
         return snapTarget.contains(engine::input::Mouse::getMouseFloatPos());
     }
+
+    void Widget::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        states.transform *= getTransform();
+
+        target.draw(rectShape);
+    }
 }}

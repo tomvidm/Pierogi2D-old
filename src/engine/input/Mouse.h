@@ -32,6 +32,11 @@ namespace engine { namespace input {
             return windowContext->mapPixelToCoords(mpos);
         }
 
+        static inline sf::Vector2f getPositionOnLeftPress()
+        {
+            return leftPressPosition;
+        }
+
         static bool isLeftHold();
         static bool isRightHold();
         static bool isLeftClick(sf::Event& event);
@@ -41,6 +46,9 @@ namespace engine { namespace input {
         static MouseEvent returnMouseEventOnRelease(sf::Event& event);
     private:
         static sf::RenderWindow* windowContext;
+
+        static sf::Vector2f leftPressPosition;
+        static sf::Vector2f rightPressPosition;
 
         static bool leftIsPressed;
         static bool rightIsPressed;

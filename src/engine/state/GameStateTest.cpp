@@ -33,8 +33,7 @@ namespace engine { namespace state {
             {
                 if (input::Mouse::isLeftClick(event))
                 {
-                    view.setCenter(engine::input::Mouse::getMouseFloatPos());
-                    window->setView(view);
+                    
                     std::cout << "Left click." << std::endl;
                     scenePtr->getSprite(playerIndex).setAnimation("testsprite2_running");
                 }
@@ -44,6 +43,13 @@ namespace engine { namespace state {
                     scenePtr->getSprite(playerIndex).setAnimation("testsprite2_standing");
                 }
             }
+        }
+
+        if (engine::input::Mouse::isLeftHold())
+        {
+            view.move(-engine::input::Mouse::getMouseFloatPos()
+                                + engine::input::Mouse::getPositionOnLeftPress());
+            window->setView(view);
         }
     }
 

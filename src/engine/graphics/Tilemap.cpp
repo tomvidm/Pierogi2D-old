@@ -108,15 +108,7 @@ namespace graphics {
     }
     void Tilemap::update()
     {
-        for (int u = 0; u < usize; u++)
-        {
-            for (int v = 0; v < vsize; v++)
-            {
-                setDefaultColor(u, v);
-            }
-        }
-        sf::Vector2i indexes = getMouseOverVector();
-        setDarkerDefaultColor(indexes.x, indexes.y);
+        ;
     }
 
     void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -156,16 +148,6 @@ namespace graphics {
         quad[1].color = sf::Color(192, 128, 128);
         quad[2].color = sf::Color(128, 192, 128);
         quad[3].color = sf::Color(128, 128, 192);
-    }
-
-    void Tilemap::setDarkerDefaultColor(int u, int v)
-    {
-        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
-        sf::Vertex* quad = getQuad(u, v);
-        quad[0].color = sf::Color(64, 64, 64);
-        quad[1].color = sf::Color(128, 64, 64);
-        quad[2].color = sf::Color(64, 128, 64);
-        quad[3].color = sf::Color(64, 64, 128);
     }
 }
 }
