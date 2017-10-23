@@ -6,7 +6,6 @@
 #include "SFML/Graphics.hpp"
 
 #include "../animation/AnimationController.h"
-#include "engine/animation/AnimationHandler.h"
 #include "engine/graphics/TextureManager.h"
 
 namespace engine { namespace graphics {
@@ -21,7 +20,7 @@ namespace engine { namespace graphics {
     class Sprite : public sf::Sprite
     {
         public:
-            Sprite(engine::animation::AnimationHandler& animHandler);
+            Sprite();
             void update();
             void updateRect();
 

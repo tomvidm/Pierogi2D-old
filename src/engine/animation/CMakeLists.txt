@@ -8,7 +8,7 @@ include_directories(
 
 set(
     ANIMATION_SOURCES
-	AnimationHandler.cpp
+	AnimationManager.cpp
 	AnimationController.cpp
 	FrameData.cpp
 	)

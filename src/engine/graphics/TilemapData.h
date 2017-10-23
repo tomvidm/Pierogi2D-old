@@ -32,9 +32,6 @@ namespace engine { namespace graphics {
         int uSize;
         int vSize;
         std::vector<Tile> tileVector;
-
-        sf::Texture* texturePtr = nullptr;
-        TextureManager* textureManagerPtr;
     };
 
     int coordsToIndex(int u, int v);

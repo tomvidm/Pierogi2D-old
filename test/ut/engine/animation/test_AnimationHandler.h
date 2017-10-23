@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gtest/gtest.h"
-#include "AnimationHandler.h"
+#include "engine/animation/AnimationManager.h"
 
 namespace engine
 {
@@ -10,6 +10,6 @@ namespace engine
     protected:
         virtual void SetUp();
 
-        animation::AnimationHandler animationHandler;
+        animation::AnimationManager* animManagerPtr;
     };
 }

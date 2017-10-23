@@ -1,9 +1,9 @@
 #include "Sprite.h"
 
 namespace engine { namespace graphics {
-    Sprite::Sprite(engine::animation::AnimationHandler& animHandler)
+    Sprite::Sprite()
     {
-        animationController.setAnimationHandler(animHandler);
+        ;
     }
 
     void Sprite::update() 

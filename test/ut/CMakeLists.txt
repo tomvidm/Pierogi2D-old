@@ -19,7 +19,7 @@ set(TEST_SOURCES
     engine/test_ConsoleQueue.cpp
     engine/test_ValueField.cpp
     engine/test_DebugLine.cpp
-    engine/animation/test_AnimationHandler.cpp
+    engine/animation/test_AnimationManager.cpp
     )
 
 set(LIBRARIES

@@ -97,7 +97,7 @@ namespace graphics {
 
     void Tilemap::setTexture(std::string texture)
     {
-        tilemapData.texturePtr = tilemapData.textureManagerPtr->loadFromFile(texture);
+        texturePtr = TextureManager::getInstancePtr()->loadFromFile(texture);
     }
 
     void Tilemap::setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size)
@@ -124,7 +124,7 @@ namespace graphics {
         // states.texture = &m_tileset;
 
         // draw the vertex array
-        target.draw(varr, sf::RenderStates(states.blendMode, states.transform, tilemapData.texturePtr, states.shader));
+        target.draw(varr, sf::RenderStates(states.blendMode, states.transform, texturePtr, states.shader));
         if (showGrid) target.draw(grid, states);
     }
 

@@ -41,9 +41,12 @@ namespace graphics {
         sf::Vector2i getMouseOverVector() const;
     private:
         bool showGrid;
-        const sf::Vector2f uVector = 32.f*sf::Vector2f(1.f, 0.5f);
-        const sf::Vector2f vVector = 32.f*sf::Vector2f(-1.f, 0.5f);
+        float uScale = 32.f;
+        float vScale = 32.f;
+        sf::Vector2f uVector = uScale*sf::Vector2f(1.f, 0.5f);
+        sf::Vector2f vVector = vScale*sf::Vector2f(-1.f, 0.5f);
         sf::Vertex* getQuad(int u, int v);
+        sf::Texture* texturePtr = nullptr;
 
         TilemapData tilemapData;
 
