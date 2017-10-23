@@ -4,6 +4,7 @@
 #include <stack>
 
 #include "GameState.h"
+#include "engine/console/Logger.h"
 
 namespace engine { namespace state {
 	typedef std::stack<GameState*> StatePtrStack;

@@ -18,6 +18,7 @@
 
 #include "scene/Scene.h"
 #include "console/DebugConsole.h"
+#include "console/Logger.h"
 #include "random/Random.h"
 #include "state/GameStateTest.h"
 #include "state/GameStateStack.h"

@@ -8,6 +8,7 @@ namespace engine { namespace state {
 	{
         view.setSize(sf::Vector2f(640, 480));
         window->setView(view);
+        stateName = "GameStateTest";
 	}
 
     void GameStateTest::handleInput(sf::RenderWindow* window)

@@ -8,12 +8,20 @@
 #include "engine/console/ValueField.h"
 
 namespace engine { namespace console {
+    enum LogLevel
+    {
+        DEBUG = 0,
+        WARNING,
+        ERROR,
+        FATAL
+    };
+
     class Logger
     {
     public:
         static Logger* getInstancePtr();
-        void log(std::string string);
-        void log(std::vector<ValueField> valueFields);
+        void log(std::string string, LogLevel logLevel = LogLevel::DEBUG);
+        void log(std::vector<ValueField> valueFields, LogLevel logLevel = LogLevel::DEBUG);
     protected:
         Logger();
         //Logger(const Logger& copy);

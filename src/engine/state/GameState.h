@@ -1,6 +1,8 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <string>
+
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
@@ -16,7 +18,10 @@ namespace state {
 	{
 	public:
 		GameState(Application* applicationPtr, scene::Scene* scenePtr, sf::RenderWindow* window);
+
+		inline std::string getName() const { return stateName; }
 	protected:
+		std::string stateName;
 		Application* applicationPtr;
         scene::Scene* scenePtr;
         sf::RenderWindow* windowPtr;

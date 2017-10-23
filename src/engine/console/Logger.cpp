@@ -14,12 +14,12 @@ namespace engine { namespace console {
         return instancePtr;
     }
 
-    void Logger::log(std::string string)
+    void Logger::log(std::string string, LogLevel logLevel)
     {
         std::cout << string;
     }
 
-    void Logger::log(std::vector<ValueField> valueFields)
+    void Logger::log(std::vector<ValueField> valueFields, LogLevel logLevel)
     {
         for (auto v : valueFields)
         {
