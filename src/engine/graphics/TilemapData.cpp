@@ -4,6 +4,8 @@ namespace engine { namespace graphics {
     TilemapData::TilemapData()
     {
         engine::console::Logger::getInstancePtr()->log("TilemapData initialized...\n");
+
+        textureManagerPtr = TextureManager::getInstancePtr();
     }
 
     void TilemapData::setSize(int u, int v)

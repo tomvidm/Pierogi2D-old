@@ -9,7 +9,6 @@ namespace engine { namespace scene {
         tmap.setSize(16, 16);
         tmap.setGridVisibility(true);
         tmap.setPosition(sf::Vector2f(1024/2, 0));
-        tmap.setTextureHandler(textureHandler);
         tmap.setTexture("wood_tileset");
     }
 

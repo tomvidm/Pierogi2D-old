@@ -12,7 +12,6 @@ namespace engine { namespace console {
     {
     public:
         static Logger* getInstancePtr();
-
         void log(std::string string);
         void log(std::vector<ValueField> valueFields);
     protected:

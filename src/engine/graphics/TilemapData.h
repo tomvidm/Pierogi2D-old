@@ -6,7 +6,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "engine/console/Logger.h"
-#include "engine/graphics/TextureHandler.h"
+#include "engine/graphics/TextureManager.h"
 
 namespace engine { namespace graphics {
     // The Tile struct holds information about a Tile.
@@ -34,7 +34,7 @@ namespace engine { namespace graphics {
         std::vector<Tile> tileVector;
 
         sf::Texture* texturePtr = nullptr;
-        TextureHandler* textureHandlerPtr = nullptr;
+        TextureManager* textureManagerPtr;
     };
 
     int coordsToIndex(int u, int v);

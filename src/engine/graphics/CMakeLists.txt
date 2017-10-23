@@ -11,6 +11,7 @@ set(GRAPHICS_SOURCES
 	VectorArray.cpp
     Vector.cpp
     TextureHandler.cpp
+    TextureManager.cpp
     Tilemap.cpp
     TilemapData.cpp
     )

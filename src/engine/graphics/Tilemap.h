@@ -8,7 +8,7 @@
 
 #include "../Utility.h"
 #include "engine/input/Mouse.h"
-#include "engine/graphics/TextureHandler.h"
+#include "engine/graphics/TextureManager.h"
 #include "engine/graphics/TilemapData.h"
 
 namespace engine {
@@ -24,8 +24,7 @@ namespace graphics {
         void allocateVerticesOrdered();
 
         void setTilePlacement(int u, int v);
-        
-        void setTextureHandler(TextureHandler& texHandler);
+
         void setTexture(std::string texture);
         void setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size);
         void update();
@@ -45,11 +44,8 @@ namespace graphics {
         const sf::Vector2f uVector = 32.f*sf::Vector2f(1.f, 0.5f);
         const sf::Vector2f vVector = 32.f*sf::Vector2f(-1.f, 0.5f);
         sf::Vertex* getQuad(int u, int v);
-        void setDefaultColor(int u, int v);
 
         TilemapData tilemapData;
-        TextureHandler* textureHandlerPtr;
-        sf::Texture* texturePtr;
 
         sf::VertexArray varr;
         sf::VertexArray grid;

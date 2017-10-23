@@ -95,14 +95,9 @@ namespace graphics {
         setTextureToTile(u, v, sf::Vector2f(10*32, 0*32), sf::Vector2f(32, 32));
     }
 
-    void Tilemap::setTextureHandler(TextureHandler& texHandler)
-    {
-        tilemapData.textureHandlerPtr = &texHandler;
-    }
-
     void Tilemap::setTexture(std::string texture)
     {
-        tilemapData.texturePtr = &tilemapData.textureHandlerPtr->get(texture);
+        tilemapData.texturePtr = tilemapData.textureManagerPtr->loadFromFile(texture);
     }
 
     void Tilemap::setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size)
@@ -147,16 +142,6 @@ namespace graphics {
     sf::Vertex* Tilemap::getQuad(int u, int v)
     {
         return &varr[4*(getSizeU()*v + u)];
-    }
-
-    void Tilemap::setDefaultColor(int u, int v)
-    {
-        if (u < 0 || u >= getSizeU() || v < 0 || v >= getSizeV()) return;
-        sf::Vertex* quad = getQuad(u, v);
-        quad[0].color = sf::Color(128, 128, 128);
-        quad[1].color = sf::Color(192, 128, 128);
-        quad[2].color = sf::Color(128, 192, 128);
-        quad[3].color = sf::Color(128, 128, 192);
     }
 }
 }
