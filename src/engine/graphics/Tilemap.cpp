@@ -6,53 +6,44 @@ namespace graphics {
     Tilemap::Tilemap()
     {
         engine::console::Logger::getInstancePtr()->log("Tilemap instantiated...\n");
+        varr.setPrimitiveType(sf::PrimitiveType::Quads);
+        grid.setPrimitiveType(sf::PrimitiveType::Lines);
     }
 
     void Tilemap::setSize(int u, int v)
     {
-        usize = u;
-        vsize = v;
         tilemapData.setSize(u, v);
+        varr.resize(4 * (getSizeU() * getSizeV()));
+        grid.resize(2 * (getSizeU() + getSizeV() + 2));
         allocateVertices();
-    }
-
-    void Tilemap::setTileSize(sf::Vector2f& size)
-    {
-        tileSize = size;
     }
 
     void Tilemap::allocateVertices()
     {
-        varr.setPrimitiveType(sf::PrimitiveType::Quads);
-        varr.resize(4 * (usize * vsize));
-
-        grid.setPrimitiveType(sf::PrimitiveType::Lines);
-        grid.resize(2 * (usize + vsize + 2));
-
-        for (int u = 0; u < usize; u++)
+        for (int u = 0; u < getSizeU(); u++)
         {
-            for (int v = 0; v < vsize; v++)
+            for (int v = 0; v < getSizeV(); v++)
             {
                 setTilePlacement(u, v);
             }
         }
 
-        for (int n = 0; n < usize + 1; n++)
+        for (int n = 0; n < getSizeU() + 1; n++)
         {
             float nf = static_cast<float>(n);
             grid[2*n].position = nf*uVector;
             grid[2*n].color = sf::Color::Black;
-            grid[2*n + 1].position = nf*uVector + (static_cast<float>(vsize))*vVector;
+            grid[2*n + 1].position = nf*uVector + (static_cast<float>(getSizeV()))*vVector;
             grid[2*n + 1].color = sf::Color::Black;
         }
 
-        for (int n = 0; n < usize + 1; n++)
+        for (int n = 0; n < getSizeU() + 1; n++)
         {
             float nf = static_cast<float>(n);
-            grid[2*usize + 2*n].position = nf*vVector;
-            grid[2*usize + 2*n].color = sf::Color::Black;
-            grid[2*usize + 2*n + 1].position = nf*vVector + (static_cast<float>(usize))*uVector;
-            grid[2*usize + 2*n + 1].color = sf::Color::Black;
+            grid[2*getSizeU() + 2*n].position = nf*vVector;
+            grid[2*getSizeU() + 2*n].color = sf::Color::Black;
+            grid[2*getSizeU() + 2*n + 1].position = nf*vVector + (static_cast<float>(getSizeU()))*uVector;
+            grid[2*getSizeU() + 2*n + 1].color = sf::Color::Black;
         }
     }
 
@@ -60,12 +51,12 @@ namespace graphics {
     void Tilemap::allocateVerticesOrdered()
     {
         varr.setPrimitiveType(sf::PrimitiveType::Quads);
-        varr.resize(4 * (usize * vsize));
+        varr.resize(4 * (getSizeU() * getSizeV()));
 
         grid.setPrimitiveType(sf::PrimitiveType::Lines);
-        grid.resize(2 * (usize + vsize + 2));
+        grid.resize(2 * (getSizeU() + getSizeV() + 2));
 
-        for (int n = 0; n <= usize + vsize; n++)
+        for (int n = 0; n <= getSizeU() + getSizeV(); n++)
         {
             for (int i = 0; i < n; i++)
             {
@@ -73,22 +64,22 @@ namespace graphics {
             }
         }
 
-        for (int n = 0; n < usize + 1; n++)
+        for (int n = 0; n < getSizeU() + 1; n++)
         {
             float nf = static_cast<float>(n);
             grid[2*n].position = nf*uVector;
             grid[2*n].color = sf::Color::Black;
-            grid[2*n + 1].position = nf*uVector + (static_cast<float>(vsize))*vVector;
+            grid[2*n + 1].position = nf*uVector + (static_cast<float>(getSizeV()))*vVector;
             grid[2*n + 1].color = sf::Color::Black;
         }
 
-        for (int n = 0; n < usize + 1; n++)
+        for (int n = 0; n < getSizeU() + 1; n++)
         {
             float nf = static_cast<float>(n);
-            grid[2*usize + 2*n].position = nf*vVector;
-            grid[2*usize + 2*n].color = sf::Color::Black;
-            grid[2*usize + 2*n + 1].position = nf*vVector + (static_cast<float>(usize))*uVector;
-            grid[2*usize + 2*n + 1].color = sf::Color::Black;
+            grid[2*getSizeU() + 2*n].position = nf*vVector;
+            grid[2*getSizeU() + 2*n].color = sf::Color::Black;
+            grid[2*getSizeU() + 2*n + 1].position = nf*vVector + (static_cast<float>(getSizeU()))*uVector;
+            grid[2*getSizeU() + 2*n + 1].color = sf::Color::Black;
         }
     }
 
@@ -106,17 +97,17 @@ namespace graphics {
 
     void Tilemap::setTextureHandler(TextureHandler& texHandler)
     {
-        textureHandlerPtr = &texHandler;
+        tilemapData.textureHandlerPtr = &texHandler;
     }
 
     void Tilemap::setTexture(std::string texture)
     {
-        texturePtr = &textureHandlerPtr->get(texture);
+        tilemapData.texturePtr = &tilemapData.textureHandlerPtr->get(texture);
     }
 
     void Tilemap::setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size)
     {
-        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
+        if (u < 0 || u >= getSizeU() || v < 0 || v >= getSizeV()) return;
         sf::Vertex* quad = getQuad(u, v);
         quad[0].texCoords = position;
         quad[1].texCoords = position + sf::Vector2f(size.x, 0);
@@ -138,7 +129,7 @@ namespace graphics {
         // states.texture = &m_tileset;
 
         // draw the vertex array
-        target.draw(varr, sf::RenderStates(states.blendMode, states.transform, texturePtr, states.shader));
+        target.draw(varr, sf::RenderStates(states.blendMode, states.transform, tilemapData.texturePtr, states.shader));
         if (showGrid) target.draw(grid, states);
     }
 
@@ -155,12 +146,12 @@ namespace graphics {
 
     sf::Vertex* Tilemap::getQuad(int u, int v)
     {
-        return &varr[4*(usize*v + u)];
+        return &varr[4*(getSizeU()*v + u)];
     }
 
     void Tilemap::setDefaultColor(int u, int v)
     {
-        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
+        if (u < 0 || u >= getSizeU() || v < 0 || v >= getSizeV()) return;
         sf::Vertex* quad = getQuad(u, v);
         quad[0].color = sf::Color(128, 128, 128);
         quad[1].color = sf::Color(192, 128, 128);

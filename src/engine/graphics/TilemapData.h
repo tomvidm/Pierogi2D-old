@@ -6,6 +6,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "engine/console/Logger.h"
+#include "engine/graphics/TextureHandler.h"
 
 namespace engine { namespace graphics {
     // The Tile struct holds information about a Tile.
@@ -22,12 +23,18 @@ namespace engine { namespace graphics {
     public:
         TilemapData();
         void setSize(int u, int v);
-    private:
+
+        inline int getSizeU() const { return uSize; }
+        inline int getSizeV() const { return vSize; }
+
+        friend class Tilemap;
+    protected:
         int uSize;
         int vSize;
         std::vector<Tile> tileVector;
 
         sf::Texture* texturePtr = nullptr;
+        TextureHandler* textureHandlerPtr = nullptr;
     };
 
     int coordsToIndex(int u, int v);

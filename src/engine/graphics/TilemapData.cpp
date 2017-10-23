@@ -10,6 +10,6 @@ namespace engine { namespace graphics {
     {
         uSize = u;
         vSize = v;
-        tileVector.reserve(uSize * vSize);
+        tileVector.resize(uSize * vSize);
     }
 }}
