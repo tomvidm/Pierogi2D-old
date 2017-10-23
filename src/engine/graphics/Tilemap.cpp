@@ -1,16 +1,18 @@
 #include "Tilemap.h"
+#include "engine/console/Logger.h"
 
 namespace engine {
 namespace graphics {
     Tilemap::Tilemap()
     {
-        ;
+        engine::console::Logger::getInstancePtr()->log("Tilemap instantiated...\n");
     }
 
     void Tilemap::setSize(int u, int v)
     {
         usize = u;
         vsize = v;
+        tilemapData.setSize(u, v);
         allocateVertices();
     }
 

@@ -9,7 +9,7 @@ namespace engine {
     // this will be the playground.
     void Application::start() {
         loadConfiguration();
-        window.create(sf::VideoMode(screenWidth, screenHeight), "myproject");
+        window.create(sf::VideoMode(screenWidth, screenHeight), "Pierogi2D");
         engine::input::Mouse::setWindowContext(window);
         srand(static_cast<unsigned int>(time(NULL)));
         stateStack.pushState(new state::GameStateTest(this, &scene, &window));

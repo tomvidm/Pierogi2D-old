@@ -4,11 +4,11 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build (Debug or Release)" FORCE)
 endif()
 
-project(SFML-Game-Engine)
+project(Pierogi2D)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-if (NOT ${gtest_SOURCE_DIR})
+#if (NOT ${gtest_SOURCE_DIR})
 # ====================================================================
 # ====================================================================
 # Copypasta from: https://crasci    t.com/2015/07/25/cmake-gtest/
@@ -38,7 +38,7 @@ if(CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include"
                         "${gmock_SOURCE_DIR}/include")
 endif()
-endif()
+#endif()
 
 # Now simply link your own targets against gtest, gmock,
 # etc. as appropriate

@@ -9,6 +9,7 @@
 #include "../Utility.h"
 #include "engine/input/Mouse.h"
 #include "engine/graphics/TextureHandler.h"
+#include "engine/graphics/TilemapData.h"
 
 namespace engine {
 namespace graphics {
@@ -45,6 +46,7 @@ namespace graphics {
 
         sf::Vector2f tileSize;
 
+        TilemapData tilemapData;
         TextureHandler* textureHandlerPtr;
         sf::Texture* texturePtr;
         sf::VertexArray varr;

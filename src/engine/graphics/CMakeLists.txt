@@ -12,6 +12,7 @@ set(GRAPHICS_SOURCES
     Vector.cpp
     TextureHandler.cpp
     Tilemap.cpp
+    TilemapData.cpp
     )
 
 add_library(
@@ -21,6 +22,7 @@ add_library(
 
 target_link_libraries(
     graphics 
+    console
     animation 
     input
     random
