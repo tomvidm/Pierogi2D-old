@@ -1,7 +1,7 @@
 #pragma once
 
 #include "gtest/gtest.h"
-#include "ConsoleQueue.h"
+#include "engine/console/ConsoleQueue.h"
 
 namespace engine
 {

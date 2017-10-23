@@ -19,6 +19,7 @@ namespace engine { namespace animation {
         {
             sel::State luaState;
             luaState.Load(directories::relativePathToResources + "images/" + filename + ".lua");
+            engine::console::Logger::getInstancePtr()->log("Loading animations from " + filename + ".lua\n");
 
             sel::Selector selector = luaState[filename.c_str()];
             int numAnimations = static_cast<int>(selector["num_animations"]);

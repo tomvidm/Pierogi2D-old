@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "ValueField.h"
+#include "engine/console/ValueField.h"
 
 typedef unsigned int uint;
 

@@ -1,5 +1,4 @@
 #include "test_ConsoleQueue.h"
-#include <iostream>
 
 namespace engine {
     void TestConsoleQueue::SetUp()

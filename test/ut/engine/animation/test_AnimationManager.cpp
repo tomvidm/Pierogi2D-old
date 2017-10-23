@@ -1,5 +1,4 @@
 #include "test_AnimationManager.h"
-#include <iostream>
 
 namespace engine
 {
