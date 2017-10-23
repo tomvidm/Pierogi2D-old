@@ -90,8 +90,6 @@ namespace graphics {
         }
     }
 
-
-
     void Tilemap::setTilePlacement(int u, int v)
     {
         sf::Vertex* quad = getQuad(u, v);
@@ -101,11 +99,29 @@ namespace graphics {
         quad[1].position = (uf + 1.f)*uVector + vf*vVector;
         quad[2].position = (uf + 1.f)*uVector + (vf + 1)*vVector;
         quad[3].position = uf*uVector + (vf + 1)*vVector;
-        quad[0].color = sf::Color(128, 128, 128);
-        quad[1].color = sf::Color(192, 128, 128);
-        quad[2].color = sf::Color(128, 192, 128);
-        quad[3].color = sf::Color(128, 128, 192);
+        setTextureToTile(u, v, sf::Vector2f(10*32, 0*32), sf::Vector2f(32, 32));
     }
+
+    void Tilemap::setTextureHandler(TextureHandler& texHandler)
+    {
+        textureHandlerPtr = &texHandler;
+    }
+
+    void Tilemap::setTexture(std::string texture)
+    {
+        texturePtr = &textureHandlerPtr->get(texture);
+    }
+
+    void Tilemap::setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size)
+    {
+        if (u < 0 || u >= usize || v < 0 || v >= vsize) return;
+        sf::Vertex* quad = getQuad(u, v);
+        quad[0].texCoords = position;
+        quad[1].texCoords = position + sf::Vector2f(size.x, 0);
+        quad[2].texCoords = position + size;
+        quad[3].texCoords = position + sf::Vector2f(0, size.y);
+    }
+
     void Tilemap::update()
     {
         ;
@@ -120,7 +136,7 @@ namespace graphics {
         // states.texture = &m_tileset;
 
         // draw the vertex array
-        target.draw(varr, states);
+        target.draw(varr, sf::RenderStates(states.blendMode, states.transform, texturePtr, states.shader));
         if (showGrid) target.draw(grid, states);
     }
 

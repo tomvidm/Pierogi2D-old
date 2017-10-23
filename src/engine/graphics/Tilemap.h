@@ -1,12 +1,14 @@
 #pragma once
 
 #include <cmath>
+#include <string>
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
 #include "../Utility.h"
 #include "engine/input/Mouse.h"
+#include "engine/graphics/TextureHandler.h"
 
 namespace engine {
 namespace graphics {
@@ -20,6 +22,9 @@ namespace graphics {
         void allocateVertices();
         void allocateVerticesOrdered();
         void setTilePlacement(int u, int v);
+        void setTextureHandler(TextureHandler& texHandler);
+        void setTexture(std::string texture);
+        void setTextureToTile(int u, int v, sf::Vector2f position, sf::Vector2f size);
         void update();
         //void setTexture(sf::Texture& tex);
 
@@ -40,6 +45,7 @@ namespace graphics {
 
         sf::Vector2f tileSize;
 
+        TextureHandler* textureHandlerPtr;
         sf::Texture* texturePtr;
         sf::VertexArray varr;
         sf::VertexArray grid;

@@ -5,11 +5,13 @@
 namespace engine { namespace scene {
     Scene::Scene()
     {
-        textureHandler.loadFromFile("measure256x256");
+        textureHandler.loadFromFile("wood_tileset");
         tmap.setSize(16, 16);
         tmap.setTileSize(sf::Vector2f(0, 0));
         tmap.setGridVisibility(true);
         tmap.setPosition(sf::Vector2f(1024/2, 0));
+        tmap.setTextureHandler(textureHandler);
+        tmap.setTexture("wood_tileset");
     }
 
     void Scene::update()
