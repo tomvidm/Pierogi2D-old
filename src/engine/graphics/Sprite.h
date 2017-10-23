@@ -7,6 +7,7 @@
 
 #include "../animation/AnimationController.h"
 #include "engine/animation/AnimationHandler.h"
+#include "engine/graphics/TextureManager.h"
 
 namespace engine { namespace graphics {
     typedef unsigned int uint;
@@ -24,7 +25,8 @@ namespace engine { namespace graphics {
             void update();
             void updateRect();
 
-            void setAnimation(std::string animationName);
+            void setSpriteAnimation(std::string animationName);
+            void setSpriteTexture(std::string texturename);
         private:
             std::string spritename;
             animation::AnimationController animationController;

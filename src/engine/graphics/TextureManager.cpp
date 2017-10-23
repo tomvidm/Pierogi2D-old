@@ -19,7 +19,6 @@ namespace engine { namespace graphics {
         
         if (!isAlreadyLoaded(texturename))
         {
-            alreadyLoadedFiles.insert(texturename);
             resourceMap[texturename] = sf::Texture();
             resourceMap[texturename].loadFromFile(directories::imagesDirectory + texturename + ".png");
         }
@@ -28,7 +27,7 @@ namespace engine { namespace graphics {
             engine::console::Logger::getInstancePtr()->log("Already loaded...\n");
         }
 
-        return &resourceMap[texturename];
+        return get(texturename);
     }
 
     sf::Texture* TextureManager::get(std::string id)
@@ -38,7 +37,7 @@ namespace engine { namespace graphics {
 
     bool TextureManager::isAlreadyLoaded(std::string texturename) const 
     {
-        return static_cast<bool>(alreadyLoadedFiles.count(texturename));
+        return static_cast<bool>(resourceMap.count(texturename));
     }
 
     TextureManager::TextureManager()

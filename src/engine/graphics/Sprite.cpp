@@ -17,10 +17,15 @@ namespace engine { namespace graphics {
         }
     }
 
-    void Sprite::setAnimation(std::string animationName)
+    void Sprite::setSpriteAnimation(std::string animationName)
     {
         animationController.setAnimation(animationName);
         updateRect();
+    }
+
+    void Sprite::setSpriteTexture(std::string texturename)
+    {
+        setTexture(*TextureManager::getInstancePtr()->loadFromFile(texturename));
     }
 
     void Sprite::updateRect()

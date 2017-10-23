@@ -25,7 +25,6 @@ namespace engine { namespace graphics {
         TextureManager();
 
         std::map<std::string, sf::Texture> resourceMap;
-        std::set<std::string> alreadyLoadedFiles;
 
         static TextureManager* instancePtr;
     };

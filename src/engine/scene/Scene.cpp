@@ -45,8 +45,8 @@ namespace engine { namespace scene {
         animationHandler.loadFromFile(spritename);
         textureHandler.loadFromFile(spritename);
         graphics::Sprite sprite(animationHandler);
-        sprite.setTexture(textureHandler.get(spritename));
-        sprite.setAnimation(spritename + "_" + animation);
+        sprite.setSpriteTexture(spritename);
+        sprite.setSpriteAnimation(spritename + "_" + animation);
         sprite.updateRect();
         //sprite.setScale(spriteScale);
         sprite.setScale(1.f, 1.f);
