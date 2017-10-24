@@ -13,6 +13,7 @@
 #include "engine/lua/LuaHelpers.h"
 #include "engine/gui/Widget.h"
 #include "engine/graphics/BeamEffect.h"
+#include "engine/graphics/ParticleArray.h"
 
 extern "C" 
 {
@@ -43,6 +44,7 @@ namespace engine { namespace scene {
         graphics::Tilemap tmap;
         gui::Widget widget;
         graphics::BeamEffect beam;
+        graphics::ParticleArray parr;
 
 
     };

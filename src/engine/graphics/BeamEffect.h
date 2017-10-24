@@ -40,7 +40,6 @@ namespace engine { namespace graphics {
         std::vector<sf::Vector2f> points;
         sf::VertexArray beamVertices;
         sf::VertexArray beamLines;
-
         sf::Texture* beamTexturePtr;
         float thickness;
         int numPoints_;

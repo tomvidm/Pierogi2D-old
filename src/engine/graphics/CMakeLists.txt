@@ -13,6 +13,7 @@ set(GRAPHICS_SOURCES
     Tilemap.cpp
     TilemapData.cpp
     BeamEffect.cpp
+    ParticleArray.cpp
     )
 
 add_library(

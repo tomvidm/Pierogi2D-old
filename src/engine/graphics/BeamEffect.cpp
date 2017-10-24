@@ -53,6 +53,7 @@ namespace engine { namespace graphics {
 
         sf::Vector2f texCoords[4] = { sf::Vector2f(266.f, 12.f), sf::Vector2f(353.f, 12.f), sf::Vector2f(266.f, 48.f), sf::Vector2f(353.f, 48.f) };
 
+        // Set vertices at endpoints
         beamVertices[0] = sf::Vertex(startPos + 0.5f*thickness*mainNormal, sf::Color::Black, sf::Vector2f(266.f, 12.f));
         beamVertices[1] = sf::Vertex(startPos - 0.5f*thickness*mainNormal, sf::Color::Black, sf::Vector2f(353.f, 12.f));
         beamVertices[2*numPoints_ - 2] = sf::Vertex(endPos + 0.5f*thickness*mainNormal, sf::Color::Black, sf::Vector2f(266.f, 12.f));
@@ -62,6 +63,7 @@ namespace engine { namespace graphics {
         beamLines[2*numPoints_ - 2] = sf::Vertex(endPos + 0.5f*thickness*mainNormal, sf::Color::Blue);
         beamLines[2*numPoints_ - 1] = sf::Vertex(endPos - 0.5f*thickness*mainNormal, sf::Color::Red);
 
+        // Set vertices in between
         for (int i = 1; i < numPoints_ - 1; i++)
         {
             float s = static_cast<float>(i)/static_cast<float>(numPoints_ - 1);

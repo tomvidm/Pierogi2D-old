@@ -19,6 +19,7 @@ namespace engine { namespace scene {
     {
         beam.setEndpoints(sf::Vector2f(0, 0), engine::input::Mouse::getMouseFloatPos(false));
         beam.update();
+        parr.update();
         for (auto s = sprites.begin(); s != sprites.end(); s++)
         {
             s->update();
@@ -31,6 +32,7 @@ namespace engine { namespace scene {
         window->clear(sf::Color::Black);
         //window->draw(tmap);
         window->draw(beam);
+        window->draw(parr);
         for (auto s : sprites)
         {
             window->draw(s);
