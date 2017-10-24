@@ -3,6 +3,7 @@
 
 namespace engine {
 namespace graphics {
+
     Tilemap::Tilemap()
     {
         engine::console::Logger::getInstancePtr()->log("Tilemap instantiated...\n");
@@ -24,6 +25,7 @@ namespace graphics {
         {
             for (int v = 0; v < getSizeV(); v++)
             {
+                Tile tile(u, v, getQuad(u, v));
                 setTilePlacement(u, v);
             }
         }
