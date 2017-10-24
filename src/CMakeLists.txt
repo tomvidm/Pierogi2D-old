@@ -1,4 +1,5 @@
 add_subdirectory(engine)
+add_subdirectory(common)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src/
