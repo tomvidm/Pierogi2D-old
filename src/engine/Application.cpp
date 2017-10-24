@@ -8,6 +8,7 @@ namespace engine {
     // Lua scripts the ability to call functions like "CREATE A FRIGGIN OBJECT",
     // this will be the playground.
     void Application::start() {
+        engine::console::Logger::getInstancePtr()->log("Application start...\n", engine::console::LogLevel::DEBUG);
         loadConfiguration();
         window.create(sf::VideoMode(screenWidth, screenHeight), "Pierogi2D");
         engine::input::Mouse::setWindowContext(window);
@@ -49,6 +50,7 @@ namespace engine {
     // the Selene Lua wrapper for c++.
     void Application::loadConfiguration()
     {
+        engine::console::Logger::getInstancePtr()->log("Loading configuration from conf.lua\n");
         sel::State luaState;
         luaState.Load("../../src/engine/conf.lua");
         screenWidth = static_cast<int>(luaState["configuration"]["screenWidth"]);

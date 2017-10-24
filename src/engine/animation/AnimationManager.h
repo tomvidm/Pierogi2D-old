@@ -11,14 +11,7 @@
 #include "engine/console/Logger.h"
 #include "engine/animation/FrameData.h"
 
-extern "C" 
-{
-    #include "lua.h"
-    #include "lualib.h"
-    #include "lauxlib.h"
-}
-
-#include "selene.h"
+#include "engine/lua/LuaIncludes.h"
 
 
 namespace engine { namespace animation {

@@ -15,7 +15,7 @@ namespace engine { namespace graphics {
 
     sf::Texture* TextureManager::loadFromFile(std::string texturename)
     {   
-        engine::console::Logger::getInstancePtr()->log("Loading texture from " + texturename + ".png\n");
+        engine::console::Logger::getInstancePtr()->log("Loading texture from " + texturename + ".png\n", engine::console::LogLevel::DEBUG);
         
         if (!isAlreadyLoaded(texturename))
         {
@@ -24,7 +24,7 @@ namespace engine { namespace graphics {
         }
         else
         {
-            engine::console::Logger::getInstancePtr()->log("Already loaded...\n");
+            engine::console::Logger::getInstancePtr()->log("Already loaded...\n", engine::console::LogLevel::DEBUG);
         }
 
         return get(texturename);
