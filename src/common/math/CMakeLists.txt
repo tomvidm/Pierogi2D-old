@@ -8,6 +8,7 @@ include_directories(
 set(CONSOLE_SOURCES
 	#Interpolation.cpp
 	Utility.cpp
+	VectorHelpers.cpp
 	)
 
 add_library(

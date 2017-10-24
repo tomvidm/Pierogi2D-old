@@ -21,6 +21,11 @@ namespace engine { namespace graphics {
         sf::Vector2f texCoord;      // Position of upper left texture coordinate
     };
 
+    // The purpose of TilemapData is to encapsulate some of the
+    // data for the Tilemap. Tilemap should store data related to world space
+    // and graphics, while TilemapData should just store more logic related data.
+    // Might be completely unnecessary.
+
     class TilemapData
     {
     public:

@@ -9,6 +9,8 @@ namespace engine { namespace scene {
         tmap.setGridVisibility(true);
         tmap.setPosition(sf::Vector2f(1024/2, 0));
         tmap.setTexture("wood_tileset");
+        beam.setEndpoints(sf::Vector2f(0, 0), sf::Vector2f(300, 300));
+        beam.setNumVertices(20);
     }
 
     void Scene::update()
@@ -22,9 +24,9 @@ namespace engine { namespace scene {
     void Scene::render(sf::RenderWindow* window)
     {
         tmap.update();
-        window->clear(sf::Color::White);
+        window->clear(sf::Color::Black);
         window->draw(tmap);
-        window->draw(widget);
+        window->draw(beam);
         for (auto s : sprites)
         {
             window->draw(s);

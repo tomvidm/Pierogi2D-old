@@ -12,6 +12,7 @@ set(GRAPHICS_SOURCES
     TextureManager.cpp
     Tilemap.cpp
     TilemapData.cpp
+    BeamEffect.cpp
     )
 
 add_library(

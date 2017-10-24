@@ -8,7 +8,7 @@
 namespace engine { namespace graphics {
 	struct Particle
 	{
-
+		sf::Vertex vertices[3];
 	}
 	
 	class ParticleArray
