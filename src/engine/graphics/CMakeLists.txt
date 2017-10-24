@@ -8,7 +8,6 @@ include_directories(
 
 set(GRAPHICS_SOURCES
 	Sprite.cpp
-	VectorArray.cpp
     Vector.cpp
     TextureManager.cpp
     Tilemap.cpp
@@ -21,10 +20,13 @@ add_library(
     )
 
 target_link_libraries(
+# engine
     graphics 
     console
     animation 
     input
     random
+# common
+    math
     ${COMMON_LIBRARIES}
     )

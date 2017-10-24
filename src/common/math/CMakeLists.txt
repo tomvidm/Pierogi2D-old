@@ -6,7 +6,8 @@ include_directories(
 	)
 
 set(CONSOLE_SOURCES
-	Interpolation.cpp
+	#Interpolation.cpp
+	Utility.cpp
 	)
 
 add_library(

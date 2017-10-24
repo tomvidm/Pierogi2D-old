@@ -14,6 +14,7 @@ set(SOURCES
     )
 
 set(LIBRARIES
+# engine
     animation
     graphics
     console
@@ -24,6 +25,8 @@ set(LIBRARIES
     gameobject
     lua
     gui
+# common
+    math
     )
 
 add_executable(main ${SOURCES})

@@ -6,7 +6,7 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 
-#include "../Utility.h"
+#include "common/math/Utility.h"
 #include "engine/input/Mouse.h"
 #include "engine/graphics/TextureManager.h"
 #include "engine/graphics/TilemapData.h"

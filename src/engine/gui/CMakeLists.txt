@@ -6,7 +6,6 @@ include_directories(
     )
 
 set(INPUT_SOURCES
-    Window.cpp
     Widget.cpp
     )
 

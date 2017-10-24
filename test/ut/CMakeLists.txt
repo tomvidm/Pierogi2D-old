@@ -1,5 +1,3 @@
-add_subdirectory(engine)
-
 include_directories(
     ${PROJECT_SOURCE_DIR}/src/
 	${PROJECT_SOURCE_DIR}/includes
@@ -24,6 +22,7 @@ set(LIBRARIES
     graphics
     console
     input
+    math
     )
 
 add_executable(
