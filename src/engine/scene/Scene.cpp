@@ -24,6 +24,7 @@ namespace engine { namespace scene {
         tmap.update();
         window->clear(sf::Color::White);
         window->draw(tmap);
+        window->draw(widget);
         for (auto s : sprites)
         {
             window->draw(s);

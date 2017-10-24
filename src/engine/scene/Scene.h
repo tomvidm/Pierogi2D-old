@@ -11,7 +11,7 @@
 #include "engine/graphics/Sprite.h"
 #include "engine/graphics/Tilemap.h"
 #include "engine/lua/LuaHelpers.h"
-#include "engine/gui/Window.h"
+#include "engine/gui/Widget.h"
 
 extern "C" 
 {
@@ -40,6 +40,7 @@ namespace engine { namespace scene {
 
         sf::RectangleShape measureRect;
         graphics::Tilemap tmap;
+        gui::Widget widget;
 
 
     };

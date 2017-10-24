@@ -26,7 +26,7 @@ namespace engine { namespace gui {
     struct WidgetTypePair
     {
         WidgetType widgetType;
-        std::unique_ptr<Widget> windgetPtr;
+        std::unique_ptr<Widget> wingetPtr;
     }; 
 
     // The Widget is a base class for representing windows,
@@ -35,12 +35,18 @@ namespace engine { namespace gui {
     class Widget : public sf::Drawable, public sf::Transformable
     {
     public:
+        Widget();
         bool isMouseOver() const;   
 
         inline bool isResizable() const { return isResizable_; }
         inline bool isMovable() const { return isMovable_; }
+        inline bool isAttachedToView() const { return attachedView != nullptr; }
 
         bool snapsToLeftEdge() const;
+
+        void setSize(sf::Vector2f size);
+        void setPosition(sf::Vector2f pos);
+        void setView(sf::View& view);
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     protected:
@@ -52,6 +58,8 @@ namespace engine { namespace gui {
 
         sf::FloatRect boundingBox;
         sf::RectangleShape rectShape;
+
+        sf::View* attachedView = nullptr;
 
         bool isResizable_;
         bool isMovable_;
