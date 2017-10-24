@@ -8,6 +8,7 @@
 #include "common/math/VectorHelpers.h"
 #include "engine/console/Logger.h"
 #include "engine/graphics/TextureManager.h"
+#include "engine/random/Random.h"
 
 namespace engine { namespace graphics {
 
@@ -21,6 +22,8 @@ namespace engine { namespace graphics {
         void setNumVertices(int numVertices);
 
         void setThickness(float t);
+
+        void setDynamicResolution(bool truth);
 
         void updateVertices(float t = 0.f);
 
@@ -37,11 +40,11 @@ namespace engine { namespace graphics {
         std::vector<sf::Vector2f> points;
         sf::VertexArray beamVertices;
         sf::VertexArray beamLines;
-        std::vector<sf::Vector2f> vectors;
 
         sf::Texture* beamTexturePtr;
         float thickness;
         int numPoints_;
+        bool numVerticesDynamicallyChosen = false;
         sf::Clock clock;
     };
 }}

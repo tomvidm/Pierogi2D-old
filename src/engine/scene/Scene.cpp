@@ -10,12 +10,14 @@ namespace engine { namespace scene {
         tmap.setPosition(sf::Vector2f(1024/2, 0));
         tmap.setTexture("wood_tileset");
         beam.setEndpoints(sf::Vector2f(0, 0), sf::Vector2f(300, 300));
-        beam.setNumVertices(50);
-        beam.setThickness(16.f);
+        beam.setNumVertices(100);
+        beam.setThickness(24.f);
+        beam.setDynamicResolution(true);
     }
 
     void Scene::update()
     {
+        beam.setEndpoints(sf::Vector2f(0, 0), engine::input::Mouse::getMouseFloatPos(false));
         beam.update();
         for (auto s = sprites.begin(); s != sprites.end(); s++)
         {

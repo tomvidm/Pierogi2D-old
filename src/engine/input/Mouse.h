@@ -26,10 +26,17 @@ namespace engine { namespace input {
             return sf::Mouse::getPosition(*windowContext); 
         }
 
-        static inline sf::Vector2f getMouseFloatPos() 
+        static inline sf::Vector2f getMouseFloatPos(bool worldCoords = false) 
         { 
             sf::Vector2i mpos = sf::Mouse::getPosition(*windowContext);
-            return windowContext->mapPixelToCoords(mpos);
+            if (worldCoords)
+            {
+                return sf::Vector2f(static_cast<float>(mpos.x), static_cast<float>(mpos.y));
+            }
+            else
+            {
+                return windowContext->mapPixelToCoords(mpos);
+            }
         }
 
         static inline sf::Vector2f getPositionOnLeftPress()
