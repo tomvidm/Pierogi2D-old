@@ -3,7 +3,7 @@
 namespace engine { namespace graphics {
     BeamEffect::BeamEffect()
     {
-        lineVertices.setPrimitiveType(sf::PrimitiveType::LineStrip);
+        clock.restart();
         beamVertices.setPrimitiveType(sf::PrimitiveType::TriangleStrip);
         beamLines.setPrimitiveType(sf::PrimitiveType::LineStrip);
 
@@ -16,36 +16,54 @@ namespace engine { namespace graphics {
         endPos = end;
     }
 
-    void BeamEffect::setNumVertices(int numVertices) 
+    void BeamEffect::setNumVertices(int numPoints) 
     {
-        numVertices_ = numVertices; 
-        lineVertices.resize(numVertices_); 
-        beamVertices.resize(2*numVertices_);
-        beamLines.resize(2*numVertices_);
-        initVertices();
+        numPoints_ = numPoints; 
+        points.resize(numPoints_); 
+        beamVertices.resize(2*numPoints_);
+        beamLines.resize(2*numPoints_);
+        updateVertices();
     }
 
-    void BeamEffect::initVertices()
+    void BeamEffect::updateVertices(float t)
     {
-        sf::Vector2f dir = endPos - startPos;
+        sf::Vector2f mainDir = endPos - startPos;
+        sf::Vector2f dir;
+        sf::Vector2f prevPos = startPos;
+        sf::Vector2f newPos;
+        sf::Vector2f normal;
 
-        for (int i = 0; i < numVertices_; i++)
+        beamVertices[0] = sf::Vertex(newPos + normal, sf::Vector2f(266.f, 12.f));
+        beamVertices[1] = sf::Vertex(newPos - normal, sf::Vector2f(353.f, 12.f));
+        beamLines[0] = sf::Vertex(newPos + normal, sf::Color::Blue);
+        beamLines[1] = sf::Vertex(newPos - normal, sf::Color::Red);
+
+        for (int i = 1; i < numPoints_; i++)
         {
-            sf::Vector2f pos = startPos + dir * (static_cast<float>(i)/static_cast<float>(numVertices_));
-            lineVertices[i] = sf::Vertex(pos);
+            float s = static_cast<float>(i)/static_cast<float>(numPoints_);
+            newPos = startPos + mainDir * s;
+            dir = common::math::normalize(newPos - prevPos);
+            normal = sf::Vector2f(-dir.y, dir.x);
+            
+            newPos = newPos + 32.f*static_cast<float>(sin(2*3.1415*(s - 0.3*getSeconds())))*normal;
 
-            sf::Vector2f normal = 16.f*sf::Transform().rotate(90).transformPoint(common::math::normalize(dir));
-            beamVertices[2*i] = sf::Vertex(pos + normal, sf::Vector2f(266.f, 12.f));
-            beamVertices[2*i + 1] = sf::Vertex(pos - normal, sf::Vector2f(353.f, 12.f));
-            beamLines[2*i] = sf::Vertex(pos + normal, sf::Color::Blue);
-            beamLines[2*i + 1] = sf::Vertex(pos - normal, sf::Color::Red);
+            beamVertices[2*i] = sf::Vertex(newPos + normal, sf::Vector2f(266.f, 12.f));
+            beamVertices[2*i + 1] = sf::Vertex(newPos - normal, sf::Vector2f(353.f, 12.f));
+            beamLines[2*i] = sf::Vertex(newPos + normal, sf::Color::Blue);
+            beamLines[2*i + 1] = sf::Vertex(newPos - normal, sf::Color::Red);
+
+            prevPos = newPos;
         }
+    }
+
+    void BeamEffect::update()
+    {
+        updateVertices();
     }
 
     void BeamEffect::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(beamVertices, sf::RenderStates(beamTexturePtr));
-        target.draw(lineVertices);
         target.draw(beamLines);
     }
 }}
