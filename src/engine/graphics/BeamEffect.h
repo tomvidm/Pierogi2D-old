@@ -20,9 +20,13 @@ namespace engine { namespace graphics {
 
         void setNumVertices(int numVertices);
 
+        void setThickness(float t);
+
         void updateVertices(float t = 0.f);
 
         void update();
+
+        float func(float s, float t);
 
         inline float getSeconds() const { return clock.getElapsedTime().asSeconds(); }
 
@@ -33,9 +37,10 @@ namespace engine { namespace graphics {
         std::vector<sf::Vector2f> points;
         sf::VertexArray beamVertices;
         sf::VertexArray beamLines;
+        std::vector<sf::Vector2f> vectors;
 
         sf::Texture* beamTexturePtr;
-
+        float thickness;
         int numPoints_;
         sf::Clock clock;
     };

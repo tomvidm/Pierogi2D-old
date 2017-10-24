@@ -11,6 +11,7 @@ namespace engine { namespace scene {
         tmap.setTexture("wood_tileset");
         beam.setEndpoints(sf::Vector2f(0, 0), sf::Vector2f(300, 300));
         beam.setNumVertices(50);
+        beam.setThickness(16.f);
     }
 
     void Scene::update()
