@@ -20,7 +20,11 @@ namespace engine { namespace graphics {
         if (!isAlreadyLoaded(texturename))
         {
             resourceMap[texturename] = sf::Texture();
-            resourceMap[texturename].loadFromFile(directories::imagesDirectory + texturename + ".png");
+            if (!resourceMap[texturename].loadFromFile(directories::imagesDirectory + texturename + ".png"))
+            {
+                // SOME ERROR
+                ;
+            }
         }
         else
         {

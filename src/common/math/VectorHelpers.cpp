@@ -10,4 +10,20 @@ namespace common { namespace math {
     {
         return vec*(1/abs(vec));
     }
+
+    sf::Vector2f rotate(sf::Vector2f vec, float angle, bool radians)
+    {
+    	if (radians)
+    	{
+    		return sf::Vector2f(vec.x * cos(angle) - vec.y * sin(angle),
+    							vec.x * sin(angle) + vec.y * cos(angle));
+    	}
+    	else
+    	{
+    		angle = pi*angle/180.f;
+    		return sf::Vector2f(vec.x * cos(angle) - vec.y * sin(angle),
+    							vec.x * sin(angle) + vec.y * cos(angle));
+    	}
+    	
+    }
 }}

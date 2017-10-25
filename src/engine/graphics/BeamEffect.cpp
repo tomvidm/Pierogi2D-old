@@ -47,7 +47,8 @@ namespace engine { namespace graphics {
         for (int i = 0; i < numPoints_; i++)
         {
             float s = static_cast<float>(i)/static_cast<float>(numPoints_ - 1);
-            points[i] = startPos + mainDir * s + 24.f * func(s, 0.4f*getSeconds()) * mainNormal;
+            points[i] = startPos + mainDir * s + 32.f * func(s, -0.4f*getSeconds()) * mainNormal +
+                        10.f * func(4*s, + 1.f*getSeconds()) * mainNormal;
 
         }
 
@@ -81,7 +82,7 @@ namespace engine { namespace graphics {
     {
         if (numVerticesDynamicallyChosen)
         {
-            setNumVertices(static_cast<int>(common::math::abs(endPos - startPos)/10.f));
+            setNumVertices(static_cast<int>(common::math::abs(endPos - startPos)/5.f));
         }
 
         updateVertices();
@@ -96,7 +97,7 @@ namespace engine { namespace graphics {
 
     void BeamEffect::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        target.draw(beamVertices, sf::RenderStates(beamTexturePtr));
+        //target.draw(beamVertices, sf::RenderStates(beamTexturePtr));
         target.draw(beamLines);
     }
 }}

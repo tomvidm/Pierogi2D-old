@@ -22,8 +22,7 @@ namespace engine { namespace graphics {
     {
         for (int i = 0; i < numParticles; i++)
         {
-            particles[i].dir = sf::Vector2f(0.9999f*particles[i].dir.x - 0.0087f*particles[i].dir.y,
-                                            0.0087f*particles[i].dir.x + 0.9999f*particles[i].dir.y);
+            particles[i].dir = common::math::rotate(particles[i].dir, 0.1);
         }
 
         for (int i = 0; i < numParticles; i++)

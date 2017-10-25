@@ -6,6 +6,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "engine/random/Random.h"
+#include "common/math/VectorHelpers.h"
 
 namespace engine { namespace graphics {
 	struct Particle

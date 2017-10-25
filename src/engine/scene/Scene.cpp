@@ -11,7 +11,7 @@ namespace engine { namespace scene {
         tmap.setTexture("wood_tileset");
         beam.setEndpoints(sf::Vector2f(0, 0), sf::Vector2f(300, 300));
         beam.setNumVertices(100);
-        beam.setThickness(24.f);
+        beam.setThickness(15.f);
         beam.setDynamicResolution(true);
     }
 
@@ -19,7 +19,7 @@ namespace engine { namespace scene {
     {
         beam.setEndpoints(sf::Vector2f(0, 0), engine::input::Mouse::getMouseFloatPos(false));
         beam.update();
-        parr.update();
+        //parr.update();
         for (auto s = sprites.begin(); s != sprites.end(); s++)
         {
             s->update();
@@ -32,7 +32,7 @@ namespace engine { namespace scene {
         window->clear(sf::Color::Black);
         //window->draw(tmap);
         window->draw(beam);
-        window->draw(parr);
+        //window->draw(parr);
         for (auto s : sprites)
         {
             window->draw(s);
