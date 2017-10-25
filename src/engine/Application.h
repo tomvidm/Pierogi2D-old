@@ -47,7 +47,9 @@ namespace engine
         int maxFramePeriod; 
 
         bool consoleFocus = false;
-
+        float frameLimitTime = 1.f/60.f;
+        sf::Clock frameTimer;
+        sf::Clock frameLimitTimer;
         scene::Scene scene;
         state::GameStateStack stateStack;
 

@@ -47,9 +47,9 @@ namespace engine { namespace state {
         }
     }
 
-    void GameStateTest::update()
+    void GameStateTest::update(float dt)
     {
-        scenePtr->update();
+        scenePtr->update(dt);
     }
 
     void GameStateTest::render(sf::RenderWindow* window)

@@ -15,7 +15,7 @@ namespace engine { namespace state {
 	public:
 		GameStateTest(Application* applicationPtr, scene::Scene* scenePtr, sf::RenderWindow* window);
 		virtual void handleInput(sf::RenderWindow* window);
-        virtual void update();
+        virtual void update(float dt);
 		virtual void render(sf::RenderWindow* window);		
     private:
         int playerIndex;

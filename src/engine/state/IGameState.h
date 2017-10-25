@@ -11,7 +11,7 @@ namespace engine { namespace state {
 	class IGameState 
 	{
 	public:
-		virtual void update() = 0;
+		virtual void update(float dt) = 0;
 		virtual void handleInput(sf::RenderWindow* window) = 0;
 		virtual void render(sf::RenderWindow* window) = 0;
 	};

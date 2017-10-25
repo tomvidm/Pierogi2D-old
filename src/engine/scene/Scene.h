@@ -13,7 +13,7 @@
 #include "engine/lua/LuaHelpers.h"
 #include "engine/gui/Widget.h"
 #include "engine/graphics/BeamEffect.h"
-#include "engine/graphics/ParticleArray.h"
+#include "engine/graphics/ParticleSystem.h"
 
 extern "C" 
 {
@@ -32,7 +32,7 @@ namespace engine { namespace scene {
     {
     public:
         Scene();
-        void update();
+        void update(float dt);
         void render(sf::RenderWindow* window);
 
         inline graphics::Sprite& getSprite(int index) { return sprites[index]; }
@@ -44,7 +44,7 @@ namespace engine { namespace scene {
         graphics::Tilemap tmap;
         gui::Widget widget;
         graphics::BeamEffect beam;
-        graphics::ParticleArray parr;
+        graphics::ParticleSystem psys;
 
 
     };

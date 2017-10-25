@@ -23,8 +23,16 @@ namespace engine {
 
     void Application::loop() {
         stateStack.topState()->handleInput(&window);
-        stateStack.topState()->update();
-        stateStack.topState()->render(&window);
+
+        float dt = frameTimer.getElapsedTime().asSeconds();
+        frameTimer.restart();
+        stateStack.topState()->update(dt);
+
+        if (frameLimitTimer.getElapsedTime().asSeconds() > frameLimitTime)
+        {
+            frameLimitTimer.restart();
+            stateStack.topState()->render(&window);
+        }
     }
 
 /*    // This is self explanatory and this method will change a lot.

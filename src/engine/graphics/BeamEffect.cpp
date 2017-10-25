@@ -97,7 +97,7 @@ namespace engine { namespace graphics {
 
     void BeamEffect::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        //target.draw(beamVertices, sf::RenderStates(beamTexturePtr));
+        target.draw(beamVertices, sf::RenderStates(beamTexturePtr));
         target.draw(beamLines);
     }
 }}

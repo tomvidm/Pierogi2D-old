@@ -13,13 +13,14 @@ namespace engine { namespace scene {
         beam.setNumVertices(100);
         beam.setThickness(15.f);
         beam.setDynamicResolution(true);
+        psys.setupTestSystem();
     }
 
-    void Scene::update()
+    void Scene::update(float dt)
     {
-        beam.setEndpoints(sf::Vector2f(0, 0), engine::input::Mouse::getMouseFloatPos(false));
-        beam.update();
-        //parr.update();
+        //beam.setEndpoints(sf::Vector2f(0, 0), engine::input::Mouse::getMouseFloatPos(false));
+        //beam.update();
+        psys.update(dt);
         for (auto s = sprites.begin(); s != sprites.end(); s++)
         {
             s->update();
@@ -30,9 +31,9 @@ namespace engine { namespace scene {
     {
         tmap.update();
         window->clear(sf::Color::Black);
-        //window->draw(tmap);
-        window->draw(beam);
-        //window->draw(parr);
+        window->draw(tmap);
+        //window->draw(beam);
+        window->draw(psys);
         for (auto s : sprites)
         {
             window->draw(s);
