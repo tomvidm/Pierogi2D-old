@@ -1,66 +1,124 @@
 #include "ParticleSystem.h"
 
 namespace engine { namespace graphics {
-    void ParticleSystem::setupTestSystem()
+    ParticleSystem::ParticleSystem()
     {
-        setNumParticles(4200);
-        texPtr = TextureManager::getInstancePtr()->loadFromFile("light");
-        varr.setPrimitiveType(sf::PrimitiveType::Quads);
+        setParticlePrimitiveType(sf::PrimitiveType::Quads);
+    }
+
+    ParticleSystem::~ParticleSystem()
+    {
         for (int i = 0; i < numParticles; i++)
         {
-            float r = 3.1415f*2.f*engine::random::randFloat();
-            float R = 250.f*engine::random::randFloat();
-            float m = 1.f*(1.f + 10.f*engine::random::randFloat());
-            particles[i].setMass(m*m);
-            particles[i].setScale(5.f*m);
-            particles[i].setPosition(R*sf::Vector2f(cos(r), sin(r)));
-            varr[4*i].texCoords = sf::Vector2f(0, 0);
-            varr[4*i + 1].texCoords = sf::Vector2f(256.f, 0.f);
-            varr[4*i + 2].texCoords = sf::Vector2f(256.f, 256.f);
-            varr[4*i + 3].texCoords = sf::Vector2f(0, 256.f);
+            delete particles[i];
+        }
+    }
+
+    void ParticleSystem::setupTestSystem()
+    {
+        setNumParticles(2000);
+        for (int i = 0; i < numParticles; i++)
+        {
+            float r = 2*common::math::pi * engine::random::randFloat();
+            float R = engine::random::randFloat();
+            particles[i]->setPosition(250.f * R * sf::Vector2f(cos(r), sin(r)));
+            static_cast<Particle*>(particles[i])->setScale(5.f);
+        }
+    }
+
+    void ParticleSystem::setParticlePrimitiveType(sf::PrimitiveType primitiveType)
+    {
+        vertexArray.setPrimitiveType(primitiveType);
+        switch (primitiveType)
+        {
+            case sf::PrimitiveType::Points:
+                numVerticesPerParticle = 1;
+                break;
+            case sf::PrimitiveType::Quads:
+                numVerticesPerParticle = 4;
+                break;
+            default:
+                numVerticesPerParticle = 1;
         }
     }
 
     void ParticleSystem::setNumParticles(int num)
     {
-        particles.resize(num);
-        varr.resize(4*num);
         numParticles = num;
+        particles.resize(numParticles);
+        vertexArray.resize(numVerticesPerParticle * numParticles);
+
+        for (int i = 0; i < numParticles; i++)
+        {
+            if (numVerticesPerParticle == 1)
+            {
+                particles[i] = new PointParticle();
+            }
+            else
+            {
+                particles[i] = new Particle();
+            }
+        }
+
         init();
+    }
+
+    void ParticleSystem::setParticleLifetime(float seconds)
+    {
+        lifetime = seconds;
+    }
+
+    void ParticleSystem::addAttractor(Attractor attractor)
+    {
+        attractors.push_back(attractor);
     }
 
     void ParticleSystem::init()
     {
         for (int i = 0; i < numParticles; i++)
         {
-            particles[i].setVertexStart(&varr[4*i]);
+            particles[i]->setVertexIndex(&vertexArray[numVerticesPerParticle * i]);
         }
     }
 
     void ParticleSystem::update(float dt)
     {
-        sf::Vector2f mpos = engine::input::Mouse::getMouseFloatPos();
-        for (int i = 0; i < numParticles; i++)
+        if (numVerticesPerParticle == 1)
         {
-            particles[i].update(dt, mpos);
+            updatePointParticles(dt);
+        }
+        else
+        {
+            updateQuadParticles(dt);
         }
     }
 
-    void ParticleSystem::push()
+    void ParticleSystem::updatePointParticles(float dt)
     {
-        sf::Vector2f mpos = engine::input::Mouse::getMouseFloatPos();
-
         for (int i = 0; i < numParticles; i++)
         {
-            particles[i].push(mpos);
+            for (int j = 0; j < attractors.size(); j++)
+            {
+                particles[i]->applyForce(attractors[j].getForce(particles[i]->getPosition()), dt);
+            }
+            particles[i]->timeStep(dt);
+        }
+    }
+
+    void ParticleSystem::updateQuadParticles(float dt)
+    {
+        for (int i = 0; i < numParticles; i++)
+        {
+            for (int j = 0; j < attractors.size(); j++)
+            {
+                static_cast<Particle*>(particles[i])->applyForce(attractors[j].getForce(particles[i]->getPosition()), dt);
+            }
+            static_cast<Particle*>(particles[i])->timeStep(dt);
         }
     }
 
     void ParticleSystem::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        states = sf::RenderStates(texPtr);
-        states.blendMode = sf::BlendAdd;
-
-        target.draw(varr, states);
+        target.draw(vertexArray);
     }
 }}

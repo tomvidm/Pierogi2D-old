@@ -27,15 +27,16 @@ namespace engine { namespace state {
 
             if (event.type == sf::Event::MouseButtonReleased)
             {
+                sf::Vector2f mpos = engine::input::Mouse::getMouseFloatPos();
                 if (input::Mouse::isLeftClick(event))
                 {
-                    
                     std::cout << "Left click." << std::endl;
-                    scenePtr->psys.push();
+                    scenePtr->psys.addAttractor(engine::graphics::Attractor(1500.f, mpos));
                 }
                 else if (input::Mouse::isRightClick(event))
                 {
                     std::cout << "Right click." << std::endl;
+                    scenePtr->psys.addAttractor(engine::graphics::Attractor(-1500.f, mpos));
                 }
             }
         }

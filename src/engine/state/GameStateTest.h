@@ -6,6 +6,7 @@
 
 #include "engine/scene/Scene.h"
 #include "engine/input/Mouse.h"
+#include "engine/graphics/Attractor.h"
 
 #include "GameState.h"
 
