@@ -9,6 +9,7 @@
 #include "engine/graphics/Particle.h"
 #include "engine/random/Random.h"
 #include "engine/input/Mouse.h"
+#include "engine/graphics/TextureManager.h"
 
 
 namespace engine { namespace graphics {
@@ -19,12 +20,13 @@ namespace engine { namespace graphics {
         void setNumParticles(int num);
         void init();
         void update(float dt);
+        void push();
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     private:
         std::vector<Particle> particles;
         int numParticles;
         sf::VertexArray varr;
-
+        sf::Texture* texPtr;
     };
 }}
 

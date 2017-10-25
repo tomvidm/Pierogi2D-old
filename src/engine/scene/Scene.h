@@ -34,7 +34,7 @@ namespace engine { namespace scene {
         Scene();
         void update(float dt);
         void render(sf::RenderWindow* window);
-
+        graphics::ParticleSystem psys;
         inline graphics::Sprite& getSprite(int index) { return sprites[index]; }
     private:
         std::vector<gameobject::Entity> entities;
@@ -44,7 +44,7 @@ namespace engine { namespace scene {
         graphics::Tilemap tmap;
         gui::Widget widget;
         graphics::BeamEffect beam;
-        graphics::ParticleSystem psys;
+        
 
 
     };

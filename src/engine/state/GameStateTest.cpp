@@ -31,6 +31,7 @@ namespace engine { namespace state {
                 {
                     
                     std::cout << "Left click." << std::endl;
+                    scenePtr->psys.push();
                 }
                 else if (input::Mouse::isRightClick(event))
                 {

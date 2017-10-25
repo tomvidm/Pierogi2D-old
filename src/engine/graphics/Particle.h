@@ -27,6 +27,7 @@ namespace engine { namespace graphics {
 
         void applyForce(Force force, float dt = 1.f); 
         void update(float dt, sf::Vector2f mpos);
+        void push(sf::Vector2f mpos);
     private:
         float mass = 1;
         float angle = 0;
