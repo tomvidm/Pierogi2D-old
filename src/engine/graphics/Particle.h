@@ -15,6 +15,7 @@ namespace engine { namespace graphics {
         
         inline void setAngle(float a) { angle = a; }
         inline void setAngularMomentum(float a) { angularMomentum = a; }
+        inline void setAngularDragFactor(float drag) { angularDragFactor = drag; }
 
         inline void addAngle(float a, float dt = 1.f) { angle += dt*a; }
         inline void addAngularMomentum(float a, float dt = 1.f) { angularMomentum += dt*a; } 
@@ -26,6 +27,7 @@ namespace engine { namespace graphics {
     private:
         float angle = 0.f;
         float angularMomentum = 0.f;
+        float angularDragFactor = 0.f;
         float scale = 1.f;
         sf::Vector2f points[4] = { 0.5f*sf::Vector2f(-1.f, -1.f),
                                    0.5f*sf::Vector2f(1.f, -1.f),

@@ -97,7 +97,7 @@ namespace engine { namespace graphics {
     {
         for (int i = 0; i < numParticles; i++)
         {
-            for (int j = 0; j < attractors.size(); j++)
+            for (unsigned int j = 0; j < attractors.size(); j++)
             {
                 particles[i]->applyForce(attractors[j].getForce(particles[i]->getPosition()), dt);
             }
@@ -109,7 +109,7 @@ namespace engine { namespace graphics {
     {
         for (int i = 0; i < numParticles; i++)
         {
-            for (int j = 0; j < attractors.size(); j++)
+            for (unsigned int j = 0; j < attractors.size(); j++)
             {
                 static_cast<Particle*>(particles[i])->applyForce(attractors[j].getForce(particles[i]->getPosition()), dt);
             }

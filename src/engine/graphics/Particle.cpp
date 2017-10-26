@@ -10,6 +10,8 @@ namespace engine { namespace graphics {
 
     void Particle::timeStep(float dt)
     {
+        addAngularMomentum(- angularDragFactor * angularMomentum);
+        addAngle(angularMomentum, dt);
         addPosition(velocity, dt);
 
         updateVertices();

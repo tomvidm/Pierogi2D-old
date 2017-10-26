@@ -13,6 +13,7 @@ namespace engine { namespace graphics {
 
 	void PointParticle::timeStep(float dt)
 	{
+		addVelocity(-dragFactor * common::math::abs(velocity) * velocity);
 		addPosition(velocity, dt);
 
 		updateVertices();

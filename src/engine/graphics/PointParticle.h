@@ -17,6 +17,7 @@ namespace engine { namespace graphics {
 
   		inline void setPosition(sf::Vector2f pos) { position = pos; }
       inline void setVelocity(sf::Vector2f vel) { velocity = vel; }
+      inline void setDragFactor(float drag) { dragFactor = drag; }
 
       inline void addPosition(sf::Vector2f p, float dt = 1.f) { position += dt*p; }
       inline void addVelocity(sf::Vector2f v, float  dt = 1.f) { velocity += dt*v; }
@@ -30,6 +31,7 @@ namespace engine { namespace graphics {
       inline sf::Vector2f getPosition() const { return position; }
  	protected:
    		float mass = 1.f;
+      float dragFactor = 0.f;
 
    		sf::Vector2f position = sf::Vector2f(0.f, 0.f);
    		sf::Vector2f velocity = sf::Vector2f(0.f, 0.f);
